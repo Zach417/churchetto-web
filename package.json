@@ -1,0 +1,38 @@
+{
+  "name": "churchetto-web",
+  "version": "1.0.0",
+  "description": "Code for the Churchetto web server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "browserify -t reactify client/js/app.anonymous.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.anonymous.js && browserify -t reactify client/js/app.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.js",
+    "build-anonymous": "browserify -t reactify client/js/app.anonymous.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.anonymous.js",
+    "build-authorized": "browserify -t reactify client/js/app.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zach417/churchetto-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zach417/churchetto-web/issues"
+  },
+  "homepage": "https://github.com/Zach417/churchetto-web#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect-mongo": "^1.1.0",
+    "cookie-parser": "^1.4.1",
+    "envify": "^3.4.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "flux": "^2.1.1",
+    "jquery": "^2.2.2",
+    "keymirror": "^0.1.1",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.1",
+    "uglifyjs": "^2.4.10"
+  }
+}

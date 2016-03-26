@@ -1,0 +1,56 @@
+﻿html, body {
+    background-color: #f1f4f6;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+.text-inline {
+    display: inline;
+}
+
+#marketing-widescreen {
+}
+
+.marketing-widescreen-button {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#marketing-widescreen-head {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+#marketing-widescreen-head h1 {
+    font-size: 52px;
+}
+
+.margin-top-05 { margin-top: 05px; }
+.margin-top-10 { margin-top: 10px; }
+.margin-top-15 { margin-top: 15px; }
+.margin-top-20 { margin-top: 20px; }
+.margin-top-25 { margin-top: 25px; }
+.margin-top-30 { margin-top: 30px; }
+
+.padding-top-05 { padding-top: 05px; }
+.padding-top-10 { padding-top: 10px; }
+.padding-top-15 { padding-top: 15px; }
+.padding-top-20 { padding-top: 20px; }
+.padding-top-25 { padding-top: 25px; }
+.padding-top-30 { padding-top: 30px; }
