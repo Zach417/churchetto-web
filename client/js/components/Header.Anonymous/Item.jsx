@@ -2,18 +2,7 @@ var React = require('react');
 var $ = require('jquery');
 var Link = require('react-router').Link;
 
-var NavigationActions = require('../../actions/NavigationActions');
-var NavigationStore = require('../../stores/NavigationStore');
-
 var Style = require('./Style.jsx');
-
-function getSelectionStatus(path) {
-    if (NavigationStore.getCurrentPage() == path) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 var Header = React.createClass({
 	getInitialState: function () {
@@ -102,5 +91,5 @@ var Header = React.createClass({
 		}
 	},
 });
-		
+
 module.exports = Header;
