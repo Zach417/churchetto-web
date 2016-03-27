@@ -1,7 +1,7 @@
 var React = require('react');
 var Style = require('./Style.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
-var PlanManagerService = require('../../services/PlanManagerService');
+var PlanManagerService = require('../../services/ChurchettoData');
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
