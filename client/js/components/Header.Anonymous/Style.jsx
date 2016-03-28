@@ -1,12 +1,28 @@
 module.exports = {
+  headerContainer: {
+    fontFamily: "'Poiret One', cursive",
+  },
   navigation: {
     backgroundColor: "#f4f4f4",
     color: "#3b3a36",
     display: "inline-block",
     width: "100%",
-    fontFamily: "'Poiret One', cursive",
     position: "fixed",
     zIndex: "1",
+  },
+  logo: {
+    height: "60px",
+    float: "left",
+    paddingLeft: "15px"
+  },
+  noSpace: {
+    padding: "0",
+    margin: "0",
+  },
+  noSpaceFloat: {
+    padding: "0",
+    margin: "0",
+    float: "right",
   },
   title: {
     textDecoration: "none",
@@ -18,15 +34,27 @@ module.exports = {
     fontSize: "32px",
   },
   menu: {
+    float: "left",
+    margin: "0",
+    padding: "0",
+  },
+  menuMobile: {
     float: "right",
+    width: "100%",
     margin: "0",
     padding: "0",
   },
   subMenu: {
     display: "none",
-    float: "right",
     margin: "0",
     padding: "0",
+    width: "350px",
+    display: "none",
+    zIndex: "1",
+    position: "fixed",
+    top: "65px",
+    right: "0",
+    backgroundColor: "transparent",
   },
   menuItem: {
     backgroundColor:"#3c948b",
@@ -56,7 +84,6 @@ module.exports = {
     padding: "18px 45px",
     fontSize: "18px",
     cursor: "pointer",
-    display: "inline-block",
   },
   menuSubItemHover: {
     backgroundColor:"#a3434c",
@@ -66,7 +93,6 @@ module.exports = {
     padding: "18px 45px",
     fontSize: "18px",
     cursor: "pointer",
-    display: "inline-block",
   },
   menuNavButton: {
     backgroundColor:"#3b3a36",
@@ -87,14 +113,5 @@ module.exports = {
     fontSize: "18px",
     cursor: "pointer",
     display: "inline-block",
-  },
-  menuNav: {
-    display: "none",
-    zIndex: "2",
-    padding: "0",
-    position: "absolute",
-    top: "0",
-    right: "0",
-    backgroundColor: "transparent",
   }
 }

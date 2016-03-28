@@ -1,5 +1,9 @@
 module.exports = {
-    headerPadding: {
-        paddingTop: "60px"
-    },
+  headerPadding: {
+    paddingTop: "70px"
+  },
+  noSpace: {
+    margin: "0",
+    padding: "0"
+  }
 }

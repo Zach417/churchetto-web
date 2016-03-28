@@ -1,9 +1,9 @@
 var StoreTemplate = require('./Template');
-var PlanManagerService = require('../services/PlanManagerService');
+var ChurchettoDataService = require('../services/ChurchettoData');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var Constants = require('../constants/UserConstants.js');
 
-var UserStore = new StoreTemplate(PlanManagerService.users);
+var UserStore = new StoreTemplate(ChurchettoDataService.users);
 
 UserStore.getUserFromEmail = function (email, callback) {
 	UserStore.get(function (docs) {

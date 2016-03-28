@@ -4,21 +4,25 @@ var Link = require('react-router').Link;
 
 var Style = require('./Style.jsx');
 var Menu = require('./Menu.jsx');
+var MenuNavButton = require('./MenuNavButton.jsx');
 var SubMenu = require('./SubMenu.jsx');
 
 var Header = React.createClass({
 	render: function () {
 		return (
-			<div style={Style.navigation}>
-				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-					style={{padding:"0"}}>
-					<Link to="/" style={Style.title}>{"Churchetto"}</Link>
-					<Menu />
+			<div style={Style.headerContainer}>
+				<div style={Style.navigation}>
+					<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
+						style={{padding:"0"}}>
+						<Link to="/" style={Style.title}>{"Churchetto"}</Link>
+						<img style={Style.logo} src="/img/logo-icon" />
+						<div style={{float:"right"}}>
+							<Menu />
+							<MenuNavButton />
+						</div>
+					</div>
 				</div>
-				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-					style={Style.menuNav} id="menu-nav">
-					<SubMenu />
-				</div>
+				<SubMenu />
 			</div>
 		);
 	},

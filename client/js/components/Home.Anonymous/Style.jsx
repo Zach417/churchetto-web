@@ -15,9 +15,8 @@ module.exports = {
     textAlign: "center",
     padding: "0",
     margin: "0",
-    color: "#f4f4f4",
-    backgroundColor:"#c36b74",
-    display: "none",
+    backgroundColor:"#f4f4f4",
+    fontSize: "16px",
   },
   img: {
     maxWidth: "100%",

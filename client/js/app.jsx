@@ -9,7 +9,14 @@ var IndexRoute = require('react-router').IndexRoute;
 
 var Header = require('./components/Header/Index.jsx');
 var Home = require('./components/Home/Index.jsx');
+var SignOut = require('./components/SignOut/Index.jsx');
 var Footer = require('./components/Footer/Index.jsx');
+
+function handleRouterUpdate () {
+	$("#menu").fadeIn("slow");
+	$("#menu-sub").slideUp("fast");
+	$("#menu-button").text(". . .");
+}
 
 var MobileNavigation = React.createClass({
     render: function () {
@@ -38,7 +45,8 @@ var App = React.createClass({
 
 var Routes = (
   <Route path="/" component={App}>
-    <Route path="home" component={Home} />
+    <IndexRoute component={Home} />
+    <Route path="sign-out" component={SignOut} />
   </Route>
 );
 

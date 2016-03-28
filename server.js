@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var app = express();
 var config = JSON.parse(fs.readFileSync(path.join(__dirname, "config.json"), "utf8"));
 
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost/churchetto");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(config.cookieParser.secret));
