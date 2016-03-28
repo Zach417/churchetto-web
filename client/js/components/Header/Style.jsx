@@ -13,7 +13,7 @@ module.exports = {
   logo: {
     height: "60px",
     float: "left",
-    paddingLeft: "15px"
+    paddingLeft: "10px"
   },
   noSpace: {
     padding: "0",
@@ -29,7 +29,7 @@ module.exports = {
     color: "#3b3a36",
     fontWeight: "700",
     display: "inline-block",
-    padding: "10px 15px",
+    padding: "10px 5px",
     cursor: "pointer",
     fontSize: "32px",
   },
