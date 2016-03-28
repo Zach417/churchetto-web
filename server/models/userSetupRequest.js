@@ -37,7 +37,7 @@ userSetupRequestSchema.methods.generateTokenAndSendEmail = function(callback) {
       }
     });
     var html = EmailSender.Emails.UserSetupRequest
-      .replace(new RegExp("__LINK__", 'g'), "http://localhost/sign-up/" + this._id + "?token=" + tokenValue)
+      .replace(new RegExp("__LINK__", 'g'), "http://www.churchetto.com/sign-up/" + this._id + "?token=" + tokenValue)
       .replace("__NAME__", this.firstName);
     var emailSender = new EmailSender({
       from: "zach@churchetto.com",
