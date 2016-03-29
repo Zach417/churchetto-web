@@ -29,7 +29,7 @@ module.exports = {
   highlights: {
     border: "2px solid #ccc",
     borderRadius: "6px",
-    backgroundColor: "#f4f4f4"
+    backgroundColor: "#f1f4f6",
   },
   highlightsHeader: {
     padding: "10px",
