@@ -1,5 +1,5 @@
 # churchetto-web
-Churchetto is a web application that serves church organizations and individuals in a uniquely powerful, symbiotic way.
+Churchetto is a free web application that serves church organizations and individuals in a uniquely powerful, symbiotic way.
 For individuals, Churchetto is the most accurate and robust church finding tool the world has ever seen.
 For organizations, Churchetto provides church leaders with a powerful set of tools to intuitively market, organize, and promote their congregation.
 
