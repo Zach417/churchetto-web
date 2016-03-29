@@ -1,6 +1,5 @@
 var React = require('react');
 var Style = require('./Style.jsx');
-var Banner = require('./Banner.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var PlanManagerService = require('../../services/ChurchettoData');
 
@@ -11,36 +10,33 @@ var Highlights = React.createClass({
         <div style={Style.highlightsHeader}>{"You'll love Churchetto"}</div>
         <div style={Style.highlightsBody}>
           <div>
-            <b>Powerful</b>
-            tools</div>
+            <b>{"Powerful "}</b>
+            analytics
+          </div>
           <div>
-            <b>Powerful</b>
-            recomendations</div>
+            <b>{"Powerful "}</b>
+            tools
+          </div>
         </div>
-        <div style={{
-          padding: "10px"
-        }}>
+        <div style={{padding: "10px"}}>
           <div>
-            <span style={{
-              color: "green"
-            }}>
-              <b>✓</b>
+            <span style={Style.checkMark}>
+              <b>{"✓ "}</b>
             </span>
-            Unlimited Storage</div>
+            Group Email Generator
+          </div>
           <div>
-            <span style={{
-              color: "green"
-            }}>
-              <b>✓</b>
+            <span style={Style.checkMark}>
+              <b>{"✓ "}</b>
             </span>
-            Clear Reminders</div>
+            Member Satisfaction Surveys
+          </div>
           <div>
-            <span style={{
-              color: "green"
-            }}>
-              <b>✓</b>
+            <span style={Style.checkMark}>
+              <b>{"✓ "}</b>
             </span>
-            Essential Analytics</div>
+            {"World-class Interface"}
+          </div>
         </div>
       </div>
     )

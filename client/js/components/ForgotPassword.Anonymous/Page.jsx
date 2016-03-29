@@ -2,30 +2,40 @@ var React = require('react');
 var Style = require('./Style.jsx');
 var ForgotComponent = require('./Index.jsx');
 
-var RegisterPage = React.createClass({
-	render: function () {
-		return (
-            <div style={Style.pageContainer}>
-                <div className="container-fluid">
-                    <div className="row-fluid">
-                        <div style={Style.headerPadding} className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-                            <div className="col-lg-8 col-md-8 col-sm-12">
-                                <div style={Style.mainHeader} className="hidden-xs">{"Whoops!"}</div>
-                                <div style={Style.mainHeaderMobile} className="hidden-lg hidden-md hidden-sm">{"Whoops!"}</div>
-                                <div style={Style.mainBody}>
-                                    {"Passwords are hard to keep track of anyway. Submit a request, and we'll email you instructions to get a new password."}
-                                </div>
-                            </div>
-                            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <div className="hidden-lg hidden-md" style={{paddingTop:"20px"}} />
-					            <ForgotComponent />
-                            </div>
-                        </div>
-                    </div>
+var Page = React.createClass({
+  componentDidMount: function() {
+    window.scrollTo(0, 0);
+  },
+
+  render: function() {
+    return (
+      <div style={Style.pageContainer}>
+        <div className="container-fluid">
+          <div className="row-fluid">
+            <div className="col-lg-4 col-md-4 hidden-sm hidden-xs" />
+            <div style={Style.headerPadding} className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <div className="hidden-lg hidden-md" style={{paddingTop: "20px"}} />
+              <ForgotComponent/>
+						</div>
+            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <div className="hidden-lg hidden-md" style={{paddingTop: "20px"}} />
+              <div className="hidden-sm hidden-xs" style={{paddingTop: "60px"}} />
+              <div style={Style.container}>
+                <div style={Style.header}>
+                  No worries!
                 </div>
+                <div>
+                  {"We'll get your password back! "}
+                  {"Just submit the request and you'll get emailed "}
+                  {"instructions on how to reset it."}
+                </div>
+              </div>
             </div>
-		)
-	}
+          </div>
+        </div>
+      </div>
+    )
+  }
 });
 
-module.exports = RegisterPage;
+module.exports = Page;

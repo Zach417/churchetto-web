@@ -39,43 +39,48 @@ var RegisterRequest = React.createClass({
     }
 
     return (
-      <div>
-        <Label isRequired={true} label={"First Name"} />
-        <Input
-          type={"text"}
-          placeholder={"John"}
-          value={this.state.firstName}
-          onChange={this.handleChange_FirstName} />
+      <div style={Style.register}>
+        <div style={Style.header}>
+          Sign up for Churchetto
+        </div>
+        <div style={Style.loginForm}>
+          <Label isRequired={true} label={"First Name"} />
+          <Input
+            type={"text"}
+            placeholder={"Moshe"}
+            value={this.state.firstName}
+            onChange={this.handleChange_FirstName} />
 
-        <Label isRequired={true} label={"Last Name"} />
-        <Input
-          type={"text"}
-          placeholder={"Calvin"}
-          value={this.state.lastName}
-          onChange={this.handleChange_LastName} />
+          <Label isRequired={true} label={"Last Name"} />
+          <Input
+            type={"text"}
+            placeholder={"Rabbenu"}
+            value={this.state.lastName}
+            onChange={this.handleChange_LastName} />
 
-        <Label isRequired={true} label={"Your Email"} />
-        <Input
-          type={"email"}
-          placeholder={"jcalvin@protestantism.com"}
-          value={this.state.email}
-          onChange={this.handleChange_Email} />
+          <Label isRequired={true} label={"Your Email"} />
+          <Input
+            type={"email"}
+            placeholder={"letmypeoplego@prophetsonly.com"}
+            value={this.state.email}
+            onChange={this.handleChange_Email} />
 
-        <Label isRequired={true} label={"Password"} />
-        <Input
-          type={"password"}
-          value={this.state.firstPassword}
-          onChange={this.handleChange_FirstPassword} />
+          <Label isRequired={true} label={"Password"} />
+          <Input
+            type={"password"}
+            value={this.state.firstPassword}
+            onChange={this.handleChange_FirstPassword} />
 
-        <Label isRequired={true} label={"Confirm Password"} />
-        <Input
-          type={"password"}
-          value={this.state.secondPassword}
-          onChange={this.handleChange_SecondPassword} />
+          <Label isRequired={true} label={"Confirm Password"} />
+          <Input
+            type={"password"}
+            value={this.state.secondPassword}
+            onChange={this.handleChange_SecondPassword} />
 
-        <div style={{marginTop: "10px"}}/>
-        <ButtonPrimary label={"Create Account"} onClick={this.handleClick_Submit}/>
-        {this.getErrorMessage()}
+          <div style={{marginTop: "10px"}}/>
+          <ButtonPrimary label={"Sign Up"} onClick={this.handleClick_Submit}/>
+          {this.getErrorMessage()}
+        </div>
       </div>
     )
   },

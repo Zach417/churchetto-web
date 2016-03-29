@@ -5,6 +5,20 @@ var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
 var ChurchettoData = require('../../services/ChurchettoData');
 
+var embarrasingEmails = [
+  "llama123girl@aol.com",
+  "letmypeoplego@prophetsonly.com",
+  "Bball4lyfe29@yahoo.com",
+  "harpsealpuppylove@aol.com",
+  "rollerbladingrl@aol.com",
+  "goofygooberchick@gmail.com",
+  "teentitan95@yahoo.com",
+  "catlover43@hotmail.com",
+  "greenday500@sbcglobal.net",
+  "cheetahgirl97@mchsi.com",
+  "MrBigglesworth28@aol.com"
+]
+
 var SignIn = React.createClass({
   getInitialState: function() {
     this._state = {
@@ -35,6 +49,8 @@ var SignIn = React.createClass({
       )
     }
 
+    var randomIndex = Math.floor(Math.random() * (embarrasingEmails.length - 1));
+
     return (
       <div style={Style.container}>
         <div style={Style.login}>
@@ -46,7 +62,7 @@ var SignIn = React.createClass({
             <Label isRequired={true} label={"Email address"} />
             <Input
               type={"text"}
-              placeholder={"jcalvin@example.com"}
+              placeholder={embarrasingEmails[randomIndex]}
               value={this.state.email}
               onChange={this.handleChange_Email} />
 
@@ -60,18 +76,6 @@ var SignIn = React.createClass({
             <ButtonPrimary label={"Sign In"} onClick={this.handleClick_Submit} />
             {this.getErrorMessage()}
 
-          </div>
-        </div>
-        <div style={Style.register}>
-          <div style={Style.registerLink}>
-            {"New to Churchetto?"}<br/>
-            <a href="/register">Create an account.</a>
-          </div>
-        </div>
-        <div style={Style.register}>
-          <div style={Style.registerLink}>
-            Forgot your password?<br/>
-            <a href="/forgot">Reset it.</a>
           </div>
         </div>
       </div>

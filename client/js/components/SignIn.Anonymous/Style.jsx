@@ -67,7 +67,6 @@ module.exports = {
     backgroundColor: "#f1f4f6",
     borderRadius: "6px",
     overflow: "hidden",
-    marginTop: "10px",
     border: "2px solid #ccc",
     padding: "10px 10px 10px 10px",
     textAlign: "center"

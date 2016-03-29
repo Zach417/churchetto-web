@@ -15,7 +15,9 @@ var Header = React.createClass({
 					<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
 						style={{padding:"0"}}>
 						<Link to="/" style={Style.title}>{"Churchetto"}</Link>
-						<img style={Style.logo} src="/img/logo-icon" />
+						<Link to="/">
+							<img style={Style.logo} src="/img/logo-icon" onClick={this.handleClick_Logo} />
+						</Link>
 						<div style={{float:"right"}}>
 							<Menu />
 							<MenuNavButton />

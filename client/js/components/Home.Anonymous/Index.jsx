@@ -7,6 +7,10 @@ var Jumbotron = require('./Jumbotron.jsx');
 var Mumbotron = require('./Mumbotron.jsx');
 
 var HomePage = React.createClass({
+  componentDidMount: function () {
+    window.scrollTo(0,0);
+  },
+
   render: function() {
     return (
       <div style={Style.container}>

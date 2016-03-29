@@ -6,6 +6,7 @@ module.exports = {
     paddingTop:"25px",
     paddingBottom:"50px",
     width: "100%",
+    minHeight: "100%",
     fontFamily: "'Rokkitt', serif",
   },
   container: {
@@ -13,7 +14,8 @@ module.exports = {
     border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
-    padding: "10px"
+    padding: "10px",
+    fontFamily: "'Rokkitt', serif",
   },
   login: {},
   mainHeader: {
@@ -25,7 +27,7 @@ module.exports = {
   mainBody: {
     fontSize: "21px"
   },
-  loginHeader: {
+  header: {
     padding: "0 10px 10px 10px",
     fontSize: "20px",
     textAlign: "center"
