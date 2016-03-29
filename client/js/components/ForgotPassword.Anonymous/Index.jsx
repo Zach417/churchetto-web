@@ -89,7 +89,7 @@ var Register = React.createClass({
               onChange={this.handleChange_Email} />
 
             <div style={{marginTop: "10px"}} />
-            <ButtonPrimary label={"Sign In"} onClick={this.handleClick_Submit} />
+            <ButtonPrimary label={"Submit"} onClick={this.handleClick_Submit} />
             {this.getErrorMessage()}
           </div>
         </div>
