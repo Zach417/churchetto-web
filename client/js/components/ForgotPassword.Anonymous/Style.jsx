@@ -1,13 +1,17 @@
 module.exports = {
-  headerPadding: {
+  componentContainer: {
     paddingTop: "60px"
   },
   pageContainer: {
-    paddingTop:"25px",
-    paddingBottom:"50px",
+    padding:"25px 0",
     width: "100%",
     minHeight: "100%",
     fontFamily: "'Rokkitt', serif",
+  },
+  header: {
+    padding: "0 10px 10px 10px",
+    fontSize: "20px",
+    textAlign: "center"
   },
   container: {
     backgroundColor: "#f1f4f6",
@@ -26,11 +30,6 @@ module.exports = {
   },
   mainBody: {
     fontSize: "21px"
-  },
-  header: {
-    padding: "0 10px 10px 10px",
-    fontSize: "20px",
-    textAlign: "center"
   },
   loginForm: {},
   formLabel: {

@@ -46,6 +46,7 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.4",
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "uglifyjs": "^2.4.10"
   }
 }

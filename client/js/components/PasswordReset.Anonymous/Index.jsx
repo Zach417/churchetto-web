@@ -1,6 +1,8 @@
 var React = require('react');
 var Style = require('./Style.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
+var Input = require('../Form/Index.jsx').Input;
+var Label = require('../Form/Index.jsx').Label;
 var PlanManagerService = require('../../services/ChurchettoData');
 
 function getParameterByName(name) {
@@ -63,14 +65,22 @@ var PasswordReset = React.createClass({
             Forgotten Password Reset
           </div>
           <div style={Style.loginForm}>
-            <label style={Style.formLabel}>New Password</label>
-            <input type="password" value={this.state.firstPassword} style={Style.formInput} onChange={this.handleChange_FirstPassword}/>
-            <label style={Style.formLabel}>Confirm New Password</label>
-            <input type="password" value={this.state.secondPassword} style={Style.formInput} onChange={this.handleChange_SecondPassword} name="password"/>
-            <div style={{
-              marginTop: "10px"
-            }}/>
-            <ButtonPrimary label={"🔒 Submit"} onClick={this.handleClick_Submit}/> {this.getErrorMessage()}
+
+            <Label isRequired={true} label={"New Password"} />
+            <Input
+              type={"password"}
+              value={this.state.firstPassword}
+              onChange={this.handleChange_FirstPassword} />
+
+              <Label isRequired={true} label={"Confirm New Password"} />
+              <Input
+                type={"password"}
+                value={this.state.secondPassword}
+                onChange={this.handleChange_SecondPassword} />
+
+            <div style={{marginTop: "10px"}}/>
+            <ButtonPrimary label={"Submit"} onClick={this.handleClick_Submit}/>
+            {this.getErrorMessage()}
           </div>
         </div>
       </div>
@@ -80,9 +90,7 @@ var PasswordReset = React.createClass({
   getSuccessMessage: function() {
     if (this.state.success === true) {
       return (
-        <div style={{
-          paddingTop: "5px"
-        }}>
+        <div style={{paddingTop: "5px"}}>
           {"Success! Your password has been reset! You may now login "}
           <a href="/login">here</a>.
         </div>
@@ -94,17 +102,14 @@ var PasswordReset = React.createClass({
     if (this.state.success === false) {
       return (
         <div>
-          <div style={{
-            color: "#da383c",
-            paddingTop: "5px"
-          }}>
+          <div style={{color: "#da383c",paddingTop: "5px"}}>
             {this.state.message}
           </div>
-          <div style={{
-            paddingTop: "5px"
-          }}>
-            You can obtain a new password reset link
-            <a href="/forgot">here</a>. Keep in mind that only one link can be sent every 2 hours for security reasons.
+          <div style={{paddingTop: "5px"}}>
+            {"You can obtain a new password reset link "}
+            <a href="/forgot-password">here</a>
+            {". Keep in mind that, for security reasons, "}
+            {"only one link can be sent every 2 hours."}
           </div>
         </div>
       )

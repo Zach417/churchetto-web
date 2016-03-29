@@ -4,7 +4,7 @@ var User = require('../../models/user');
 var UserSetupRequest = require('../../models/userSetupRequest');
 
 function sendFailedJson(res) {
-	res.status(401).json({
+  res.json({
 		success: false,
 		message: 'Registration failed. Invalid token or id. If you have submitted multiple registration requests,'
 			+ 'you will need to use the most recent link or submit a new registration request.'

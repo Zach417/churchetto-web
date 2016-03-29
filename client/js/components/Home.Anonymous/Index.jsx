@@ -14,7 +14,9 @@ var HomePage = React.createClass({
   render: function() {
     return (
       <div style={Style.container}>
-				<Jumbotron />
+				<Jumbotron
+          heading={"Stride in allegretto 🎶"}
+          subHeading={"stay in tempo with Churchetto"} />
         <Mumbotron />
       </div>
     );

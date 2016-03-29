@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt-nodejs');
 var User = require('../../models/user');
 
 function sendAuthorizationFailedJson(res) {
-	res.status(401).json({
+  res.json({
 		success: false,
 		message: 'Authentication failed.'
 	});

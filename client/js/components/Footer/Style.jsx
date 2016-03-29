@@ -3,7 +3,6 @@ module.exports = {
     fontFamily: "'Poiret One', cursive",
     display: "inline-block",
     width: "100%",
-    marginTop: "35px",
     backgroundColor: "#3b3a36",
     padding: "35px 10px",
     color: "#f4f4f4"

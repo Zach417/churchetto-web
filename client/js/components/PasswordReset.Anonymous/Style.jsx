@@ -1,19 +1,24 @@
 module.exports = {
-  headerPadding: {
+  componentContainer: {
     paddingTop: "60px"
   },
   pageContainer: {
-    paddingTop: "25px",
-    paddingBottom: "50px",
+    padding:"25px 0",
     width: "100%",
     fontFamily: "'Rokkitt', serif",
+  },
+  header: {
+    padding: "0 10px 10px 10px",
+    fontSize: "20px",
+    textAlign: "center"
   },
   container: {
     backgroundColor: "#f1f4f6",
     border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
-    padding: "10px"
+    padding: "10px",
+    fontFamily: "'Rokkitt', serif",
   },
   login: {},
   mainHeader: {

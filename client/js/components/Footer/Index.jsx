@@ -35,6 +35,14 @@ var Footer = React.createClass({
   				<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
   					<span style={{color: "#b3b3b3"}}>
               {"© Copyright " + today.getFullYear() + " Churchetto"}
+              {" | zach@churchetto.com"}
+              {" | 417.849.3612"}
+              {" | Springfield, MO"}
+  					</span>
+  				</div>
+  				<div style={{paddingTop:"10px"}} className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  					<span style={{color: "#b3b3b3"}}>
+              {"Churchetto founded, built, and maintained by Zach Allen"}
   					</span>
   				</div>
   			</div>

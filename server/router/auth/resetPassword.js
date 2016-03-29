@@ -6,7 +6,7 @@ var PasswordReset = require('../../models/passwordReset');
 var EmailSender = require('../../components/EmailSender');
 
 function sendFailedJson(res) {
-  res.status(401).json({
+  res.json({
     success: false,
     message: 'Reset failed.'
   });
@@ -56,6 +56,10 @@ module.exports = function(app) {
         "expiresOn": moment().add(20, 'minutes').toDate(),
         "createdOn": moment().toDate(),
       }, function(err, passwordReset) {
+        if (err) {
+          console.log(err);
+          return sendFailedJson(res);
+        }
 
         // check if data is consistent with a given user in the users collection
         // if not, stop and don't inform user. ambiguity will defend against brute

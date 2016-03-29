@@ -1,6 +1,6 @@
 module.exports = {
-  headerPadding: {
-    paddingTop: "60px"
+  componentContainer: {
+    paddingTop: "60px",
   },
   container: {
     backgroundColor: "#f1f4f6",
@@ -11,8 +11,7 @@ module.exports = {
     fontFamily: "'Rokkitt', serif",
   },
   pageContainer: {
-    paddingTop:"25px",
-    paddingBottom:"50px",
+    padding:"25px 0",
     width: "100%",
     minHeight: "100%",
     fontFamily: "'Rokkitt', serif",
@@ -65,9 +64,9 @@ module.exports = {
   register: {},
   registerLink: {
     backgroundColor: "#f1f4f6",
-    borderRadius: "6px",
+    borderRadius: "3px",
     overflow: "hidden",
-    border: "2px solid #ccc",
+    border: "1px solid #ccc",
     padding: "10px 10px 10px 10px",
     textAlign: "center"
   }
