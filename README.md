@@ -1,0 +1,4 @@
+# churchetto-web
+Churchetto is an application that serves individuals and church organizations in a uniquely symbiotic way. For individuals, Churchetto is the most accurate and robust church finding tool the world has ever seen. For organizations, Churchetto provides church leaders with a powerful set of tools to intuitively market, organize, and promote their congregation.
+Our mission is to provide church leaders of small-to-medium sized congregations with a powerful set of free tools that will grow their congregation in a meaningful and sustainable way and to provide people with the world's most robust and accurate church finding tool.
+Our vision is that Churchetto will dramatically improve the relationship between churches and young people by craftily utilizing church data in order to build a platform for matching people with churches by personality traits and preferences.
