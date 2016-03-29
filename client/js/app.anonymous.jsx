@@ -38,7 +38,7 @@ var MobileNavigation = React.createClass({
 var App = React.createClass({
 	render: function () {
 		return (
-			<div>
+			<div style={{height:"100%"}}>
         <Header />
 				{this.props.children}
 				<Footer />

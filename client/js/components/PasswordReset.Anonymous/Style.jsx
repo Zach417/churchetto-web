@@ -6,6 +6,7 @@ module.exports = {
     padding:"25px 0",
     width: "100%",
     fontFamily: "'Rokkitt', serif",
+    minHeight: "100%",
   },
   header: {
     padding: "0 10px 10px 10px",

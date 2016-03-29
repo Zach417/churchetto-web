@@ -1,7 +1,7 @@
 module.exports = {
   container: {
     fontFamily: "'Poiret One', cursive",
-    display: "inline-block",
+    display: "flex",
     width: "100%",
     backgroundColor: "#3b3a36",
     padding: "35px 10px",

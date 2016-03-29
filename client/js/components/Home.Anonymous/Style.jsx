@@ -3,6 +3,7 @@ module.exports = {
     color: "#3b3a36",
     paddingTop: "65px",
     margin: "0",
+    minHeight: "100%",
   },
   jumbotron: {
     fontFamily: "'Rokkitt', serif",
@@ -17,6 +18,9 @@ module.exports = {
     margin: "0",
     backgroundColor:"#f4f4f4",
     fontSize: "16px",
+  },
+  text: {
+    fontFamily: "'Rokkitt', serif",
   },
   img: {
     maxWidth: "100%",
