@@ -14,17 +14,8 @@ var Page = React.createClass({
 
   componentWillMount: function () {
     ChurchStore.get(function (docs) {
-      //this.setState({churches:docs});
       this.setState({
-        churches: [
-          {
-            name: "Test1",
-          }, {
-            name: "Test2",
-          }, {
-            name: "Test3",
-          }
-        ],
+        churches:docs,
         isLoading: false,
       });
     }.bind(this));

@@ -137,6 +137,8 @@ function findOne(user, id, callback) {
         "_id": {
           $in : user.churches
         }
+      }, {
+        "createdBy": user._id,
       }]
     })
     .exec(function(err, result) {
@@ -152,6 +154,8 @@ function findMany(user, callback) {
         "_id": {
           $in : user.churches
         }
+      }, {
+        "createdBy": user._id,
       }]
     })
     .exec(function(err, result) {

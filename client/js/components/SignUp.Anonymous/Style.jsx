@@ -3,7 +3,7 @@ module.exports = {
     paddingTop: "60px",
   },
   container: {
-    backgroundColor: "#f1f4f6",
+    backgroundColor: "#f4f4f4",
     border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
@@ -28,7 +28,7 @@ module.exports = {
   highlights: {
     border: "1px solid #ccc",
     borderRadius: "6px",
-    backgroundColor: "#f1f4f6",
+    backgroundColor: "#f4f4f4",
   },
   highlightsHeader: {
     padding: "10px",
@@ -44,7 +44,7 @@ module.exports = {
   },
   login: {},
   loginLink: {
-    backgroundColor: "#f1f4f6",
+    backgroundColor: "#f4f4f4",
     borderRadius: "3px",
     overflow: "hidden",
     border: "1px solid #ccc",

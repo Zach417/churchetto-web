@@ -17,6 +17,12 @@ UserStore.getUserFromEmail = function (email, callback) {
 	});
 }
 
+UserStore.getCurrentUser = function (callback) {
+	UserStore.get(function (docs) {
+		return callback(docs[0]);
+	});
+}
+
 AppDispatcher.register(function(action) {
 	switch(action.actionType) {
 		case Constants.USER_UPDATE:
