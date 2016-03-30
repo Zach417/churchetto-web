@@ -22,6 +22,10 @@ var Church = React.createClass({
     }.bind(this));
   },
 
+  componentDidMount: function() {
+    window.scrollTo(0, 0);
+  },
+
   render: function () {
     return (
       <div style={Style.pageContainer}>

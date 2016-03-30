@@ -10,27 +10,29 @@ var Footer = React.createClass({
       <div style={Style.container} className="row-fluid">
 				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
   				<ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-            <li style={Style.listHeader}>Authentication</li>
-            <ListItem label={"Sign in"} to={"sign-in"} />
-            <ListItem label={"Sign up"} to={"sign-up"} />
-            <ListItem label={"Forgot password"} to={"forgot-password"} />
+            <li style={Style.listHeader}>Account</li>
+            <ListItem label={"Profile"} to={"profile"} />
+            <ListItem label={"Password Reset"} to={"password-reset"} />
+            <ListItem label={"Settings"} to={"settings"} />
+          </ul>
+          <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <li style={Style.listHeader}>Church</li>
+            <ListItem label={"Churches"} to={"church"} />
+            <ListItem label={"Campuses"} to={"campus"} />
+            <ListItem label={"Members"} to={"member"} />
+          </ul>
+          <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <li style={Style.listHeader}>Marketing</li>
+            <ListItem label={"Leads"} to={"lead"} />
+            <ListItem label={"Opportunities"} to={"opportunity"} />
+            <ListItem label={"Members"} to={"member"} />
+            <ListItem label={"Campaigns"} to={"campaign"} />
           </ul>
           <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <li style={Style.listHeader}>Info</li>
-            <li style={Style.listItem}>About Us</li>
-            <li style={Style.listItem}>Careers</li>
-            <li style={Style.listItem}>Restful API</li>
-          </ul>
-          <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-            <li style={Style.listHeader}>Resources</li>
-            <li style={Style.listItem}>Webinars</li>
-          </ul>
-          <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-            <li style={Style.listHeader}>Connect</li>
-            <li style={Style.listItem}>Facebook</li>
-            <li style={Style.listItem}>Twitter</li>
-            <li style={Style.listItem}>LinkedIn</li>
-            <li style={Style.listItem}>YouTube</li>
+            <ListItem label={"About Us"} />
+            <ListItem label={"Careers"} />
+            <ListItem label={"Restful API"} />
           </ul>
   				<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
   					<span style={{color: "#b3b3b3"}}>

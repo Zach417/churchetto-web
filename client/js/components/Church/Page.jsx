@@ -30,6 +30,10 @@ var Page = React.createClass({
     }.bind(this));
   },
 
+  componentDidMount: function() {
+    window.scrollTo(0, 0);
+  },
+
   render: function () {
     if (this.state.isLoading === true) {
       return (
