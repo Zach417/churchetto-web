@@ -18,7 +18,7 @@ var Header = React.createClass({
 						<Link to="/">
 							<img style={Style.logo} src="/img/logo-icon" onClick={this.handleClick_Logo} />
 						</Link>
-						<div style={{float:"right"}}>
+						<div style={Style.menuContainer}>
 							<Menu />
 							<MenuNavButton />
 						</div>

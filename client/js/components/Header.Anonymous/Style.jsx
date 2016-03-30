@@ -19,6 +19,11 @@ module.exports = {
     padding: "0",
     margin: "0",
   },
+  menuContainer: {
+    position: "absolute",
+    top: "0",
+    right: "0",
+  },
   noSpaceFloat: {
     padding: "0",
     margin: "0",
@@ -55,6 +60,7 @@ module.exports = {
     top: "65px",
     right: "0",
     backgroundColor: "transparent",
+    maxWidth: "100%",
   },
   menuItem: {
     backgroundColor:"#3c948b",
@@ -81,7 +87,7 @@ module.exports = {
     color: "#f4f4f4",
     height:"65px",
     listStyle: "none",
-    padding: "18px 45px",
+    padding: "18px 20px",
     fontSize: "18px",
     cursor: "pointer",
   },
@@ -90,7 +96,7 @@ module.exports = {
     color: "#f4f4f4",
     height:"65px",
     listStyle: "none",
-    padding: "18px 45px",
+    padding: "18px 20px",
     fontSize: "18px",
     cursor: "pointer",
   },

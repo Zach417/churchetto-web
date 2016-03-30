@@ -69,7 +69,7 @@ var HomePage = React.createClass({
       <div style={Style.headerPadding}>
         <div className="row-fluid">
           <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-            style={{margin:"20px 0",padding:"0"}}>
+            style={{margin:"20px auto",padding:"0"}}>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
               <div style={Style.entitySummary}>
                 <h1>{this.state.churches.length}</h1>
