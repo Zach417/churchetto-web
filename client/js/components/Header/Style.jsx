@@ -57,8 +57,7 @@ module.exports = {
     backgroundColor: "transparent",
   },
   menuItem: {
-    backgroundColor:"#3c948b",
-    color: "#f4f4f4",
+    color: "#3b3a36",
     height:"65px",
     listStyle: "none",
     padding: "18px 45px",
@@ -67,8 +66,8 @@ module.exports = {
     display: "inline-block",
   },
   menuItemHover: {
-    backgroundColor:"#2c6d66",
-    color: "#f4f4f4",
+    backgroundColor:"#ccc",
+    color: "#3b3a36",
     height:"65px",
     listStyle: "none",
     padding: "18px 45px",

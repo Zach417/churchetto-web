@@ -5,8 +5,8 @@ var getUser = require('./getUser');
 module.exports = function (config) {
 
 	this.route = function (req, res) {
-		var email = req.headers['email'];
-		var accessToken = req.headers['access-token'];
+		var email = req.session.email;
+		var accessToken = req.cookies.accessToken;
 
 		if (!email || !accessToken) {
 			return res.status(401).json(config.invalidRequest);

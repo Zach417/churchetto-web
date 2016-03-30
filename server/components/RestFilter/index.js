@@ -22,19 +22,31 @@ var ValidateRequestWithId = require('./validateRequestWithId');
 
 function RestFilter(config) {
 
-	config.invalidRequest = { success: false, message: "Authentication error." }
+  config.invalidRequest = {
+    success: false,
+    message: "Authentication error."
+  }
 
-    router.get(config.path, new GetRequestWithoutId(config).route);
-    router.get(config.path + '/:id', new GetRequestWithId(config).route);
+  router.get(config.path, new GetRequestWithoutId(config).route);
+  router.get(config.path + '/:id', new GetRequestWithId(config).route);
 
-    var PUT = { method:'put', before: new ValidateRequestWithId(config).route };
-	var POST = { method:'post', before: new ValidateRequestWithoutId(config).route };
-	var DELETE = { method:'delete', before: new ValidateRequestWithId(config).route };
+  var PUT = {
+    method: 'put',
+    before: new ValidateRequestWithId(config).route
+  };
+  var POST = {
+    method: 'post',
+    before: new ValidateRequestWithoutId(config).route
+  };
+  var DELETE = {
+    method: 'delete',
+    before: new ValidateRequestWithId(config).route
+  };
 
-    config.model.methods([PUT, POST, DELETE]);
-	config.model.register(router, config.path);
+  config.model.methods([PUT, POST, DELETE]);
+  config.model.register(router, config.path);
 
-	return router;
+  return router;
 
 }
 

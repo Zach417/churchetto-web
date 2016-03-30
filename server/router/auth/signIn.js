@@ -45,6 +45,7 @@ module.exports = function (app) {
 				return sendAuthorizationFailedJson(res);
 			} else {
 				user.generateToken(function (token) {
+          req.session.email = email;
 					res.cookie('accessToken', token);
 					return res.json({
 						success: true,

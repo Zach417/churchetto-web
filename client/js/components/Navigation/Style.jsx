@@ -1,4 +1,10 @@
 module.exports = {
+  container: {
+    color: "#3b3a36",
+    paddingTop: "65px",
+    margin: "0",
+    minHeight: "100%",
+  },
 	spacer: {
 		marginTop: "5px",
 		border: "1px solid #ccc",
@@ -14,7 +20,7 @@ module.exports = {
 	linkItem: {
 		color: "#f1f4f6",
 		textDecoration: "none",
-		display: "block",
+		display: "inline-block",
 		width: "100%",
 		whiteSpace: "normal",
 	},

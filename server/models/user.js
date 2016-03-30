@@ -27,9 +27,9 @@ var userSchema = new mongoose.Schema({
     value: String,
     createdOn: Date,
   }],
-  plans: [{
+  churches: [{
     type: mongoose.Schema.ObjectId,
-    ref: 'Plan',
+    ref: 'Church',
     unique: true,
     dropDups: true,
   }],

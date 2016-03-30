@@ -2,6 +2,10 @@ var $ = require('jquery');
 var Slave = require('./Slave');
 
 var Service = {
+  campuses: new Slave("campus"),
+  churches: new Slave("church"),
+  leads: new Slave("lead"),
+  members: new Slave("member"),
   users: new Slave("user"),
 }
 

@@ -5,8 +5,8 @@ var getUser = require('./getUser');
 module.exports = function (config) {
 
 	this.route = function (req, res) {
-		var email = req.headers['email'];
-		var accessToken = req.headers['access-token'];
+		var email = req.session.email;
+		var accessToken = req.cookies.accessToken;
 		var id = req.params.id;
 
 		if (!email || !accessToken || !id) {
