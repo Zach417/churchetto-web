@@ -16,16 +16,6 @@ var Campuses = React.createClass({
 
   componentWillMount: function () {
     this.church = this.props.church;
-    return this.setState({
-      campuses: [{
-        name: "Main Campus",
-        address: {
-          city: "Springfield",
-          state: "MO",
-          zip: "65802",
-        },
-      }]
-    });
     CampusStore.getAssociatedFromChurch(this.church, function (docs) {
       this.setState({
         campuses: docs

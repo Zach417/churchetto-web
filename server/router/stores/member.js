@@ -4,6 +4,10 @@ var UserSecurity = require('../../components/UserSecurity');
 var Church = require('../../models/church');
 
 function getMembersFromChurches(churches, callback) {
+  if (!churches || churches.length === 0) {
+    return callback([]);
+  }
+
   Church
     .find()
     .where({
@@ -162,6 +166,8 @@ function findOne(user, id, callback) {
           "_id": {
             $in : members
           }
+        }, {
+          "createdBy": user._id,
         }]
       })
       .exec(function(err, result) {
@@ -173,12 +179,14 @@ function findOne(user, id, callback) {
 function findMany(user, callback) {
   getMembersFromChurches(user.churches, function (members) {
     Model
-      .findOne()
+      .find()
   		.where({
         $or: [{
           "_id": {
             $in : members
           }
+        }, {
+          "createdBy": user._id,
         }]
       })
       .exec(function(err, result) {

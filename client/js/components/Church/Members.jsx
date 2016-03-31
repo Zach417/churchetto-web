@@ -16,27 +16,6 @@ var Info = React.createClass({
 
   componentWillMount: function () {
     this.church = this.props.church;
-    return this.setState({
-      members: [{
-        firstName: "Steve",
-        lastName: "Johnson",
-      }, {
-        firstName: "Arnold",
-        lastName: "Palmer",
-      }, {
-        firstName: "Phillip",
-        lastName: "Blhasfknof",
-      },{
-        firstName: "Steve",
-        lastName: "Johnson",
-      }, {
-        firstName: "Arnold",
-        lastName: "Palmer",
-      }, {
-        firstName: "Phillip",
-        lastName: "Blhasfknof",
-      }]
-    });
     MemberStore.getAssociatedFromChurch(this.church, function (docs) {
       this.setState({
         members: docs

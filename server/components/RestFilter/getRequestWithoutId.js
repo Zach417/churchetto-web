@@ -26,7 +26,7 @@ module.exports = function (config) {
 
 			config.findMany(user, function (docs) {
 				var result = [];
-				for (i=0;i<docs.length;i++){
+				for (i=0;i<docs.length;i++) {
 					result.push(filter(config.readFilterSchema, docs[i]));
 				}
 				return res.json(result);
