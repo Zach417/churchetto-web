@@ -17,7 +17,7 @@ var Footer = React.createClass({
           </ul>
           <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <li style={Style.listHeader}>Church</li>
-            <ListItem label={"Churches"} to={"/church"} />
+            <ListItem label={"Church"} to={"/church"} />
             <ListItem label={"Campuses"} to={"/campus"} />
             <ListItem label={"Members"} to={"/member"} />
           </ul>

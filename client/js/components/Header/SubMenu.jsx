@@ -8,10 +8,7 @@ var SubMenu = React.createClass({
 	render: function () {
 		return (
   		<ul id="menu-sub" style={Style.subMenu}>
-  			<SubMenuListItem label={"Profile"} to={"/profile"} />
-	  		<SubMenuListItem label={"Churches"} to={"/church"} />
-	  		<SubMenuListItem label={"Friends"} to={"/friends"} />
-	  		<SubMenuListItem label={"Settings"} to={"/settings"} />
+	  		<SubMenuListItem label={"Church"} to={"/church"} />
   			<SubMenuListItem label={"Sign out"} to={"/sign-out"} />
   		</ul>
 		);

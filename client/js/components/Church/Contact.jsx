@@ -14,14 +14,16 @@ var Info = React.createClass({
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>Contact</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Main Phone"} />
             <Input
               type={"text"}
               value={this.props.church.phone.main}
               onChange={this.handleChange_PhoneMain} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Main Fax"} />
             <Input
               type={"text"}
@@ -35,35 +37,40 @@ var Info = React.createClass({
         </div>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>Main Address</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Address Line 1"} />
             <Input
               type={"text"}
               value={this.props.church.address.line1}
               onChange={this.handleChange_AddressLine1} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Address Line 2"} />
             <Input
               type={"text"}
               value={this.props.church.address.line2}
               onChange={this.handleChange_AddressLine2} />
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"City"} />
             <Input
               type={"text"}
               value={this.props.church.address.city}
               onChange={this.handleChange_AddressCity} />
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"State"} />
             <Input
               type={"text"}
               value={this.props.church.address.state}
               onChange={this.handleChange_AddressState} />
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Zip Code"} />
             <Input
               type={"text"}

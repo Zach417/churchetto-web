@@ -1,6 +1,9 @@
 var React = require('react');
+var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Church = require('./Index.jsx');
+var BackButton = require('./Back.jsx');
+var ButtonPrimary = require('../Button/Index.jsx').Primary;
 
 var Page = React.createClass({
   getInitialState: function () {
@@ -29,9 +32,14 @@ var Page = React.createClass({
     return (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
+        <BackButton />
         <Church id={this.state.id} />
       </div>
     )
+  },
+
+  handleClick_Back: function () {
+    browserHistory.push("/church");
   },
 });
 

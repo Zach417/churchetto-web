@@ -19,9 +19,20 @@ module.exports = {
   },
   navigationContainer: {
     padding: "0",
-    position: "absolute",
-    top: "0",
-    right: "0",
+  },
+  detailColumn: {
+    padding: "1px",
+  },
+  extraSmallNavigationContainer: {
+    backgroundColor: "#666666",
+    display: "block",
+    color: "#f1f4f6",
+    cursor: "pointer",
+    touchAction: "manipulation",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none",
+    padding: "18px",
   },
   componentContainer: {
     backgroundColor: "#f4f4f4",
@@ -31,5 +42,28 @@ module.exports = {
     overflow: "hidden",
     margin: "20px 0",
     padding: "20px",
+  },
+  componentContainerNoPadding: {
+    backgroundColor: "#f4f4f4",
+    position: "relative",
+    border: "1px solid #ccc",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+  },
+  backContainer: {
+    position: "relative",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+    cursor: "pointer",
+  },
+  backContainerHover: {
+    color: "#f4f4f4",
+    position: "relative",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+    cursor: "pointer",
   },
 }

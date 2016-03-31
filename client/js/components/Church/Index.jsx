@@ -84,20 +84,24 @@ var Church = React.createClass({
     }
 
     return (
-      <div style={Style.componentContainer}>
-        <Navigation handleChange={this.handleChange_Navigation} />
-        <h1 style={{wordBreak:"break-word"}}>{this.state.church.name}</h1>
-        {this.getCurrentComponent()}
-        <div className="container-fluid">
-          <div className="row-fluid" style={{padding:"15px 0"}}>
-            <ButtonPrimary label={"Save"} onClick={this.handleClick_Submit} />
-            <span style={{display:"inline-block",width:"5px"}} />
-            <ButtonSecondary label={"Cancel"} />
-            <span style={{display:"inline-block",width:"5px"}} />
-            <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
-          </div>
+      <div style={Style.componentContainerNoPadding}>
+        <div style={{padding:"0 20px 0 20px"}}>
+          <h1 style={{wordBreak:"break-word"}}>{this.state.church.name}</h1>
         </div>
-        {this.getErrorMessage()}
+        <div style={{margin:"0 0 20px 0",backgroundColor: "#666666"}}>
+          <Navigation handleChange={this.handleChange_Navigation} />
+        </div>
+        <div style={{padding:"0 20px 20px 20px"}}>
+          {this.getCurrentComponent()}
+          <div className="container-fluid">
+            <div className="row-fluid" style={{padding:"15px 0"}}>
+              <ButtonPrimary label={"Save"} onClick={this.handleClick_Submit} />
+              <span style={{display:"inline-block",width:"5px"}} />
+              <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
+            </div>
+          </div>
+          {this.getErrorMessage()}
+        </div>
       </div>
     )
   },

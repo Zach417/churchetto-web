@@ -14,27 +14,31 @@ var Info = React.createClass({
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>Info</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={true} label={"Name"} />
             <Input
               type={"text"}
               value={this.props.church.name}
               onChange={this.handleChange_Name} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Website"} />
             <Input
               type={"text"}
               value={this.props.church.website}
               onChange={this.handleChange_Website} />
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Mission Statement"} />
             <TextArea
               value={this.props.church.missionStatement}
               onChange={this.handleChange_MissionStatement} />
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Vision Statement"} />
             <TextArea
               value={this.props.church.visionStatement}

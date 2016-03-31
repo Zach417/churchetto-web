@@ -123,7 +123,7 @@ var Churches = React.createClass({
   },
 
   handleClick_AddChurch: function () {
-    browserHistory.push("/church/add");
+    browserHistory.push("/church/create");
   }
 });
 
