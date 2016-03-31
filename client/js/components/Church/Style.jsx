@@ -2,7 +2,6 @@ module.exports = {
   pageContainer: {
     color: "#3b3a36",
     paddingTop: "65px",
-    margin: "0",
     minHeight: "100%",
     fontFamily: "'Rokkitt', serif",
   },
@@ -11,18 +10,26 @@ module.exports = {
     textAlign: "center",
     padding: "150px 0",
     margin: "0",
-    cursor: "pointer",
   },
   sectionContainer: {
+    backgroundColor: "#e1e3e4",
+    border: "1px solid #ccc",
+    paddingTop: "20px",
+    paddingBottom: "20px",
+  },
+  navigationContainer: {
     padding: "0",
+    position: "absolute",
+    top: "0",
+    right: "0",
   },
   componentContainer: {
     backgroundColor: "#f4f4f4",
+    position: "relative",
     border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
-    margin: "20px auto",
-    paddingTop: "20px",
-    paddingBottom: "20px",
+    margin: "20px 0",
+    padding: "20px",
   },
 }

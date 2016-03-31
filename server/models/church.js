@@ -4,6 +4,8 @@ var mongoose = restful.mongoose;
 var schema = new mongoose.Schema({
   name: String,
   website: String,
+  missionStatement: String,
+  visionStatement: String,
   phone: {
     main: String,
   },

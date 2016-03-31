@@ -7,8 +7,8 @@ var Route = require('react-router').Route;
 var browserHistory = require('react-router').browserHistory;
 var IndexRoute = require('react-router').IndexRoute;
 
-var Church = require('./components/Church/Index.jsx');
-var Churches = require('./components/Church/Page.jsx');
+var Church = require('./components/Church/Page.jsx');
+var Churches = require('./components/Churches/Page.jsx');
 var Footer = require('./components/Footer/Index.jsx');
 var Header = require('./components/Header/Index.jsx');
 var Home = require('./components/Home/Index.jsx');

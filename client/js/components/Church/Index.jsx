@@ -1,18 +1,17 @@
 var React = require('react');
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
+var Navigation = require('./Navigation.jsx');
 var Info = require('./Info.jsx');
 var Contact = require('./Contact.jsx');
 var Address = require('./Address.jsx');
+var Members = require('./Members.jsx');
+var Campuses = require('./Campuses.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
-var Input = require('../Form/Index.jsx').Input;
-var Label = require('../Form/Index.jsx').Label;
 var UserStore = require('../../stores/UserStore');
 var ChurchStore = require('../../stores/ChurchStore');
-
-
 
 function resolveSubDocuments (church) {
   if (!church.phone) {
@@ -34,26 +33,28 @@ var Church = React.createClass({
   getInitialState: function () {
     return {
       church: resolveSubDocuments({}),
+      route: "/info",
       isLoading: true,
     }
   },
 
   componentWillMount: function () {
-    var id = this.props.id;
-    if (!this.props.id) {
-      id = this.props.params.id;
+    var id;
+
+    if (this.props.id) {
+      id = this.props.id;
+    } else {
+      return this.setState({
+        church: resolveSubDocuments({}),
+        route: this.state.route,
+        isLoading: false,
+      });
     }
 
     ChurchStore.getOne(id, function (doc) {
-      if (!doc) {
-        return this.setState({
-          church: resolveSubDocuments({}),
-          isLoading: false,
-        });
-      }
-
       this.setState({
         church: resolveSubDocuments(doc),
+        route: this.state.route,
         isLoading: false,
       });
     }.bind(this));
@@ -78,31 +79,62 @@ var Church = React.createClass({
     }
 
     return (
-      <div style={Style.pageContainer}>
-        <div style={Style.componentContainer} className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-          <h1>{"Fantastic Church"}</h1>
-          <Info church={this.state.church} handleChange={this.handleChange} />
-          <Contact church={this.state.church} handleChange={this.handleChange} />
-          <Address church={this.state.church} handleChange={this.handleChange} />
-          <div className="container-fluid" style={Style.sectionContainer}>
-            <div className="row-fluid" style={{padding:"15px 0"}}>
-              <ButtonPrimary label={"Save"} onClick={this.handleClick_Submit} />
-              <span style={{display:"inline-block",width:"5px"}} />
-              <ButtonSecondary label={"Cancel"} />
-              <span style={{display:"inline-block",width:"5px"}} />
-              <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
-            </div>
+      <div style={Style.componentContainer}>
+        <Navigation handleChange={this.handleChange_Navigation} />
+        <h1 style={{wordBreak:"break-word"}}>{this.state.church.name}</h1>
+        {this.getCurrentComponent()}
+        <div className="container-fluid">
+          <div className="row-fluid" style={{padding:"15px 0"}}>
+            <ButtonPrimary label={"Save"} onClick={this.handleClick_Submit} />
+            <span style={{display:"inline-block",width:"5px"}} />
+            <ButtonSecondary label={"Cancel"} />
+            <span style={{display:"inline-block",width:"5px"}} />
+            <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
           </div>
-          {this.getErrorMessage()}
         </div>
+        {this.getErrorMessage()}
       </div>
     )
   },
 
-  handleChange: function (church) {
+  getCurrentComponent: function () {
+    switch (this.state.route) {
+      case "/info":
+        return (
+          <Info church={this.state.church} handleChange={this.handleChange_Data} />
+        )
+        break;
+      case "/contact":
+        return (
+          <Contact church={this.state.church} handleChange={this.handleChange_Data} />
+        )
+        break;
+      case "/members":
+        return (
+          <Members church={this.state.church} />
+        )
+        break;
+      case "/campuses":
+        return (
+          <Campuses church={this.state.church} />
+        )
+        break;
+    }
+  },
+
+  handleChange_Data: function (church) {
     this.setState({
       church: resolveSubDocuments(church),
+      route: this.state.route,
       isLoading: false,
+    })
+  },
+
+  handleChange_Navigation: function (route) {
+    this.setState({
+      church: this.state.church,
+      route: route,
+      isLoading: this.state.isLoading,
     })
   },
 
@@ -111,6 +143,7 @@ var Church = React.createClass({
     if (!this.state.church._id) {
       this.setState({
         church: this.state.church,
+        route: this.state.route,
         isLoading: true,
       });
       ChurchStore.insert(this.state.church, function (doc) {
@@ -121,6 +154,7 @@ var Church = React.createClass({
             browserHistory.push("/church/" + doc._id);
             this.setState({
               church: resolveSubDocuments(doc),
+              route: this.state.route,
               isLoading: false,
             });
           }.bind(this));
@@ -129,11 +163,13 @@ var Church = React.createClass({
     } else {
       this.setState({
         church: this.state.church,
+        route: this.state.route,
         isLoading: true,
       });
       ChurchStore.update(this.state.church, function (doc) {
         this.setState({
           church: this.state.church,
+          route: this.state.route,
           isLoading: false,
         });
       }.bind(this));
@@ -144,11 +180,13 @@ var Church = React.createClass({
     window.scrollTo(0, 0);
     this.setState({
       church: this.state.church,
+      route: this.state.route,
       isLoading: true,
     });
     ChurchStore.delete(this.state.church, function (doc) {
       this.setState({
         church: resolveSubDocuments({}),
+        route: this.state.route,
         isLoading: false,
       });
     }.bind(this));

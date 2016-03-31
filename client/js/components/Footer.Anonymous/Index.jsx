@@ -11,9 +11,9 @@ var Footer = React.createClass({
 				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
   				<ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <li style={Style.listHeader}>Get Started</li>
-            <ListItem label={"Sign in"} to={"sign-in"} />
-            <ListItem label={"Sign up"} to={"sign-up"} />
-            <ListItem label={"Forgot password"} to={"forgot-password"} />
+            <ListItem label={"Sign in"} to={"/sign-in"} />
+            <ListItem label={"Sign up"} to={"/sign-up"} />
+            <ListItem label={"Forgot password"} to={"/forgot-password"} />
           </ul>
           <ul style={Style.list} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <li style={Style.listHeader}>Info</li>

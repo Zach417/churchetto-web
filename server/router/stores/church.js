@@ -15,6 +15,12 @@ var readFilterSchema = {
     "website": {
       "type": "string",
     },
+    "missionStatement": {
+      "type": "string",
+    },
+    "visionStatement": {
+      "type": "string",
+    },
     "phone": {
       "type": "object",
       "properties": {
@@ -80,6 +86,12 @@ var writeFilterSchema = {
       "type": "string",
     },
     "website": {
+      "type": "string",
+    },
+    "missionStatement": {
+      "type": "string",
+    },
+    "visionStatement": {
       "type": "string",
     },
     "phone": {
