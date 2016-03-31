@@ -52,8 +52,8 @@ var Routes = (
     <Route path="sign-out" component={SignOut}/>
     <Route path="church">
       <IndexRoute component={Churches} />
-      <Route path=":id" component={Church}/>
       <Route path="add" component={Church}/>
+      <Route path=":id" component={Church}/>
     </Route>
   </Route>
 );

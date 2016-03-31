@@ -17,10 +17,27 @@ module.exports = {
   },
   componentContainer: {
     backgroundColor: "#f4f4f4",
+    position: "relative",
     border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
     margin: "20px 0",
     padding: "20px",
+  },
+  listItem: {
+    backgroundColor:"#f4f4f4",
+    color: "#3b3a36",
+    padding: "10px",
+    fontSize: "18px",
+    cursor: "pointer",
+    display: "block",
+  },
+  listItemHover: {
+    backgroundColor:"#ccc",
+    color: "#3b3a36",
+    padding: "10px",
+    fontSize: "18px",
+    cursor: "pointer",
+    display: "block",
   },
 }

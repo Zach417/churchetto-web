@@ -16,7 +16,7 @@ var Page = React.createClass({
   componentWillMount: function () {
     ChurchStore.get(function (docs) {
       this.setState({
-        churches:docs,
+        churches: docs,
         isLoading: false,
       });
     }.bind(this));
@@ -24,6 +24,11 @@ var Page = React.createClass({
 
   componentDidMount: function() {
     window.scrollTo(0, 0);
+    ChurchStore.addChangeListener(this.handleChange_ChurchStore);
+  },
+
+  componentWillUnmount: function() {
+    ChurchStore.removeChangeListener(this.handleChange_ChurchStore);
   },
 
   render: function () {
@@ -41,19 +46,11 @@ var Page = React.createClass({
     } else if (this.state.churches.length === 1) {
       return (
         <div style={Style.pageContainer}>
-        <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-          style={{display:"none"}}>
-          <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12"
-            style={{padding:"0"}}>
-              <h3>Test</h3>
-            </div>
-            <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12"
-              style={{padding:"0"}}>
-              <h3>Test</h3>
-            </div>
-          </div>
           <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
             <Church id={this.state.churches[0]._id} />
+          </div>
+          <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
+            <Churches />
           </div>
         </div>
       )
@@ -80,9 +77,14 @@ var Page = React.createClass({
     }
   },
 
+  handleChange_ChurchStore: function () {
+    this.setState(this.getInitialState());
+    this.componentWillMount();
+  },
+
   handleClick_AddChurch: function () {
     browserHistory.push("/church/add");
-  }
+  },
 });
 
 module.exports = Page;

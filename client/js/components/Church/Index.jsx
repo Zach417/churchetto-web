@@ -12,6 +12,7 @@ var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
 var UserStore = require('../../stores/UserStore');
 var ChurchStore = require('../../stores/ChurchStore');
+var ChurchActions = require('../../actions/ChurchActions');
 
 function resolveSubDocuments (church) {
   if (!church.phone) {
@@ -58,6 +59,10 @@ var Church = React.createClass({
         isLoading: false,
       });
     }.bind(this));
+  },
+
+  componentWillReceiveProps: function () {
+    this.componentWillMount();
   },
 
   componentDidMount: function() {
@@ -141,55 +146,18 @@ var Church = React.createClass({
   handleClick_Submit: function () {
     window.scrollTo(0, 0);
     if (!this.state.church._id) {
-      this.setState({
-        church: this.state.church,
-        route: this.state.route,
-        isLoading: true,
-      });
-      ChurchStore.insert(this.state.church, function (doc) {
-        UserStore.getCurrentUser(function (user) {
-          if (!user.churches) { user.churches = []; }
-          user.churches.push(doc._id);
-          UserStore.update(user, function (user) {
-            browserHistory.push("/church/" + doc._id);
-            this.setState({
-              church: resolveSubDocuments(doc),
-              route: this.state.route,
-              isLoading: false,
-            });
-          }.bind(this));
-        }.bind(this));
-      }.bind(this));
+      ChurchActions.create(this.state.church);
+      browserHistory.push("/church");
     } else {
-      this.setState({
-        church: this.state.church,
-        route: this.state.route,
-        isLoading: true,
-      });
-      ChurchStore.update(this.state.church, function (doc) {
-        this.setState({
-          church: this.state.church,
-          route: this.state.route,
-          isLoading: false,
-        });
-      }.bind(this));
+      ChurchActions.update(this.state.church);
+      browserHistory.push("/church");
     }
   },
 
   handleClick_Delete: function () {
     window.scrollTo(0, 0);
-    this.setState({
-      church: this.state.church,
-      route: this.state.route,
-      isLoading: true,
-    });
-    ChurchStore.delete(this.state.church, function (doc) {
-      this.setState({
-        church: resolveSubDocuments({}),
-        route: this.state.route,
-        isLoading: false,
-      });
-    }.bind(this));
+    ChurchActions.destroy(this.state.church);
+    browserHistory.push("/church");
   },
 
   getErrorMessage: function () {
