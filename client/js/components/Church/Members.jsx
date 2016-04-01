@@ -1,6 +1,7 @@
 var React = require('react');
 var Griddle = require('griddle-react');
 var browserHistory = require('react-router').browserHistory;
+var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ChurchStore = require('../../stores/ChurchStore');
@@ -13,6 +14,41 @@ function resolveSubDocuments (church) {
   if (!church.campuses) { church.campuses = [] }
   return church;
 }
+
+var LinkComponent = React.createClass({
+  render: function(){
+    var url ="/church/" + this.props.rowData.churchId + "/member/" + this.props.rowData.memberId;
+    return <Link to={url}>{this.props.data}</Link>
+  },
+});
+
+var columnMeta = [
+  {
+    "columnName": "memberId",
+    "locked": true,
+    "visible": false,
+  }, {
+    "columnName": "churchId",
+    "locked": true,
+    "visible": false,
+  }, {
+    "columnName": "Name",
+    "order": 1,
+    "locked": false,
+    "visible": true,
+    "customComponent": LinkComponent
+  }, {
+    "columnName": "Phone",
+    "order": 2,
+    "locked": false,
+    "visible": true,
+  }, {
+    "columnName": "Email",
+    "order": 3,
+    "locked": false,
+    "visible": true,
+  }
+];
 
 var Info = React.createClass({
   getInitialState: function () {
@@ -30,19 +66,35 @@ var Info = React.createClass({
     }.bind(this))
   },
 
+  componentDidMount: function() {
+    ChurchStore.addChangeListener(this.handleChange_ChurchStore);
+  },
+
+  componentWillUnmount: function() {
+    ChurchStore.removeChangeListener(this.handleChange_ChurchStore);
+  },
+
   render: function () {
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <div style={{position:"relative"}}>
             <h3 style={{display:"inline-block",margin:"0 0 17px 0"}}>Members</h3>
-            <div style={{position:"absolute",top:"0",right:"0"}}>
+            <div style={{position:"absolute",top:"-8px",right:"0"}}>
               <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
             </div>
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+          <div className="col-lg-12 col-md-12 col-sm-12 hidden-xs"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} />
+            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
+              columns={["Name","Phone","Email"]} resultsPerPage={20}
+              onRowClick={this.handleClick_Row} />
+          </div>
+          <div className="hidden-lg hidden-md hidden-sm col-xs-12"
+            style={Style.detailColumn}>
+            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
+              columns={["Name"]} resultsPerPage={10}
+              onRowClick={this.handleClick_Row} />
           </div>
         </div>
       </div>
@@ -53,15 +105,26 @@ var Info = React.createClass({
     var result = [];
     for (var i = 0; i < this.state.church.members.length; i++) {
       result.push({
-        "First Name": this.state.church.members[i].firstName,
-        "Last Name": this.state.church.members[i].lastName,
+        "memberId": this.state.church.members[i]._id,
+        "churchId": this.state.church._id,
+        "Name": this.state.church.members[i].lastName + ", " + this.state.church.members[i].firstName,
+        "Phone": this.state.church.members[i].phone.main,
+        "Email": this.state.church.members[i].email,
       });
     }
     return result;
   },
 
+  handleChange_ChurchStore: function () {
+    this.componentWillMount();
+  },
+
   handleClick_Add: function () {
     browserHistory.push("/church/" + this.state.church._id + "/member/create");
+  },
+
+  handleClick_Row: function (gridRow, event) {
+    browserHistory.push("/church/" + gridRow.props.data.churchId + "/member/" + gridRow.props.data.memberId);
   },
 });
 

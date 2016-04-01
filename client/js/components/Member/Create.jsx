@@ -1,4 +1,5 @@
 var React = require('react');
+var browserHistory = require('react-router').browserHistory;
 var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var Member = require('./Index.jsx');
@@ -40,7 +41,6 @@ var Create = React.createClass({
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
         <Member
           church={this.state.church}
-          member={{}}
           children={this.props.children} />
       </div>
     )

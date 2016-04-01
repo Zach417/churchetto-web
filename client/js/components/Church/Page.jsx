@@ -52,7 +52,6 @@ var Page = React.createClass({
     return (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-        <BackButton />
         <Church
           church={this.state.church}
           children={this.props.children}

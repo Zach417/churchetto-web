@@ -61,6 +61,8 @@ var Routes = (
     <Route path="sign-out" component={SignOut}/>
     <Route path="church">
       <IndexRoute component={Churches}/>
+			<Route path="info" component={ChurchInfo} />
+			<Route path="contact" component={ChurchContact} />
       <Route path="create" component={ChurchCreate}>
 				<IndexRoute component={ChurchInfo} />
 				<Route path="info" component={ChurchInfo} />

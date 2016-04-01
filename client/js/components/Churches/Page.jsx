@@ -27,6 +27,13 @@ var Page = React.createClass({
   componentDidMount: function() {
     window.scrollTo(0, 0);
     ChurchStore.addChangeListener(this.handleChange_ChurchStore);
+    ChurchStore.get(function (docs) {
+      if (!docs || docs.length === 0) {
+        return browserHistory.push("/church/create");
+      } else if (docs.length === 1) {
+        return browserHistory.push("/church/" + docs[0]._id);
+      }
+    })
   },
 
   componentWillUnmount: function() {
@@ -45,30 +52,6 @@ var Page = React.createClass({
           </div>
         </div>
       )
-    } else if (this.state.churches.length === 1) {
-      return (
-        <div style={Style.pageContainer}>
-          <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-            <Church id={this.state.churches[0]._id} />
-          </div>
-  				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-            <div style={Style.componentContainer}>
-              <div className="row-fluid">
-                <div className="col-lg-12 col-md-12 col-sm-6 col-xs-12" style={{padding:"0"}}>
-                  <h1 style={{margin:"5px 0"}}>Did you know?</h1>
-                  <p style={{fontSize:"16px"}}>
-                    You can manage multiple churches on Churchetto.
-                    If you oversee different, unique organizations or
-                    you are interested in organizing your ideas for
-                    building a church in the future, you can do it here!
-                  </p>
-                  <ButtonPrimary label={"Create a new church"} onClick={this.handleClick_AddChurch} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
     } else if (this.state.churches.length > 1) {
       return (
         <div style={Style.pageContainer}
@@ -77,7 +60,10 @@ var Page = React.createClass({
         </div>
       )
     } else {
-      browserHistory.push("/church/create");
+      return (
+        <div style={Style.pageContainer}
+          className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered" />
+      )
     }
   },
 
