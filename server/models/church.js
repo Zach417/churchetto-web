@@ -1,6 +1,26 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+var memberSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  dateOfBirth: Date,
+  gender: String,
+  email: String,
+  phone: {
+    main: String,
+    cell: String,
+    business: String,
+  },
+  address: {
+    line1: String,
+    line2: String,
+    city: String,
+    state: String,
+    zip: String,
+  },
+});
+
 var schema = new mongoose.Schema({
   name: String,
   website: String,
@@ -25,12 +45,7 @@ var schema = new mongoose.Schema({
     unique: false,
     dropDups: false,
   }],
-  members: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Member',
-    unique: false,
-    dropDups: false,
-  }],
+  members: [memberSchema],
   leads: [{
     type: mongoose.Schema.ObjectId,
     ref: 'Lead',

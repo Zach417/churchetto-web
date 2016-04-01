@@ -4,24 +4,6 @@ var Style = require('./Style.jsx');
 var Church = require('./Index.jsx');
 
 var Create = React.createClass({
-  getInitialState: function () {
-    return {
-      id: ''
-    }
-  },
-
-  componentWillMount: function () {
-    if (this.props.params && this.props.params.id) {
-      this.setState({
-        id: this.props.params.id
-      });
-    } else {
-      this.setState({
-        id: ''
-      });
-    }
-  },
-
   componentDidMount: function() {
     window.scrollTo(0, 0);
   },
@@ -43,7 +25,7 @@ var Create = React.createClass({
             <Link to={"/church/find"}>here</Link>.
           </p>
         </div>
-        <Church id={this.state.id} />
+        <Church />
       </div>
     )
   },

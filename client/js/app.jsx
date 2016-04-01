@@ -8,9 +8,16 @@ var browserHistory = require('react-router').browserHistory;
 var IndexRoute = require('react-router').IndexRoute;
 
 var Church = require('./components/Church/Page.jsx');
+var ChurchContact = require('./components/Church/Contact.jsx');
+var ChurchInfo = require('./components/Church/Info.jsx');
+var ChurchMembers = require('./components/Church/Members.jsx');
 var ChurchCreate = require('./components/Church/Create.jsx');
 var Churches = require('./components/Churches/Page.jsx');
 var Member = require('./components/Member/Page.jsx');
+var MemberInfo = require('./components/Member/Info.jsx');
+var MemberContact = require('./components/Member/Contact.jsx');
+var MemberCreate = require('./components/Member/Create.jsx');
+var Members = require('./components/Members/Page.jsx');
 var Footer = require('./components/Footer/Index.jsx');
 var Header = require('./components/Header/Index.jsx');
 var Home = require('./components/Home/Index.jsx');
@@ -53,14 +60,31 @@ var Routes = (
 		<IndexRoute component={Home} />
     <Route path="sign-out" component={SignOut}/>
     <Route path="church">
-      <IndexRoute component={Churches} />
-      <Route path="create" component={ChurchCreate}/>
-      <Route path=":id" component={Church}/>
+      <IndexRoute component={Churches}/>
+      <Route path="create" component={ChurchCreate}>
+				<IndexRoute component={ChurchInfo} />
+				<Route path="info" component={ChurchInfo} />
+				<Route path="contact" component={ChurchContact} />
+      </Route>
+      <Route path=":id" component={Church}>
+				<IndexRoute component={ChurchInfo} />
+				<Route path="info" component={ChurchInfo} />
+				<Route path="contact" component={ChurchContact} />
+				<Route path="member">
+		      <IndexRoute component={ChurchMembers}/>
+					<Route path="create" component={MemberCreate}>
+						<IndexRoute component={MemberInfo} />
+						<Route path="info" component={MemberInfo} />
+						<Route path="contact" component={MemberContact} />
+					</Route>
+		      <Route path=":mid" component={Member}>
+						<IndexRoute component={MemberInfo} />
+						<Route path="info" component={MemberInfo} />
+						<Route path="contact" component={MemberContact} />
+						</Route>
+				</Route>
+			</Route>
     </Route>
-		<Route path="member">
-			<IndexRoute component={Member} />
-      <Route path=":id" component={Member}/>
-		</Route>
   </Route>
 );
 

@@ -9,6 +9,8 @@ var Menu = React.createClass({
   		<ul id="menu" style={Style.menu}>
 				<MenuListItem label={"Church"} to={"/church"}
 					className="hidden-xs" />
+				<MenuListItem label={"Members"} to={"/member"}
+					className="hidden-xs" />
   		</ul>
 		);
 	},

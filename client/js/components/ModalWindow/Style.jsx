@@ -15,10 +15,13 @@ module.exports = {
 		top: "15px",
 	},
 	close: {
-		float: "right",
 		cursor: "pointer",
 		color: "#fff",
 		fontSize: "28px",
+		position: "absolute",
+		zIndex: "3",
+		top: "0",
+		right: "0",
 	},
 	closeContainer: {
 		width: "100%",

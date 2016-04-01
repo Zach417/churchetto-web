@@ -1,25 +1,33 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var Member = require('./Index.jsx');
 var ModalWindow = require('../ModalWindow/Index.jsx');
 var ChurchStore = require('../../stores/ChurchStore');
 
-var Page = React.createClass({
+function resolveSubDocuments (church) {
+  if (!church.phone) { church.phone = {} }
+  if (!church.fax) { church.fax = {} }
+  if (!church.address) { church.address = {} }
+  if (!church.members) { church.members = [] }
+  if (!church.campuses) { church.campuses = [] }
+  return church;
+}
+
+var Create = React.createClass({
   getInitialState: function () {
     return {
-      church: {_id:''},
-      member: {_id:''},
+      church: resolveSubDocuments({})
     }
   },
 
   componentWillMount: function () {
     ChurchStore.getOne(this.props.params.id, function (doc) {
-      var member = ChurchStore.getMemberFromChurch(doc, this.props.params.mid);
+      this.church = resolveSubDocuments(doc);
       this.setState({
-        church: doc,
-        member: member,
-      });
-    }.bind(this));
+        church: this.church
+      })
+    }.bind(this))
   },
 
   componentDidMount: function () {
@@ -32,7 +40,7 @@ var Page = React.createClass({
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
         <Member
           church={this.state.church}
-          member={this.state.member}
+          member={{}}
           children={this.props.children} />
       </div>
     )
@@ -42,4 +50,4 @@ var Page = React.createClass({
   },
 });
 
-module.exports = Page;
+module.exports = Create;

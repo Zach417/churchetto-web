@@ -57,6 +57,66 @@ var readFilterSchema = {
         },
       },
     },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "firstName": {
+            "type": "string",
+          },
+          "lastName": {
+            "type": "string",
+          },
+          "dateOfBirth": {
+            "type": "date",
+          },
+          "gender": {
+            "type": "string",
+          },
+          "email": {
+            "type": "string",
+          },
+          "phone": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string",
+              },
+              "cell": {
+                "type": "string",
+              },
+              "business": {
+                "type": "string",
+              },
+            },
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line1": {
+                "type": "string",
+              },
+              "line2": {
+                "type": "string",
+              },
+              "city": {
+                "type": "string",
+              },
+              "state": {
+                "type": "string",
+              },
+              "zip": {
+                "type": "string",
+              },
+            },
+          },
+        },
+      }
+    },
     "campuses": {
       "type": "array",
       "items": {
@@ -129,6 +189,66 @@ var writeFilterSchema = {
           "type": "string",
         },
       },
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "firstName": {
+            "type": "string",
+          },
+          "lastName": {
+            "type": "string",
+          },
+          "dateOfBirth": {
+            "type": "date",
+          },
+          "gender": {
+            "type": "string",
+          },
+          "email": {
+            "type": "string",
+          },
+          "phone": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string",
+              },
+              "cell": {
+                "type": "string",
+              },
+              "business": {
+                "type": "string",
+              },
+            },
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line1": {
+                "type": "string",
+              },
+              "line2": {
+                "type": "string",
+              },
+              "city": {
+                "type": "string",
+              },
+              "state": {
+                "type": "string",
+              },
+              "zip": {
+                "type": "string",
+              },
+            },
+          },
+        },
+      }
     },
     "campuses": {
       "type": "array",

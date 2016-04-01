@@ -59,7 +59,7 @@ var Page = React.createClass({
                   <p style={{fontSize:"16px"}}>
                     You can manage multiple churches on Churchetto.
                     If you oversee different, unique organizations or
-                    you are interested about organizing your ideas for
+                    you are interested in organizing your ideas for
                     building a church in the future, you can do it here!
                   </p>
                   <ButtonPrimary label={"Create a new church"} onClick={this.handleClick_AddChurch} />

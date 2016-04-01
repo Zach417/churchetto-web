@@ -1,4 +1,5 @@
 var React = require('react');
+var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var ButtonSecondaryLarge = require('../Button/Index.jsx').Secondary.Large;
 
@@ -29,23 +30,19 @@ var Church = React.createClass({
   },
 
   handleClick_Info: function () {
-    this.props.handleChange("/info");
+    browserHistory.push("/church/" + this.props.id + "/info");
   },
 
   handleClick_Contact: function () {
-    this.props.handleChange("/contact");
-  },
-
-  handleClick_Address: function () {
-    this.props.handleChange("/address");
+    browserHistory.push("/church/" + this.props.id + "/contact");
   },
 
   handleClick_Members: function () {
-    this.props.handleChange("/members");
+    browserHistory.push("/church/" + this.props.id + "/member");
   },
 
   handleClick_Campuses: function () {
-    this.props.handleChange("/campuses");
+    browserHistory.push("/church/" + this.props.id + "/campus");
   },
 });
 

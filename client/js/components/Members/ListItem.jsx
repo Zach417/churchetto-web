@@ -22,16 +22,6 @@ var ListItem = React.createClass({
       style = Style.listItemHover;
     }
 
-    var memberCount = 0;
-    if (this.props.church.members) {
-      memberCount = this.props.church.members.length;
-    }
-
-    var campusCount = 0;
-    if (this.props.church.campuses) {
-      campusCount = this.props.church.campuses.length;
-    }
-
 		return (
 				<div
           style={style}
@@ -39,18 +29,21 @@ var ListItem = React.createClass({
           onClick={this.handleClick_Li}
           onMouseEnter={this.handleMouseEnter_Li}
           onMouseLeave={this.handleMouseLeave_Li}>
-          <h3 style={{margin:"5px 0",color:"#c36b74"}}>{this.props.church.name}</h3>
-          <p>{this.props.church.missionStatement}</p>
+          <h3 style={{margin:"5px 0",color:"#c36b74"}}>
+            {this.props.member.firstName + " "}
+            {this.props.member.lastName}
+          </h3>
           <p>
-            Members: {memberCount} |
-            Campuses: {campusCount}
+            {this.props.member.address.city + ", "}
+            {this.props.member.address.state + " "}
+            {this.props.member.address.zip}
           </p>
         </div>
 		);
 	},
 
   handleClick_Li: function () {
-    browserHistory.push("/church/" + this.props.church._id);
+    browserHistory.push("/member/" + this.props.member._id);
   },
 
   handleMouseEnter_Li: function () {

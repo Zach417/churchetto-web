@@ -1,26 +1,33 @@
 var React = require('react');
 var Griddle = require('griddle-react');
+var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
-var Input = require('../Form/Index.jsx').Input;
-var Label = require('../Form/Index.jsx').Label;
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
-var ButtonDanger = require('../Button/Index.jsx').Danger;
-var MemberStore = require('../../stores/MemberStore');
+var ChurchStore = require('../../stores/ChurchStore');
+
+function resolveSubDocuments (church) {
+  if (!church.phone) { church.phone = {} }
+  if (!church.fax) { church.fax = {} }
+  if (!church.address) { church.address = {} }
+  if (!church.members) { church.members = [] }
+  if (!church.campuses) { church.campuses = [] }
+  return church;
+}
 
 var Info = React.createClass({
   getInitialState: function () {
     return {
-      members: [],
+      church: resolveSubDocuments({})
     }
   },
 
   componentWillMount: function () {
-    this.church = this.props.church;
-    MemberStore.getAssociatedFromChurch(this.church, function (docs) {
+    ChurchStore.getOne(this.props.params.id, function (doc) {
+      this.church = resolveSubDocuments(doc);
       this.setState({
-        members: docs
-      });
-    }.bind(this));
+        church: this.church
+      })
+    }.bind(this))
   },
 
   render: function () {
@@ -31,8 +38,6 @@ var Info = React.createClass({
             <h3 style={{display:"inline-block",margin:"0 0 17px 0"}}>Members</h3>
             <div style={{position:"absolute",top:"0",right:"0"}}>
               <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
-              <span style={{display:"inline-block",width:"5px"}} />
-              <ButtonDanger label={"Remove"} onClick={this.handleClick_Remove} />
             </div>
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
@@ -46,22 +51,18 @@ var Info = React.createClass({
 
   getGriddleData: function () {
     var result = [];
-    for (var i = 0; i < this.state.members.length; i++) {
+    for (var i = 0; i < this.state.church.members.length; i++) {
       result.push({
-        "First Name": this.state.members[i].firstName,
-        "Last Name": this.state.members[i].lastName,
+        "First Name": this.state.church.members[i].firstName,
+        "Last Name": this.state.church.members[i].lastName,
       });
     }
     return result;
   },
 
   handleClick_Add: function () {
-
+    browserHistory.push("/church/" + this.state.church._id + "/member/create");
   },
-
-  handleClick_Remove: function () {
-
-  }
 });
 
 module.exports = Info;
