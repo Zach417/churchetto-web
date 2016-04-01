@@ -127,7 +127,7 @@ var Info = React.createClass({
   },
 
   handleChange_AddressLine2: function (event) {
-    this._state.member.address.line2 = event.target.value;
+    this.member.address.line2 = event.target.value;
     this.props.onChange(this.member);
   },
 
