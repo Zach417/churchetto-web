@@ -68,8 +68,18 @@ var Page = React.createClass({
   },
 
   handleChange_ChurchStore: function () {
-    this.setState(this.getInitialState());
-    this.componentWillMount();
+    ChurchStore.get(function (docs) {
+      if (!docs || docs.length === 0) {
+        return browserHistory.push("/church/create");
+      } else if (docs.length === 1) {
+        return browserHistory.push("/church/" + docs[0]._id);
+      } else {
+        this.setState({
+          churches: docs,
+          isLoading: false,
+        });
+      }
+    }.bind(this))
   },
 
   handleClick_AddChurch: function () {

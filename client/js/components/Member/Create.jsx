@@ -45,7 +45,7 @@ var Create = React.createClass({
       </div>
     )
     return (
-      <ModalWindow content={content} parentPath={"/church/" + this.state.church._id + "/member/"} />
+      <ModalWindow content={content} parentPath={"/church/" + this.state.church._id + "/member"} />
     )
   },
 });

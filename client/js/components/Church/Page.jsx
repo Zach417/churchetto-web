@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Church = require('./Index.jsx');
@@ -7,18 +8,11 @@ var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ChurchStore = require('../../stores/ChurchStore');
 
 function resolveSubDocuments (church) {
-  if (!church.phone) {
-    church.phone = {};
-  }
-
-  if (!church.fax) {
-    church.fax = {};
-  }
-
-  if (!church.address) {
-    church.address = {};
-  }
-
+  if (!church.phone) { church.phone = {} }
+  if (!church.fax) { church.fax = {} }
+  if (!church.address) { church.address = {} }
+  if (!church.members) { church.members = [] }
+  if (!church.campuses) { church.campuses = [] }
   return church;
 }
 
@@ -56,6 +50,18 @@ var Page = React.createClass({
           church={this.state.church}
           children={this.props.children}
           onChange={this.handleChange_Child} />
+        <div style={Style.componentContainer}>
+          <h1 style={{margin:"5px 0"}}>Did you know?</h1>
+          <p style={{fontSize:"16px"}}>
+            {"You can add multiple churches to your churchetto "}
+            {"account. Organize a small group on the side, or see "}
+            {"what it would take to start a new church."}
+          </p>
+          <p style={{fontSize:"16px"}}>
+            {"Whatever the reason, you can add another church "}
+            <Link to={"/church/create"}>here</Link>.
+          </p>
+        </div>
       </div>
     )
   },
@@ -65,8 +71,13 @@ var Page = React.createClass({
   },
 
   handleChange_ChurchStore: function () {
-    this.setState(this.getInitialState());
-    this.componentWillMount();
+    if (this.props.params && this.props.params.id) {
+      ChurchStore.getOne(this.props.params.id, function (doc) {
+        this.setState({
+          church: resolveSubDocuments(doc)
+        });
+      }.bind(this));
+    }
   },
 });
 

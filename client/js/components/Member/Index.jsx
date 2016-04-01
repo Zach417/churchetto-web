@@ -113,7 +113,6 @@ var Member = React.createClass({
   },
 
   handleChange_Child: function (member) {
-    ChurchActions.update(this.props.church);
     this.setState({
       member: this.member
     });

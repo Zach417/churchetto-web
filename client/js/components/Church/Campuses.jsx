@@ -1,43 +1,68 @@
 var React = require('react');
 var Griddle = require('griddle-react');
+var browserHistory = require('react-router').browserHistory;
+var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
-var Input = require('../Form/Index.jsx').Input;
-var Label = require('../Form/Index.jsx').Label;
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
-var ButtonDanger = require('../Button/Index.jsx').Danger;
-var CampusStore = require('../../stores/MemberStore');
+var ChurchStore = require('../../stores/ChurchStore');
 
-var Campuses = React.createClass({
-  getInitialState: function () {
-    return {
-      campuses: [],
-    }
+function resolveSubDocuments (church) {
+  if (!church.phone) { church.phone = {} }
+  if (!church.fax) { church.fax = {} }
+  if (!church.address) { church.address = {} }
+  if (!church.members) { church.members = [] }
+  if (!church.campuses) { church.campuses = [] }
+  return church;
+}
+
+var LinkComponent = React.createClass({
+  render: function(){
+    var url ="/church/" + this.props.rowData.churchId + "/campusId/" + this.props.rowData.memberId;
+    return <Link to={url}>{this.props.data}</Link>
   },
+});
 
-  componentWillMount: function () {
-    this.church = this.props.church;
-    CampusStore.getAssociatedFromChurch(this.church, function (docs) {
-      this.setState({
-        campuses: docs
-      });
-    }.bind(this));
-  },
+var columnMeta = [
+  {
+    "columnName": "campusId",
+    "locked": true,
+    "visible": false,
+  }, {
+    "columnName": "churchId",
+    "locked": true,
+    "visible": false,
+  }, {
+    "columnName": "Name",
+    "order": 1,
+    "locked": false,
+    "visible": true,
+    "customComponent": LinkComponent
+  }
+];
 
+var Info = React.createClass({
   render: function () {
+    if (!this.props.church) { return (<div/>) }
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <div style={{position:"relative"}}>
             <h3 style={{display:"inline-block",margin:"0 0 17px 0"}}>Campuses</h3>
-            <div style={{position:"absolute",top:"0",right:"0"}}>
-              <ButtonPrimary label={"Add"} onClick={this.handleClick_AddMember} />
-              <span style={{display:"inline-block",width:"5px"}} />
-              <ButtonDanger label={"Remove"} onClick={this.handleClick_RemoveMember} />
+            <div style={{position:"absolute",top:"-8px",right:"0"}}>
+              <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
             </div>
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+          <div className="col-lg-12 col-md-12 col-sm-12 hidden-xs"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} />
+            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
+              columns={["Name"]} resultsPerPage={20}
+              onRowClick={this.handleClick_Row} />
+          </div>
+          <div className="hidden-lg hidden-md hidden-sm col-xs-12"
+            style={Style.detailColumn}>
+            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
+              columns={["Name"]} resultsPerPage={10}
+              onRowClick={this.handleClick_Row} />
           </div>
         </div>
       </div>
@@ -46,24 +71,27 @@ var Campuses = React.createClass({
 
   getGriddleData: function () {
     var result = [];
-    for (var i = 0; i < this.state.campuses.length; i++) {
+    for (var i = 0; i < this.props.church.campuses.length; i++) {
       result.push({
-        "Name": this.state.campuses[i].name,
-        "City": this.state.campuses[i].address.city,
-        "State": this.state.campuses[i].address.state,
-        "Zip Code": this.state.campuses[i].address.zip,
+        "campusId": this.props.church.campuses[i]._id,
+        "churchId": this.props.church._id,
+        "Name": this.props.church.campuses[i].name,
       });
     }
     return result;
   },
 
-  handleClick_Add: function () {
-
+  handleChange_ChurchStore: function () {
+    this.componentWillMount();
   },
 
-  handleClick_Remove: function () {
+  handleClick_Add: function () {
+    browserHistory.push("/church/" + this.props.church._id + "/campus/create");
+  },
 
-  }
+  handleClick_Row: function (gridRow, event) {
+    browserHistory.push("/church/" + gridRow.props.data.churchId + "/campus/" + gridRow.props.data.campusId);
+  },
 });
 
-module.exports = Campuses;
+module.exports = Info;

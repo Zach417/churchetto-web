@@ -17,8 +17,8 @@ var Create = React.createClass({
           <p style={{fontSize:"16px"}}>
             {"This is the place to create a church and add "}
             {"it to your user account. You don't have to fill "}
-            {"out all of the information right now. You can always organize "}
-            {"your church's information later or as you go."}
+            {"out all of the information right now, and you can always "}
+            {"organize your church's profile later."}
           </p>
           <p style={{fontSize:"16px"}}>
             {"If you want to find an existing church, click "}

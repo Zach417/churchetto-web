@@ -85,6 +85,8 @@ var Routes = (
 						<Route path="contact" component={MemberContact} />
 						</Route>
 				</Route>
+				<Route path="campus">
+				</Route>
 			</Route>
     </Route>
   </Route>

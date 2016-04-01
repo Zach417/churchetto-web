@@ -51,30 +51,8 @@ var columnMeta = [
 ];
 
 var Info = React.createClass({
-  getInitialState: function () {
-    return {
-      church: resolveSubDocuments({})
-    }
-  },
-
-  componentWillMount: function () {
-    ChurchStore.getOne(this.props.params.id, function (doc) {
-      this.church = resolveSubDocuments(doc);
-      this.setState({
-        church: this.church
-      })
-    }.bind(this))
-  },
-
-  componentDidMount: function() {
-    ChurchStore.addChangeListener(this.handleChange_ChurchStore);
-  },
-
-  componentWillUnmount: function() {
-    ChurchStore.removeChangeListener(this.handleChange_ChurchStore);
-  },
-
   render: function () {
+    if (!this.props.church) { return (<div/>) }
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
@@ -103,13 +81,13 @@ var Info = React.createClass({
 
   getGriddleData: function () {
     var result = [];
-    for (var i = 0; i < this.state.church.members.length; i++) {
+    for (var i = 0; i < this.props.church.members.length; i++) {
       result.push({
-        "memberId": this.state.church.members[i]._id,
-        "churchId": this.state.church._id,
-        "Name": this.state.church.members[i].lastName + ", " + this.state.church.members[i].firstName,
-        "Phone": this.state.church.members[i].phone.main,
-        "Email": this.state.church.members[i].email,
+        "memberId": this.props.church.members[i]._id,
+        "churchId": this.props.church._id,
+        "Name": this.props.church.members[i].lastName + ", " + this.props.church.members[i].firstName,
+        "Phone": this.props.church.members[i].phone.main,
+        "Email": this.props.church.members[i].email,
       });
     }
     return result;
@@ -120,7 +98,7 @@ var Info = React.createClass({
   },
 
   handleClick_Add: function () {
-    browserHistory.push("/church/" + this.state.church._id + "/member/create");
+    browserHistory.push("/church/" + this.props.church._id + "/member/create");
   },
 
   handleClick_Row: function (gridRow, event) {
