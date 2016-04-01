@@ -18,7 +18,7 @@ var Info = React.createClass({
           <div className="row-fluid">
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
-              <Label isRequired={true} label={"Email"} />
+              <Label isRequired={false} label={"Email"} />
               <Input
                 type={"text"}
                 value={this.props.member.email}
@@ -28,7 +28,7 @@ var Info = React.createClass({
           <div className="row-fluid">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
-              <Label isRequired={true} label={"Main Phone"} />
+              <Label isRequired={false} label={"Main Phone"} />
               <Input
                 type={"text"}
                 value={this.props.member.phone.main}
@@ -36,7 +36,7 @@ var Info = React.createClass({
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
-              <Label isRequired={true} label={"Cell Phone"} />
+              <Label isRequired={false} label={"Cell Phone"} />
               <Input
                 type={"text"}
                 value={this.props.member.phone.cell}
@@ -44,7 +44,7 @@ var Info = React.createClass({
             </div>
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
-              <Label isRequired={true} label={"Business Phone"} />
+              <Label isRequired={false} label={"Business Phone"} />
               <Input
                 type={"text"}
                 value={this.props.member.phone.business}

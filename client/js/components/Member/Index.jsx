@@ -36,6 +36,9 @@ var Member = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
+    if (!nextProps.member) {
+      return;
+    }
     this.member = resolveSubDocuments(nextProps.member);
     this.setState({
       member: this.member

@@ -33,7 +33,7 @@ var Info = React.createClass({
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={true} label={"Date of Birth"} />
+            <Label isRequired={false} label={"Date of Birth"} />
             <Input
               type={"text"}
               value={this.props.member.dateOfBirth}
@@ -41,7 +41,7 @@ var Info = React.createClass({
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={true} label={"Gender"} />
+            <Label isRequired={false} label={"Gender"} />
             <Select
               type={"text"}
               value={this.props.member.gender}

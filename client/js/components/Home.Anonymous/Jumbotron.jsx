@@ -11,7 +11,7 @@ var Jumbotron = React.createClass({
 				<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
           style={{padding:"0"}}>
 					<h1 style={{margin:"0"}}>{this.props.heading}</h1>
-					<h2 style={{margin:"0"}}>{this.props.subHeading}</h2>
+					<h2>{this.props.subHeading}</h2>
 				</div>
 			</div>
     );
