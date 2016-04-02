@@ -19,6 +19,20 @@ Store.getMemberFromChurch = function (church, id) {
 	return {};
 }
 
+Store.getCampusFromChurch = function (church, id) {
+	if (!church.campuses || church.campuses.length === 0) {
+		return {};
+	}
+
+	for (var i = 0; i < church.campuses.length; i++) {
+		if (church.campuses[i]._id == id) {
+			return church.campuses[i];
+		}
+	}
+
+	return {};
+}
+
 Store.updateMemberInChurch = function (church, member) {
 	if (!church.members || church.members.length === 0) {
 		church.members = [];

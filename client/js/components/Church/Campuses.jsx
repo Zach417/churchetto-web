@@ -17,7 +17,7 @@ function resolveSubDocuments (church) {
 
 var LinkComponent = React.createClass({
   render: function(){
-    var url ="/church/" + this.props.rowData.churchId + "/campusId/" + this.props.rowData.memberId;
+    var url ="/church/" + this.props.rowData.churchId + "/campus/" + this.props.rowData.campusId;
     return <Link to={url}>{this.props.data}</Link>
   },
 });
@@ -37,6 +37,16 @@ var columnMeta = [
     "locked": false,
     "visible": true,
     "customComponent": LinkComponent
+  }, {
+    "columnName": "City",
+    "order": 2,
+    "locked": false,
+    "visible": true,
+  }, {
+    "columnName": "State",
+    "order": 3,
+    "locked": false,
+    "visible": true,
   }
 ];
 
@@ -55,13 +65,13 @@ var Info = React.createClass({
           <div className="col-lg-12 col-md-12 col-sm-12 hidden-xs"
             style={Style.detailColumn}>
             <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Name"]} resultsPerPage={20}
+              columns={["Name","City","State"]} resultsPerPage={20}
               onRowClick={this.handleClick_Row} />
           </div>
           <div className="hidden-lg hidden-md hidden-sm col-xs-12"
             style={Style.detailColumn}>
             <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Name"]} resultsPerPage={10}
+              columns={["Name","City"]} resultsPerPage={10}
               onRowClick={this.handleClick_Row} />
           </div>
         </div>
@@ -76,6 +86,8 @@ var Info = React.createClass({
         "campusId": this.props.church.campuses[i]._id,
         "churchId": this.props.church._id,
         "Name": this.props.church.campuses[i].name,
+        "City": this.props.church.campuses[i].address.city,
+        "State": this.props.church.campuses[i].address.state,
       });
     }
     return result;

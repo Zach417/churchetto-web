@@ -120,8 +120,55 @@ var readFilterSchema = {
     "campuses": {
       "type": "array",
       "items": {
-        "type":"string",
-      },
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "name": {
+            "type": "string",
+          },
+          "website": {
+            "type": "string",
+          },
+          "phone": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string",
+              },
+            },
+          },
+          "fax": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string",
+              },
+            },
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line1": {
+                "type": "string",
+              },
+              "line2": {
+                "type": "string",
+              },
+              "city": {
+                "type": "string",
+              },
+              "state": {
+                "type": "string",
+              },
+              "zip": {
+                "type": "string",
+              },
+            },
+          },
+        },
+      }
     },
     "createdBy": {
       "type": "string",
@@ -253,8 +300,55 @@ var writeFilterSchema = {
     "campuses": {
       "type": "array",
       "items": {
-        "type":"string",
-      },
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "name": {
+            "type": "string",
+          },
+          "website": {
+            "type": "string",
+          },
+          "phone": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string",
+              },
+            },
+          },
+          "fax": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string",
+              },
+            },
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line1": {
+                "type": "string",
+              },
+              "line2": {
+                "type": "string",
+              },
+              "city": {
+                "type": "string",
+              },
+              "state": {
+                "type": "string",
+              },
+              "zip": {
+                "type": "string",
+              },
+            },
+          },
+        },
+      }
     },
   },
 }

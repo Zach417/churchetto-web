@@ -15,8 +15,8 @@ var HomePage = React.createClass({
     return (
       <div style={Style.container}>
 				<Jumbotron
-          heading={"Churchetto = software for churches and small groups"}
-          subHeading={"it's free for all organizations under 7.4 billion members"} />
+          heading={"Software for churches and small groups"}
+          subHeading={"it's free for organizations of all shapes and sizes"} />
         <Mumbotron />
       </div>
     );

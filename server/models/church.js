@@ -21,6 +21,24 @@ var memberSchema = new mongoose.Schema({
   },
 });
 
+var campusSchema = new mongoose.Schema({
+  name: String,
+  website: String,
+  phone: {
+    main: String,
+  },
+  fax: {
+    main: String,
+  },
+  address: {
+    line1: String,
+    line2: String,
+    city: String,
+    state: String,
+    zip: String,
+  },
+});
+
 var schema = new mongoose.Schema({
   name: String,
   website: String,
@@ -39,12 +57,7 @@ var schema = new mongoose.Schema({
     state: String,
     zip: String,
   },
-  campuses: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Campus',
-    unique: false,
-    dropDups: false,
-  }],
+  campuses: [campusSchema],
   members: [memberSchema],
   leads: [{
     type: mongoose.Schema.ObjectId,

@@ -4,8 +4,6 @@ var $ = require('jquery');
 var Style = require('./Style.jsx');
 var Navigation = require('./Navigation.jsx');
 var ChurchStore = require('../../stores/ChurchStore');
-var CampusStore = require('../../stores/CampusStore');
-var MemberStore = require('../../stores/MemberStore');
 
 var HomePage = React.createClass({
   getInitialState: function () {
@@ -19,29 +17,11 @@ var HomePage = React.createClass({
 
   componentWillMount: function () {
 
-    CampusStore.get(function (docs) {
-      this.setState({
-        campuses: docs,
-        churches: this.state.churches,
-        members: this.state.members,
-        isLoading: false,
-      });
-    }.bind(this));
-
     ChurchStore.get(function (docs) {
       this.setState({
         campuses: this.state.campuses,
         churches: docs,
         members: this.state.members,
-        isLoading: false,
-      });
-    }.bind(this));
-
-    MemberStore.get(function (docs) {
-      this.setState({
-        campuses: this.state.campuses,
-        churches: this.state.churches,
-        members: docs,
         isLoading: false,
       });
     }.bind(this));

@@ -11,13 +11,17 @@ var Church = require('./components/Church/Page.jsx');
 var ChurchContact = require('./components/Church/Contact.jsx');
 var ChurchInfo = require('./components/Church/Info.jsx');
 var ChurchMembers = require('./components/Church/Members.jsx');
+var ChurchCampuses = require('./components/Church/Campuses.jsx');
 var ChurchCreate = require('./components/Church/Create.jsx');
 var Churches = require('./components/Churches/Page.jsx');
 var Member = require('./components/Member/Page.jsx');
 var MemberInfo = require('./components/Member/Info.jsx');
 var MemberContact = require('./components/Member/Contact.jsx');
 var MemberCreate = require('./components/Member/Create.jsx');
-var Members = require('./components/Members/Page.jsx');
+var Campus = require('./components/Campus/Page.jsx');
+var CampusInfo = require('./components/Campus/Info.jsx');
+var CampusContact = require('./components/Campus/Contact.jsx');
+var CampusCreate = require('./components/Campus/Create.jsx');
 var Footer = require('./components/Footer/Index.jsx');
 var Header = require('./components/Header/Index.jsx');
 var Home = require('./components/Home/Index.jsx');
@@ -83,9 +87,20 @@ var Routes = (
 						<IndexRoute component={MemberInfo} />
 						<Route path="info" component={MemberInfo} />
 						<Route path="contact" component={MemberContact} />
-						</Route>
+					</Route>
 				</Route>
 				<Route path="campus">
+		      <IndexRoute component={ChurchCampuses}/>
+					<Route path="create" component={CampusCreate}>
+						<IndexRoute component={CampusInfo} />
+						<Route path="info" component={CampusInfo} />
+						<Route path="contact" component={CampusContact} />
+					</Route>
+		      <Route path=":mid" component={Campus}>
+						<IndexRoute component={CampusInfo} />
+						<Route path="info" component={CampusInfo} />
+						<Route path="contact" component={CampusContact} />
+					</Route>
 				</Route>
 			</Route>
     </Route>
