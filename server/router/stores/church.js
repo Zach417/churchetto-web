@@ -71,8 +71,23 @@ var readFilterSchema = {
           "lastName": {
             "type": "string",
           },
+          "title": {
+            "type": "string",
+          },
+          "nickName": {
+            "type": "string",
+          },
           "dateOfBirth": {
             "type": "date",
+          },
+          "baptizedOn": {
+            "type": "date",
+          },
+          "occupation": {
+            "type": "string",
+          },
+          "employer": {
+            "type": "string",
           },
           "gender": {
             "type": "string",
@@ -242,17 +257,29 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
           "firstName": {
             "type": "string",
           },
           "lastName": {
             "type": "string",
           },
+          "title": {
+            "type": "string",
+          },
+          "nickName": {
+            "type": "string",
+          },
           "dateOfBirth": {
             "type": "date",
+          },
+          "baptizedOn": {
+            "type": "date",
+          },
+          "occupation": {
+            "type": "string",
+          },
+          "employer": {
+            "type": "string",
           },
           "gender": {
             "type": "string",

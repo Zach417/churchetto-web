@@ -4,7 +4,12 @@ var mongoose = restful.mongoose;
 var memberSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
+  nickName: String,
+  title: String,
   dateOfBirth: Date,
+  baptizedOn: Date,
+  occupation: String,
+  employer: String,
   gender: String,
   email: String,
   phone: {

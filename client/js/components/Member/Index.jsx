@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Navigation = require('./Navigation.jsx');
@@ -26,6 +27,15 @@ var Member = React.createClass({
 
   componentWillMount: function () {
     this.member = resolveSubDocuments(this.props.member);
+
+    if (this.props.member.dateOfBirth && moment(this.props.member.dateOfBirth).isValid()) {
+      this.member.dateOfBirth = moment(this.props.member.dateOfBirth).format("MM/DD/YYYY");
+    }
+
+    if (this.props.member.baptizedOn && moment(this.props.member.baptizedOn).isValid()) {
+      this.member.baptizedOn = moment(this.props.member.baptizedOn).format("MM/DD/YYYY");
+    }
+
     this.setState({
       member: this.member
     });
@@ -40,6 +50,15 @@ var Member = React.createClass({
       return;
     }
     this.member = resolveSubDocuments(nextProps.member);
+
+    if (nextProps.member.dateOfBirth && moment(nextProps.member.dateOfBirth).isValid()) {
+      this.member.dateOfBirth = moment(nextProps.member.dateOfBirth).format("MM/DD/YYYY");
+    }
+
+    if (nextProps.member.baptizedOn && moment(nextProps.member.baptizedOn).isValid()) {
+      this.member.baptizedOn = moment(nextProps.member.baptizedOn).format("MM/DD/YYYY");
+    }
+
     this.setState({
       member: this.member
     });

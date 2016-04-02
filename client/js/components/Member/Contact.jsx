@@ -14,7 +14,7 @@ var Info = React.createClass({
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
-          <h3 style={{margin:"0"}}>Contact</h3>
+          <h3 style={{margin:"0"}}>Phone & Email</h3>
           <div className="row-fluid">
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
@@ -54,7 +54,7 @@ var Info = React.createClass({
               style={{marginTop:"20px"}} />
           </div>
           <div className="row-fluid">
-            <h3 style={{margin:"0"}}>Main Address</h3>
+            <h3 style={{margin:"0"}}>Address</h3>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"Address Line 1"} />
