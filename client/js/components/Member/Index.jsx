@@ -28,12 +28,12 @@ var Member = React.createClass({
   componentWillMount: function () {
     this.member = resolveSubDocuments(this.props.member);
 
-    if (this.props.member.dateOfBirth && moment(this.props.member.dateOfBirth).isValid()) {
-      this.member.dateOfBirth = moment(this.props.member.dateOfBirth).format("MM/DD/YYYY");
+    if (this.member.dateOfBirth && moment(this.member.dateOfBirth).isValid()) {
+      this.member.dateOfBirth = moment(this.member.dateOfBirth).format("MM/DD/YYYY");
     }
 
-    if (this.props.member.baptizedOn && moment(this.props.member.baptizedOn).isValid()) {
-      this.member.baptizedOn = moment(this.props.member.baptizedOn).format("MM/DD/YYYY");
+    if (this.member.baptizedOn && moment(this.member.baptizedOn).isValid()) {
+      this.member.baptizedOn = moment(this.member.baptizedOn).format("MM/DD/YYYY");
     }
 
     this.setState({
