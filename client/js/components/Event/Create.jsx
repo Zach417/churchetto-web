@@ -37,16 +37,14 @@ var Create = React.createClass({
   },
 
   render: function () {
-    var content = (
+    return (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
         <Event
           church={this.state.church}
+          event={{}}
           children={this.props.children} />
       </div>
-    )
-    return (
-      <ModalWindow content={content} parentPath={"/church/" + this.state.church._id + "/event"} />
     )
   },
 });

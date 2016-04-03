@@ -11,7 +11,6 @@ var Church = React.createClass({
           <div className="row-fluid">
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
               <ButtonSecondaryLarge label={"Info"} onClick={this.handleClick_Info} />
-              <ButtonSecondaryLarge label={"Contact"} onClick={this.handleClick_Contact} />
             </div>
         </div>
       </div>
@@ -22,7 +21,6 @@ var Church = React.createClass({
         <div className="row-fluid">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
             <ButtonSecondaryLarge label={"Info"} onClick={this.handleClick_Info} />
-            <ButtonSecondaryLarge label={"Contact"} onClick={this.handleClick_Contact} />
             <ButtonSecondaryLarge label={"Members"} onClick={this.handleClick_Members} />
             <ButtonSecondaryLarge label={"Events"} onClick={this.handleClick_Events} />
             <ButtonSecondaryLarge label={"Campuses"} onClick={this.handleClick_Campuses} />
@@ -37,14 +35,6 @@ var Church = React.createClass({
       browserHistory.push("/church/" + this.props.id + "/info");
     } else {
       browserHistory.push("/church/create/info");
-    }
-  },
-
-  handleClick_Contact: function () {
-    if (this.props.id) {
-      browserHistory.push("/church/" + this.props.id + "/contact");
-    } else {
-      browserHistory.push("/church/create/contact");
     }
   },
 

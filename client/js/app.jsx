@@ -8,7 +8,6 @@ var browserHistory = require('react-router').browserHistory;
 var IndexRoute = require('react-router').IndexRoute;
 
 var Church = require('./components/Church/Page.jsx');
-var ChurchContact = require('./components/Church/Contact.jsx');
 var ChurchInfo = require('./components/Church/Info.jsx');
 var ChurchMembers = require('./components/Church/Members.jsx');
 var ChurchCampuses = require('./components/Church/Campuses.jsx');
@@ -76,55 +75,47 @@ var Routes = (
       <Route path="create" component={ChurchCreate}>
 				<IndexRoute component={ChurchInfo} />
 				<Route path="info" component={ChurchInfo} />
-				<Route path="contact" component={ChurchContact} />
       </Route>
       <Route path=":id" component={Church}>
 				<IndexRoute component={ChurchInfo} />
 				<Route path="info" component={ChurchInfo} />
-				<Route path="contact" component={ChurchContact} />
-				<Route path="member">
-		      <IndexRoute component={ChurchMembers}/>
-					<Route path="create" component={MemberCreate}>
-						<IndexRoute component={MemberInfo} />
-						<Route path="info" component={MemberInfo} />
-						<Route path="contact" component={MemberContact} />
-					</Route>
-		      <Route path=":mid" component={Member}>
-						<IndexRoute component={MemberInfo} />
-						<Route path="info" component={MemberInfo} />
-						<Route path="contact" component={MemberContact} />
-					</Route>
-				</Route>
-				<Route path="campus">
-		      <IndexRoute component={ChurchCampuses}/>
-					<Route path="create" component={CampusCreate}>
-						<IndexRoute component={CampusInfo} />
-						<Route path="info" component={CampusInfo} />
-						<Route path="contact" component={CampusContact} />
-					</Route>
-		      <Route path=":mid" component={Campus}>
-						<IndexRoute component={CampusInfo} />
-						<Route path="info" component={CampusInfo} />
-						<Route path="contact" component={CampusContact} />
-					</Route>
-				</Route>
-				<Route path="event">
-					<IndexRoute component={ChurchEvents} />
-					<Route path="create" component={EventCreate}>
-						<IndexRoute component={EventInfo} />
-						<Route path="info" component={EventInfo} />
-						<Route path="attendees" component={EventAttendees} />
-						<Route path="volunteers" component={EventVolunteers} />
-					</Route>
-		      <Route path=":mid" component={Event}>
-						<IndexRoute component={EventInfo} />
-						<Route path="info" component={EventInfo} />
-						<Route path="attendees" component={EventAttendees} />
-						<Route path="volunteers" component={EventVolunteers} />
-					</Route>
-				</Route>
+				<Route path="member" component={ChurchMembers}/>
+				<Route path="campus" component={ChurchCampuses}/>
+				<Route path="event" component={ChurchEvents} />
 			</Route>
     </Route>
+		<Route path="church/:id/event/create" component={EventCreate}>
+			<IndexRoute component={EventInfo} />
+			<Route path="info" component={EventInfo} />
+			<Route path="attendees" component={EventAttendees} />
+			<Route path="volunteers" component={EventVolunteers} />
+		</Route>
+		<Route path="church/:id/event/:mid" component={Event}>
+			<IndexRoute component={EventInfo} />
+			<Route path="info" component={EventInfo} />
+			<Route path="attendees" component={EventAttendees} />
+			<Route path="volunteers" component={EventVolunteers} />
+		</Route>
+		<Route path="church/:id/campus/create" component={CampusCreate}>
+			<IndexRoute component={CampusInfo} />
+			<Route path="info" component={CampusInfo} />
+			<Route path="contact" component={CampusContact} />
+		</Route>
+		<Route path="church/:id/campus/:mid" component={Campus}>
+			<IndexRoute component={CampusInfo} />
+			<Route path="info" component={CampusInfo} />
+			<Route path="contact" component={CampusContact} />
+		</Route>
+		<Route path="church/:id/member/create" component={MemberCreate}>
+			<IndexRoute component={MemberInfo} />
+			<Route path="info" component={MemberInfo} />
+			<Route path="contact" component={MemberContact} />
+		</Route>
+		<Route path="church/:id/member/:mid" component={Member}>
+			<IndexRoute component={MemberInfo} />
+			<Route path="info" component={MemberInfo} />
+			<Route path="contact" component={MemberContact} />
+		</Route>
   </Route>
 );
 

@@ -20,8 +20,7 @@ module.exports = {
     msUserSelect: "none"
   },
   contents: {
-    padding: "18px 35px",
-    minWidth: "65px",
+    padding: "18px 0",
     textAlign: "center"
   }
 }

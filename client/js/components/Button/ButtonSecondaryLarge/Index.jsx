@@ -18,7 +18,12 @@ var Button = React.createClass({
     render: function () {
         if (this.state.isSelected) {
             return (
-                <span style={Style.containerSelected} onClick={this.props.onClick} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+                <span
+                  style={Style.containerSelected}
+                  className="col-lg-2 col-md-2 col-sm-2 col-xs-4"
+                  onClick={this.props.onClick}
+                  onMouseOver={this.handleMouseOver}
+                  onMouseOut={this.handleMouseOut}>
                     <div style={Style.contents}>
                         {this.props.label}
                     </div>
@@ -26,7 +31,12 @@ var Button = React.createClass({
             )
         }
         return (
-            <span style={Style.container} onClick={this.props.onClick} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+            <span
+              style={Style.container}
+              className="col-lg-2 col-md-2 col-sm-2 col-xs-4"
+              onClick={this.props.onClick}
+              onMouseOver={this.handleMouseOver}
+              onMouseOut={this.handleMouseOut}>
                 <div style={Style.contents}>
                     {this.props.label}
                 </div>
