@@ -22,6 +22,8 @@ module.exports = function (app) {
 			});
 		}
 
+    email = email.toLowerCase();
+
 		User.findOne({
 			"email": email
 		}, function(err, user) {

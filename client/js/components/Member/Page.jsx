@@ -14,7 +14,8 @@ var Page = React.createClass({
 
   componentWillMount: function () {
     ChurchStore.getOne(this.props.params.id, function (doc) {
-      var member = ChurchStore.getMemberFromChurch(doc, this.props.params.mid);
+      var member = ChurchStore.getSubDocFromChurch(doc, "members",
+        this.props.params.mid);
       this.setState({
         church: doc,
         member: member,

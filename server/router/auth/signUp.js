@@ -88,7 +88,7 @@ module.exports = function (app) {
 
 			if (userSetupRequest.isValidToken(token)) {
 				var user = new User();
-				user.email = userSetupRequest.email;
+				user.email = userSetupRequest.email.toLowerCase();
 				user.firstName = userSetupRequest.firstName;
 				user.lastName = userSetupRequest.lastName;
 				user.password = userSetupRequest.password;

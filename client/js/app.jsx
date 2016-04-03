@@ -12,8 +12,14 @@ var ChurchContact = require('./components/Church/Contact.jsx');
 var ChurchInfo = require('./components/Church/Info.jsx');
 var ChurchMembers = require('./components/Church/Members.jsx');
 var ChurchCampuses = require('./components/Church/Campuses.jsx');
+var ChurchEvents = require('./components/Church/Events.jsx');
 var ChurchCreate = require('./components/Church/Create.jsx');
 var Churches = require('./components/Churches/Page.jsx');
+var Event = require('./components/Event/Page.jsx');
+var EventCreate = require('./components/Event/Create.jsx');
+var EventInfo = require('./components/Event/Info.jsx');
+var EventAttendees = require('./components/Event/Attendees.jsx');
+var EventVolunteers = require('./components/Event/Volunteers.jsx');
 var Member = require('./components/Member/Page.jsx');
 var MemberInfo = require('./components/Member/Info.jsx');
 var MemberContact = require('./components/Member/Contact.jsx');
@@ -100,6 +106,21 @@ var Routes = (
 						<IndexRoute component={CampusInfo} />
 						<Route path="info" component={CampusInfo} />
 						<Route path="contact" component={CampusContact} />
+					</Route>
+				</Route>
+				<Route path="event">
+					<IndexRoute component={ChurchEvents} />
+					<Route path="create" component={EventCreate}>
+						<IndexRoute component={EventInfo} />
+						<Route path="info" component={EventInfo} />
+						<Route path="attendees" component={EventAttendees} />
+						<Route path="volunteers" component={EventVolunteers} />
+					</Route>
+		      <Route path=":mid" component={Event}>
+						<IndexRoute component={EventInfo} />
+						<Route path="info" component={EventInfo} />
+						<Route path="attendees" component={EventAttendees} />
+						<Route path="volunteers" component={EventVolunteers} />
 					</Route>
 				</Route>
 			</Route>

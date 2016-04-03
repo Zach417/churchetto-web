@@ -5,47 +5,18 @@ var Constants = require('../constants/ChurchConstants.js');
 
 var Store = new StoreTemplate(ChurchettoDataService.churches);
 
-Store.getMemberFromChurch = function (church, id) {
-	if (!church.members || church.members.length === 0) {
+Store.getSubDocFromChurch = function (church, subDoc, id) {
+	if (!church[subDoc] || church[subDoc].length === 0) {
 		return {};
 	}
 
-	for (var i = 0; i < church.members.length; i++) {
-		if (church.members[i]._id == id) {
-			return church.members[i];
+	for (var i = 0; i < church[subDoc].length; i++) {
+		if (church[subDoc][i]._id == id) {
+			return church[subDoc][i];
 		}
 	}
 
 	return {};
-}
-
-Store.getCampusFromChurch = function (church, id) {
-	if (!church.campuses || church.campuses.length === 0) {
-		return {};
-	}
-
-	for (var i = 0; i < church.campuses.length; i++) {
-		if (church.campuses[i]._id == id) {
-			return church.campuses[i];
-		}
-	}
-
-	return {};
-}
-
-Store.updateMemberInChurch = function (church, member) {
-	if (!church.members || church.members.length === 0) {
-		church.members = [];
-		church.members.push(member);
-		return church;
-	}
-
-	for (var i = 0; i < church.members.length; i++) {
-		if (church.members[i]._id == member._id) {
-			church.members[i] = member;
-			return church;
-		}
-	}
 }
 
 AppDispatcher.register(function(action) {

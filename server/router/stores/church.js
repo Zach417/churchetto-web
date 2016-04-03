@@ -185,6 +185,60 @@ var readFilterSchema = {
         },
       }
     },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "name": {
+            "type": "string",
+          },
+          "description": {
+            "type": "string",
+          },
+          "starts": {
+            "type": "date",
+          },
+          "ends": {
+            "type": "date",
+          },
+          "isAllDay": {
+            "type": "bool",
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type":"string",
+                },
+                "checkedInDate": {
+                  "type":"date",
+                },
+              },
+            },
+          },
+          "volunteers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type":"string",
+                },
+                "role": {
+                  "type":"string",
+                },
+              },
+            },
+          },
+        },
+      }
+    },
     "createdBy": {
       "type": "string",
     },
@@ -257,6 +311,9 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type":"string",
+          },
           "firstName": {
             "type": "string",
           },
@@ -371,6 +428,60 @@ var writeFilterSchema = {
               },
               "zip": {
                 "type": "string",
+              },
+            },
+          },
+        },
+      },
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "name": {
+            "type": "string",
+          },
+          "description": {
+            "type": "string",
+          },
+          "starts": {
+            "type": "date",
+          },
+          "ends": {
+            "type": "date",
+          },
+          "isAllDay": {
+            "type": "bool",
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type":"string",
+                },
+                "checkedInDate": {
+                  "type":"date",
+                },
+              },
+            },
+          },
+          "volunteers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type":"string",
+                },
+                "role": {
+                  "type":"string",
+                },
               },
             },
           },

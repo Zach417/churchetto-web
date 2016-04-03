@@ -6,6 +6,7 @@ var Info = require('./Info.jsx');
 var Contact = require('./Contact.jsx');
 var Members = require('./Members.jsx');
 var Campuses = require('./Campuses.jsx');
+var Events = require('./Events.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
@@ -17,6 +18,7 @@ function resolveSubDocuments (church) {
   if (!church.address) { church.address = {} }
   if (!church.members) { church.members = [] }
   if (!church.campuses) { church.campuses = [] }
+  if (!church.events) { church.events = [] }
   return church;
 }
 
@@ -99,6 +101,10 @@ var Church = React.createClass({
     } else if (path === basePath + "/campus") {
       return (
         <Campuses church={this.state.church} onChange={this.handleChange_Child} />
+      )
+    } else if (path === basePath + "/event") {
+      return (
+        <Events church={this.state.church} onChange={this.handleChange_Child} />
       )
     } else {
       return this.props.children;

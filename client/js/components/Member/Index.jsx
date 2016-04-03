@@ -29,11 +29,11 @@ var Member = React.createClass({
     this.member = resolveSubDocuments(this.props.member);
 
     if (this.member.dateOfBirth && moment(this.member.dateOfBirth).isValid()) {
-      this.member.dateOfBirth = moment(this.member.dateOfBirth).format("MM/DD/YYYY");
+      this.member.dateOfBirth = moment(this.member.dateOfBirth).startOf("day").format("MM/DD/YYYY");
     }
 
     if (this.member.baptizedOn && moment(this.member.baptizedOn).isValid()) {
-      this.member.baptizedOn = moment(this.member.baptizedOn).format("MM/DD/YYYY");
+      this.member.baptizedOn = moment(this.member.baptizedOn).startOf("day").format("MM/DD/YYYY");
     }
 
     this.setState({

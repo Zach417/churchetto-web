@@ -4,16 +4,6 @@ var browserHistory = require('react-router').browserHistory;
 var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
-var ChurchStore = require('../../stores/ChurchStore');
-
-function resolveSubDocuments (church) {
-  if (!church.phone) { church.phone = {} }
-  if (!church.fax) { church.fax = {} }
-  if (!church.address) { church.address = {} }
-  if (!church.members) { church.members = [] }
-  if (!church.campuses) { church.campuses = [] }
-  return church;
-}
 
 var LinkComponent = React.createClass({
   render: function(){
@@ -91,10 +81,6 @@ var Info = React.createClass({
       });
     }
     return result;
-  },
-
-  handleChange_ChurchStore: function () {
-    this.componentWillMount();
   },
 
   handleClick_Add: function () {

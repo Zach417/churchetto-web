@@ -1,6 +1,6 @@
 var React = require('react');
 var Style = require('./Style.jsx');
-var Campus = require('./Index.jsx');
+var Event = require('./Index.jsx');
 var ModalWindow = require('../ModalWindow/Index.jsx');
 var ChurchStore = require('../../stores/ChurchStore');
 
@@ -8,17 +8,17 @@ var Page = React.createClass({
   getInitialState: function () {
     return {
       church: {_id:''},
-      campus: {_id:''},
+      event: {_id:''},
     }
   },
 
   componentWillMount: function () {
     ChurchStore.getOne(this.props.params.id, function (doc) {
-      var campus = ChurchStore.getSubDocFromChurch(doc, "campuses",
+      var event = ChurchStore.getSubDocFromChurch(doc, "events",
         this.props.params.mid);
       this.setState({
         church: doc,
-        campus: campus,
+        event: event,
       });
     }.bind(this));
   },
@@ -31,14 +31,14 @@ var Page = React.createClass({
     var content = (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-        <Campus
+        <Event
           church={this.state.church}
-          campus={this.state.campus}
+          event={this.state.event}
           children={this.props.children} />
       </div>
     )
     return (
-      <ModalWindow content={content} parentPath={"/church/" + this.state.church._id + "/campus"} />
+      <ModalWindow content={content} parentPath={"/church/" + this.state.church._id + "/event"} />
     )
   },
 });

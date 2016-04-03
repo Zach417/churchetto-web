@@ -1,6 +1,22 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+var eventsSchema = new mongoose.Schema({
+  name: String,
+  description: String,
+  starts: Date,
+  ends: Date,
+  isAllDay: Boolean,
+  attendees: [{
+    memberId: mongoose.Schema.ObjectId,
+    checkedInDate: Date,
+  }],
+  volunteers: [{
+    memberId: mongoose.Schema.ObjectId,
+    role: String,
+  }]
+});
+
 var memberSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -64,6 +80,7 @@ var schema = new mongoose.Schema({
   },
   campuses: [campusSchema],
   members: [memberSchema],
+  events: [eventsSchema],
   leads: [{
     type: mongoose.Schema.ObjectId,
     ref: 'Lead',
