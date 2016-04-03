@@ -9,6 +9,12 @@ var Select = require('../Form/Index.jsx').Select;
 var Info = React.createClass({
   componentWillMount: function () {
     this.member = this.props.member;
+    if (this.member.dateOfBirth) {
+      this.member.dateOfBirth = moment(this.member.dateOfBirth).format("MM/DD/YYYY");
+    }
+    if (this.member.baptizedOn) {
+      this.member.baptizedOn = moment(this.member.baptizedOn).format("MM/DD/YYYY");
+    }
   },
 
   render: function () {
@@ -21,7 +27,7 @@ var Info = React.createClass({
             <Label isRequired={true} label={"First Name"} />
             <Input
               type={"text"}
-              value={this.props.member.firstName}
+              value={this.member.firstName}
               onChange={this.handleChange_FirstName} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -29,7 +35,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Last Name"} />
             <Input
               type={"text"}
-              value={this.props.member.lastName}
+              value={this.member.lastName}
               onChange={this.handleChange_LastName} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -37,7 +43,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Nick Name"} />
             <Input
               type={"text"}
-              value={this.props.member.nickName}
+              value={this.member.nickName}
               onChange={this.handleChange_NickName} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -45,7 +51,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Title"} />
             <Select
               type={"text"}
-              value={this.props.member.title}
+              value={this.member.title}
               options={["Mr.","Mrs.","Ms."]}
               onChange={this.handleChange_Title} />
           </div>
@@ -54,7 +60,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Date of Birth"} />
             <Input
               type={"text"}
-              value={this.props.member.dateOfBirth}
+              value={this.member.dateOfBirth}
               onChange={this.handleChange_DateOfBirth} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -62,7 +68,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Gender"} />
             <Select
               type={"text"}
-              value={this.props.member.gender}
+              value={this.member.gender}
               options={["Male","Female"]}
               onChange={this.handleChange_Gender} />
           </div>
@@ -76,7 +82,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Occupation"} />
             <Input
               type={"text"}
-              value={this.props.member.occupation}
+              value={this.member.occupation}
               onChange={this.handleChange_Occupation} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -84,7 +90,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Employer"} />
             <Input
               type={"text"}
-              value={this.props.member.employer}
+              value={this.member.employer}
               onChange={this.handleChange_Employer} />
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
@@ -97,7 +103,7 @@ var Info = React.createClass({
             <Label isRequired={false} label={"Baptized On"} />
             <Input
               type={"text"}
-              value={this.props.member.baptizedOn}
+              value={this.member.baptizedOn}
               onChange={this.handleChange_BaptizedOn} />
           </div>
         </div>

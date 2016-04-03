@@ -61,7 +61,7 @@ var SignIn = React.createClass({
 
             <Label isRequired={true} label={"Email address"} />
             <Input
-              type={"text"}
+              type={"email"}
               placeholder={embarrasingEmails[randomIndex]}
               value={this.state.email}
               onChange={this.handleChange_Email} />

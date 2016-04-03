@@ -145,6 +145,12 @@ var Member = React.createClass({
     }
     if (this.member._id) {
       for (var i = 0; i < members.length; i++) {
+        if (members[i].dateOfBirth) {
+          members[i].dateOfBirth = moment(members[i].dateOfBirth).utc();
+        }
+        if (members[i].baptizedOn) {
+          members[i].baptizedOn = moment(members[i].baptizedOn).utc();
+        }
         if (members[i] == this.member._id) {
           members[i] = this.member;
         }

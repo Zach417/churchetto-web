@@ -119,7 +119,7 @@ var Attendees = React.createClass({
       var checkedInDate = '';
       if (this.props.event.attendees[i].checkedInDate) {
         checkedInDate = moment(this.props.event.attendees[i].checkedInDate)
-          .startOf('day').format('M/DD/YYYY');
+          .format('M/DD/YYYY');
       }
       result.push({
         "eventId": this.props.event._id,
@@ -137,7 +137,7 @@ var Attendees = React.createClass({
       modify: true,
       index: this.props.event.attendees.length,
       memberId: '',
-      checkedInDate: moment().startOf('day').format('MM/DD/YYYY'),
+      checkedInDate: moment().format('MM/DD/YYYY'),
     })
   },
 
