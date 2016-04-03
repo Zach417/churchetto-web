@@ -45,6 +45,8 @@ var Info = React.createClass({
               value={this.props.church.visionStatement}
               onChange={this.handleChange_VisionStatement} />
           </div>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            style={{marginTop:"20px"}} />
         </div>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>Contact</h3>

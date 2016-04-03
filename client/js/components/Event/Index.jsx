@@ -89,11 +89,11 @@ var Event = React.createClass({
     }
     if (path === basePath) {
       return (
-        <Info event={this.state.event} onChange={this.handleChange_Child} />
+        <Info event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
       )
     } else if (path === basePath + "/info") {
       return (
-        <Info event={this.state.event} onChange={this.handleChange_Child} />
+        <Info event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
       )
     } else if (path === basePath + "/attendees") {
       return (

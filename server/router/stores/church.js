@@ -208,6 +208,9 @@ var readFilterSchema = {
           "isAllDay": {
             "type": "bool",
           },
+          "group": {
+            "type": "string",
+          },
           "attendees": {
             "type": "array",
             "items": {
@@ -231,6 +234,37 @@ var readFilterSchema = {
                   "type":"string",
                 },
                 "role": {
+                  "type":"string",
+                },
+              },
+            },
+          },
+        },
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "name": {
+            "type": "string",
+          },
+          "description": {
+            "type": "string",
+          },
+          "type": {
+            "type": "string",
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
                   "type":"string",
                 },
               },
@@ -457,6 +491,9 @@ var writeFilterSchema = {
           "isAllDay": {
             "type": "bool",
           },
+          "group": {
+            "type": "string",
+          },
           "attendees": {
             "type": "array",
             "items": {
@@ -480,6 +517,37 @@ var writeFilterSchema = {
                   "type":"string",
                 },
                 "role": {
+                  "type":"string",
+                },
+              },
+            },
+          },
+        },
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type":"string",
+          },
+          "name": {
+            "type": "string",
+          },
+          "description": {
+            "type": "string",
+          },
+          "type": {
+            "type": "string",
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
                   "type":"string",
                 },
               },

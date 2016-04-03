@@ -2,7 +2,7 @@ var React = require('react');
 var browserHistory = require('react-router').browserHistory;
 var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
-var Event = require('./Index.jsx');
+var Group = require('./Index.jsx');
 var ModalWindow = require('../ModalWindow/Index.jsx');
 var ChurchStore = require('../../stores/ChurchStore');
 
@@ -13,6 +13,7 @@ function resolveSubDocuments (church) {
   if (!church.members) { church.members = [] }
   if (!church.campuses) { church.campuses = [] }
   if (!church.events) { church.events = [] }
+  if (!church.groups) { church.groups = [] }
   return church;
 }
 
@@ -40,7 +41,7 @@ var Create = React.createClass({
     return (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-        <Event
+        <Group
           church={this.state.church}
           children={this.props.children} />
       </div>

@@ -1,4 +1,5 @@
 var React = require('react');
+var browserHistory = require('react-router').browserHistory;
 var $ = require('jquery');
 
 var Style = require('./Style.jsx');
@@ -16,7 +17,6 @@ var HomePage = React.createClass({
   },
 
   componentWillMount: function () {
-
     ChurchStore.get(function (docs) {
       this.setState({
         campuses: this.state.campuses,

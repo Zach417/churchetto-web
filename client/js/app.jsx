@@ -12,8 +12,13 @@ var ChurchInfo = require('./components/Church/Info.jsx');
 var ChurchMembers = require('./components/Church/Members.jsx');
 var ChurchCampuses = require('./components/Church/Campuses.jsx');
 var ChurchEvents = require('./components/Church/Events.jsx');
+var ChurchGroups = require('./components/Church/Groups.jsx');
 var ChurchCreate = require('./components/Church/Create.jsx');
 var Churches = require('./components/Churches/Page.jsx');
+var Group = require('./components/Group/Page.jsx');
+var GroupCreate = require('./components/Group/Create.jsx');
+var GroupInfo = require('./components/Group/Info.jsx');
+var GroupMembers = require('./components/Group/Members.jsx');
 var Event = require('./components/Event/Page.jsx');
 var EventCreate = require('./components/Event/Create.jsx');
 var EventInfo = require('./components/Event/Info.jsx');
@@ -71,7 +76,6 @@ var Routes = (
     <Route path="church">
       <IndexRoute component={Churches}/>
 			<Route path="info" component={ChurchInfo} />
-			<Route path="contact" component={ChurchContact} />
       <Route path="create" component={ChurchCreate}>
 				<IndexRoute component={ChurchInfo} />
 				<Route path="info" component={ChurchInfo} />
@@ -80,10 +84,21 @@ var Routes = (
 				<IndexRoute component={ChurchInfo} />
 				<Route path="info" component={ChurchInfo} />
 				<Route path="member" component={ChurchMembers}/>
-				<Route path="campus" component={ChurchCampuses}/>
+				<Route path="group" component={ChurchGroups}/>
 				<Route path="event" component={ChurchEvents} />
+				<Route path="campus" component={ChurchCampuses}/>
 			</Route>
     </Route>
+		<Route path="church/:id/group/create" component={GroupCreate}>
+			<IndexRoute component={GroupInfo} />
+			<Route path="info" component={GroupInfo} />
+			<Route path="members" component={GroupMembers} />
+		</Route>
+		<Route path="church/:id/group/:mid" component={Group}>
+			<IndexRoute component={GroupInfo} />
+			<Route path="info" component={GroupInfo} />
+			<Route path="members" component={GroupMembers} />
+		</Route>
 		<Route path="church/:id/event/create" component={EventCreate}>
 			<IndexRoute component={EventInfo} />
 			<Route path="info" component={EventInfo} />

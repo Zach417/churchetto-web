@@ -41,7 +41,6 @@ var Create = React.createClass({
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
         <Member
           church={this.state.church}
-          member={{}}
           children={this.props.children} />
       </div>
     )

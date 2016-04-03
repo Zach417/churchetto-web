@@ -1,35 +1,26 @@
 var React = require('react');
-var browserHistory = require('react-router').browserHistory;
-var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
-var Event = require('./Index.jsx');
+var Group = require('./Index.jsx');
 var ModalWindow = require('../ModalWindow/Index.jsx');
 var ChurchStore = require('../../stores/ChurchStore');
 
-function resolveSubDocuments (church) {
-  if (!church.phone) { church.phone = {} }
-  if (!church.fax) { church.fax = {} }
-  if (!church.address) { church.address = {} }
-  if (!church.members) { church.members = [] }
-  if (!church.campuses) { church.campuses = [] }
-  if (!church.events) { church.events = [] }
-  return church;
-}
-
-var Create = React.createClass({
+var Page = React.createClass({
   getInitialState: function () {
     return {
-      church: resolveSubDocuments({})
+      church: {_id:''},
+      group: {_id:''},
     }
   },
 
   componentWillMount: function () {
     ChurchStore.getOne(this.props.params.id, function (doc) {
-      this.church = resolveSubDocuments(doc);
+      var group = ChurchStore.getSubDocFromChurch(doc, "groups",
+        this.props.params.mid);
       this.setState({
-        church: this.church
-      })
-    }.bind(this))
+        church: doc,
+        group: group,
+      });
+    }.bind(this));
   },
 
   componentDidMount: function () {
@@ -40,12 +31,13 @@ var Create = React.createClass({
     return (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
-        <Event
+        <Group
           church={this.state.church}
+          group={this.state.group}
           children={this.props.children} />
       </div>
     )
   },
 });
 
-module.exports = Create;
+module.exports = Page;

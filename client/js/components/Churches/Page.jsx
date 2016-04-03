@@ -29,11 +29,11 @@ var Page = React.createClass({
     ChurchStore.addChangeListener(this.handleChange_ChurchStore);
     ChurchStore.get(function (docs) {
       if (!docs || docs.length === 0) {
-        return browserHistory.push("/church/create");
+        browserHistory.push("/church/create");
       } else if (docs.length === 1) {
-        return browserHistory.push("/church/" + docs[0]._id);
+        browserHistory.push("/church/" + docs[0]._id);
       }
-    })
+    }.bind(this));
   },
 
   componentWillUnmount: function() {

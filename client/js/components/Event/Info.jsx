@@ -54,9 +54,29 @@ var Info = React.createClass({
               value={this.props.event.ends}
               onChange={this.handleChange_Ends} />
           </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Group"} />
+            <Select
+              type={"text"}
+              value={this.props.event.group}
+              options={this.getGroupOptions()}
+              onChange={this.handleChange_Group} />
+          </div>
         </div>
       </div>
     )
+  },
+
+  getGroupOptions: function () {
+    var result = [];
+    for (var i = 0; i < this.props.church.groups.length; i++) {
+      result.push({
+        value: this.props.church.groups[i]._id,
+        label: this.props.church.groups[i].name,
+      });
+    }
+    return result;
   },
 
   handleChange_Name: function (event) {
@@ -76,6 +96,11 @@ var Info = React.createClass({
 
   handleChange_Ends: function (event) {
     this.event.ends = event.target.value;
+    this.props.onChange(this.event);
+  },
+
+  handleChange_Group: function (event) {
+    this.event.group = event.target.value;
     this.props.onChange(this.event);
   },
 });
