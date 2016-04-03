@@ -1,6 +1,5 @@
 module.exports = {
   componentContainer: {
-    paddingTop: "60px"
   },
   pageContainer: {
     padding:"25px 0",

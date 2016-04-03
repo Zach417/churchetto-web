@@ -1,6 +1,5 @@
 module.exports = {
   componentContainer: {
-    paddingTop: "60px",
   },
   container: {
     backgroundColor: "#f4f4f4",

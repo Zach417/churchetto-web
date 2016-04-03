@@ -13,26 +13,24 @@ var Mumbotron = React.createClass({
           <div className="container-fluid">
   					<div className="row-fluid">
   						<div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  							<h3><b>Effortlessly manage assets</b></h3>
+  							<h3><b>Effortlessly manage</b></h3>
                 <p style={Style.text}>
-                  {"Churchetto provides must-have tools necessary "}
-                  {"for utilizing your church's most value "}
-                  {"assets--people."}
+                  {"Must-have tools for organizing your "}
+                  {"church's most value assets--people."}
                 </p>
   						</div>
     					<div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  							<h3><b>Benchmark your progress</b></h3>
+  							<h3><b>{"Always, completely free"}</b></h3>
                 <p style={Style.text}>
-                  {"Churchetto will grow your church's congregation "}
-                  {"by gathering data and benchmarking your results. "}
+                  {"Manage as many organizations with as many "}
+                  {"members that you want for free. "}
                 </p>
   						</div>
     					<div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   							<h3><b>Get it done <i>fast</i></b></h3>
                 <p style={Style.text}>
-                  {"Churchetto is the most intuitive and the most powerful "}
-                  {"church resource management system on the market. "}
-                  {"It's easy to see what the big hub-bub is about. "}
+                  {"The most intuitive, most powerful church "}
+                  {"management system on the market. "}
                 </p>
   						</div>
   					</div>

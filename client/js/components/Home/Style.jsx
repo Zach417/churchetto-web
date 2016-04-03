@@ -1,6 +1,5 @@
 module.exports = {
   headerPadding: {
-    paddingTop: "65px",
     minHeight: "100%",
   },
   pageContainer: {

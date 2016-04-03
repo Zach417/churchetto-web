@@ -1,7 +1,6 @@
 module.exports = {
   container: {
     color: "#3b3a36",
-    paddingTop: "65px",
     margin: "0",
     minHeight: "100%",
   },

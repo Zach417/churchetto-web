@@ -10,6 +10,12 @@ module.exports = {
     position: "fixed",
     zIndex: "1",
   },
+  navigationMobile: {
+    backgroundColor: "#f4f4f4",
+    color: "#3b3a36",
+    display: "inline-block",
+    width: "100%",
+  },
   logo: {
     height: "60px",
     float: "left",

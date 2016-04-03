@@ -1,7 +1,6 @@
 module.exports = {
   pageContainer: {
     color: "#3b3a36",
-    paddingTop: "65px",
     minHeight: "100%",
     fontFamily: "'Rokkitt', serif",
   },
