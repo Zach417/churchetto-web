@@ -143,14 +143,14 @@ var Member = React.createClass({
     if (this.props.church.members) {
       members = this.props.church.members;
     }
+    if (this.member.dateOfBirth) {
+      this.member.dateOfBirth = moment(this.member.dateOfBirth).utc();
+    }
+    if (this.member.baptizedOn) {
+      this.member.baptizedOn = moment(this.member.baptizedOn).utc();
+    }
     if (this.member._id) {
       for (var i = 0; i < members.length; i++) {
-        if (members[i].dateOfBirth) {
-          members[i].dateOfBirth = moment(members[i].dateOfBirth).utc();
-        }
-        if (members[i].baptizedOn) {
-          members[i].baptizedOn = moment(members[i].baptizedOn).utc();
-        }
         if (members[i] == this.member._id) {
           members[i] = this.member;
         }

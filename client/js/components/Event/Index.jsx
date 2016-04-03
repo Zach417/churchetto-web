@@ -118,21 +118,21 @@ var Event = React.createClass({
     if (this.props.church.events) {
       events = this.props.church.events;
     }
+    if (events[i].starts) {
+      events[i].starts = moment(events[i].starts).utc();
+    }
+    if (events[i].ends) {
+      events[i].ends = moment(events[i].ends).utc();
+    }
+    if (events[i].attendees) {
+      for (var j = 0; j < events[i].attendees.length; j++) {
+        if (events[i].attendees[j].checkedInDate) {
+          events[i].attendees[j].checkedInDate = moment(events[i].attendees[j].checkedInDate).utc();
+        }
+      }
+    }
     if (this.event._id) {
       for (var i = 0; i < events.length; i++) {
-        if (events[i].starts) {
-          events[i].starts = moment(events[i].starts).utc();
-        }
-        if (events[i].ends) {
-          events[i].ends = moment(events[i].ends).utc();
-        }
-        if (events[i].attendees) {
-          for (var j = 0; j < events[i].attendees.length; j++) {
-            if (events[i].attendees[j].checkedInDate) {
-              events[i].attendees[j].checkedInDate = moment(events[i].attendees[j].checkedInDate).utc();
-            }
-          }
-        }
         if (events[i] == this.event._id) {
           events[i] = this.event;
         }
