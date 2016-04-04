@@ -10,11 +10,13 @@ var Select = require('../Form/Index.jsx').Select;
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
+var ChurchettoService = require('../../services/ChurchettoData');
 
 var Volunteers = React.createClass({
   getInitialState: function () {
     return {
       modify: false,
+      other: false,
       index: -1,
       memberId: '',
       role: '',
@@ -39,14 +41,18 @@ var Volunteers = React.createClass({
   },
 
   getHeaderButton: function () {
-    if (this.state.modify === true) {
+    if (this.state.modify === true || this.state.other === true) {
       return (
         <ButtonSecondary label={"Cancel"} onClick={this.handleClick_Cancel} />
       )
     }
 
     return (
-      <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
+      <div>
+        <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
+        <span style={{display:"inline-block",width:"5px"}} />
+        <ButtonSecondary label={". . ."} onClick={this.handleClick_Other} />
+      </div>
     )
   },
 
@@ -68,31 +74,51 @@ var Volunteers = React.createClass({
   getComponent: function () {
     if (this.state.modify === true) {
       return (
-      <div className="row-fluid" style={Style.detailColumn}>
-        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
-          style={Style.detailColumn}>
-          <Label isRequired={true} label={"Member"} />
-          <Select
-            type={"text"}
-            value={this.state.memberId}
-            options={this.getMemberOptions()}
-            onChange={this.handleChange_Member} />
+        <div className="row-fluid" style={Style.detailColumn}>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={true} label={"Member"} />
+            <Select
+              type={"text"}
+              value={this.state.memberId}
+              options={this.getMemberOptions()}
+              onChange={this.handleChange_Member} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={true} label={"Role"} />
+            <Input
+              type={"text"}
+              value={this.state.role}
+              onChange={this.handleChange_Role} />
+          </div>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            style={Style.detailColumnButton}>
+            <ButtonPrimary label={"Submit"} onClick={this.handleClick_Submit} />
+            <span style={{display:"inline-block",width:"5px"}} />
+            <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
+          </div>
         </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
-          style={Style.detailColumn}>
-          <Label isRequired={true} label={"Role"} />
-          <Input
-            type={"text"}
-            value={this.state.role}
-            onChange={this.handleChange_Role} />
+      )
+    }
+
+    if (this.state.other === true) {
+      return (
+        <div className="row-fluid" style={Style.detailColumn}>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            style={Style.detailColumnButton}>
+            <p>
+              You can send out an email to members in your church
+              requesting that open volunteer positions be filled
+              by clicking the button below. If you have selected
+              a group for this event, then the email will only be
+              sent to members of that group. Be sure that no member
+              is selected under the volunteer positions that
+              you want available for acceptance in the event.
+            </p>
+            <ButtonPrimary label={"Request Volunteers"} onClick={this.handleClick_RequestVolunteers} />
+          </div>
         </div>
-        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-          style={Style.detailColumnButton}>
-          <ButtonPrimary label={"Submit"} onClick={this.handleClick_Submit} />
-          <span style={{display:"inline-block",width:"5px"}} />
-          <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
-        </div>
-      </div>
       )
     }
 
@@ -130,6 +156,7 @@ var Volunteers = React.createClass({
   handleClick_Add: function () {
     this.setState({
       modify: true,
+      other: false,
       index: this.props.event.volunteers.length,
       memberId: '',
       role: '',
@@ -145,15 +172,45 @@ var Volunteers = React.createClass({
     this.props.onChange(event);
     return this.setState({
       modify: false,
+      other: false,
       index: -1,
       memberId: '',
       role: '',
     });
   },
 
+  handleClick_RequestVolunteers: function () {
+    ChurchettoService.requestVolunteersForEvent({
+      eventId: this.props.event._id,
+      churchId: this.props.church._id,
+    }, function (data) {
+      if (data.success === true) {
+        alert("Emails successfully sent!");
+      }
+      this.setState({
+        modify: false,
+        other: false,
+        index: -1,
+        memberId: '',
+        role: '',
+      });
+    }.bind(this));
+  },
+
   handleClick_Cancel: function () {
     this.setState({
       modify: false,
+      other: false,
+      index: -1,
+      memberId: '',
+      role: '',
+    })
+  },
+
+  handleClick_Other: function () {
+    this.setState({
+      modify: false,
+      other: true,
       index: -1,
       memberId: '',
       role: '',
@@ -166,6 +223,7 @@ var Volunteers = React.createClass({
     this.props.onChange(event);
     return this.setState({
       modify: false,
+      other: false,
       index: -1,
       memberId: '',
       role: '',
@@ -175,6 +233,7 @@ var Volunteers = React.createClass({
   handleClick_Row: function (gridRow, event) {
     this.setState({
       modify: true,
+      other: false,
       index: gridRow.props.data.index,
       memberId: gridRow.props.data.memberId,
       role: gridRow.props.data.Role,
@@ -184,6 +243,7 @@ var Volunteers = React.createClass({
   handleChange_Member: function (event) {
     this.setState({
       modify: this.state.modify,
+      other: this.state.other,
       index: this.state.index,
       memberId: event.target.value,
       role: this.state.role,
@@ -193,6 +253,7 @@ var Volunteers = React.createClass({
   handleChange_Role: function (event) {
     this.setState({
       modify: this.state.modify,
+      other: this.state.other,
       index: this.state.index,
       memberId: this.state.memberId,
       role: event.target.value,

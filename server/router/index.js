@@ -6,6 +6,8 @@ router.use('/img', require('./img'));
 router.use('/js', require('./js'));
 router.use('/css', require('./css'));
 
+router.use('/methods', require('./methods'));
+
 router.use(require('./auth'));
 
 router.use('/stores', require('./stores'));

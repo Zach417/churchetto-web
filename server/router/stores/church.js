@@ -217,7 +217,7 @@ var readFilterSchema = {
               "type": "object",
               "properties": {
                 "memberId": {
-                  "type":"string",
+                  "type":"objectId",
                 },
                 "checkedInDate": {
                   "type":"date",
@@ -231,7 +231,7 @@ var readFilterSchema = {
               "type": "object",
               "properties": {
                 "memberId": {
-                  "type":"string",
+                  "type":"objectId",
                 },
                 "role": {
                   "type":"string",
@@ -500,7 +500,7 @@ var writeFilterSchema = {
               "type": "object",
               "properties": {
                 "memberId": {
-                  "type":"string",
+                  "type":"objectId",
                 },
                 "checkedInDate": {
                   "type":"date",
@@ -514,7 +514,7 @@ var writeFilterSchema = {
               "type": "object",
               "properties": {
                 "memberId": {
-                  "type":"string",
+                  "type":"objectId",
                 },
                 "role": {
                   "type":"string",

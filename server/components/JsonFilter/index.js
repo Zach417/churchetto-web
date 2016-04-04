@@ -1,46 +1,53 @@
 module.exports = function(schema, doc) {
 
-    var results;
+  var results;
 
-    if (schema.type == 'object') {
+  if (schema.type == 'object') {
 
-        results = {};
+    results = {};
 
-        Object.keys(schema.properties).forEach(function(key) {
-            if (doc[key] !== undefined) {
-                var sp = schema.properties[key];
-                if (sp.type == 'object') {
-                    if (sp.hasOwnProperty('properties')) {
-                        results[key] = module.exports(sp, doc[key]);
-                    } else {
-                        if (Object.keys(doc[key]).length > 0) {
-                            results[key] = doc[key];
-                        }
-                    }
-                } else if (sp.type == 'array') {
-                    if (doc[key]) {
-                        results[key] = module.exports(sp, doc[key]);
-                    }
-                } else if (sp.type == 'boolean' || sp.type == 'number' || sp.type == 'integer') {
-                    if (doc[key] != null && typeof doc[key] != 'undefined') {
-                        results[key] = doc[key];
-                    }
-                } else {
-                    results[key] = doc[key];
-                }
+    Object.keys(schema.properties).forEach(function(key) {
+      if (doc[key] !== undefined) {
+        var sp = schema.properties[key];
+        if (sp.type == 'object') {
+          if (sp.hasOwnProperty('properties')) {
+            results[key] = module.exports(sp, doc[key]);
+          } else {
+            if (Object.keys(doc[key]).length > 0) {
+              results[key] = doc[key];
             }
-        });
-    } else if (schema.type == 'array') {
-        if (schema.items.type == 'object') {
-            results = [];
-            doc.forEach(function(item) {
-                results.push(module.exports(schema.items, item));
-            });
+          }
+        } else if (sp.type == 'array') {
+          if (doc[key]) {
+            results[key] = module.exports(sp, doc[key]);
+          }
+        } else if (sp.type == 'boolean' || sp.type == 'number' || sp.type == 'integer') {
+          if (doc[key] != null && typeof doc[key] != 'undefined') {
+            results[key] = doc[key];
+          }
+        } else if (sp.type == 'objectId') {
+          if (doc[key] == "") {
+            console.log(results[key]);
+            results[key] = undefined;
+          } else {
+            results[key] = doc[key];
+          }
         } else {
-            results = doc;
+          results[key] = doc[key];
         }
+      }
+    });
+  } else if (schema.type == 'array') {
+    if (schema.items.type == 'object') {
+      results = [];
+      doc.forEach(function(item) {
+        results.push(module.exports(schema.items, item));
+      });
+    } else {
+      results = doc;
     }
+  }
 
-    return results;
+  return results;
 
 }

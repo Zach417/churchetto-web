@@ -11,6 +11,7 @@ var Footer = require('./components/Footer.Anonymous/Index.jsx');
 var ForgotPasswordPage = require('./components/ForgotPassword.Anonymous/Page.jsx');
 var Header = require('./components/Header.Anonymous/Index.jsx');
 var Home = require('./components/Home.Anonymous/Index.jsx');
+var EventRequestVolunteers = require('./components/Event/RequestVolunteers.jsx');
 var PasswordResetPage = require('./components/PasswordReset.Anonymous/Page.jsx');
 var RegisterPage = require('./components/SignUp.Anonymous/Page.jsx');
 var RegisterRequest= require('./components/SignUp.Anonymous/Request.jsx');
@@ -57,7 +58,8 @@ var Routes = (
     </Route>
     <Route path="forgot-password" component={ForgotPasswordPage} />
     <Route path="forgot-password/:id" component={PasswordResetPage} />
-    <Route path="*" component={SignInPage} />
+		<Route path="event/:id/request-volunteers/:token" component={EventRequestVolunteers} />
+		<Route path="*" component={SignInPage} />
   </Route>
 );
 

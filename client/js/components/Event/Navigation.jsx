@@ -5,6 +5,19 @@ var ButtonSecondaryLarge = require('../Button/Index.jsx').Secondary.Large;
 
 var Navigation = React.createClass({
   render: function () {
+    if (!this.props.mid) {
+      return (
+        <div className="container-fluid" style={Style.navigationContainer}>
+          <div className="row-fluid">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+              <ButtonSecondaryLarge label={"Info"} onClick={this.handleClick_Info} />
+              <ButtonSecondaryLarge label={"Attendees"} onClick={this.handleClick_Attendees} />
+              <ButtonSecondaryLarge label={"Volunteers"} onClick={this.handleClick_Volunteers} />
+            </div>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="container-fluid" style={Style.navigationContainer}>
         <div className="row-fluid">
@@ -46,6 +59,11 @@ var Navigation = React.createClass({
       browserHistory.push("/church/" + this.props.cid
         + "/event/" + this.props.mid + "/volunteers");
     }
+  },
+
+  handleClick_Email: function () {
+    browserHistory.push("/church/" + this.props.cid
+      + "/event/" + this.props.mid + "/email");
   },
 });
 

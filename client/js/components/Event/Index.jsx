@@ -6,6 +6,7 @@ var Navigation = require('./Navigation.jsx');
 var Info = require('./Info.jsx');
 var Attendees = require('./Attendees.jsx');
 var Volunteers = require('./Volunteers.jsx');
+var Email = require('./Email.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
@@ -102,6 +103,10 @@ var Event = React.createClass({
     } else if (path === basePath + "/volunteers") {
       return (
         <Volunteers event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
+      )
+    } else if (path === basePath + "/email") {
+      return (
+        <Email event={this.state.event} church={this.props.church} />
       )
     }
   },

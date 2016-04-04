@@ -24,6 +24,8 @@ var EventCreate = require('./components/Event/Create.jsx');
 var EventInfo = require('./components/Event/Info.jsx');
 var EventAttendees = require('./components/Event/Attendees.jsx');
 var EventVolunteers = require('./components/Event/Volunteers.jsx');
+var EventRequestVolunteers = require('./components/Event/RequestVolunteers.jsx');
+var EventEmail = require('./components/Event/Email.jsx');
 var Member = require('./components/Member/Page.jsx');
 var MemberInfo = require('./components/Member/Info.jsx');
 var MemberContact = require('./components/Member/Contact.jsx');
@@ -99,6 +101,7 @@ var Routes = (
 			<Route path="info" component={GroupInfo} />
 			<Route path="members" component={GroupMembers} />
 		</Route>
+		<Route path="event/:id/request-volunteers/:token" component={EventRequestVolunteers} />
 		<Route path="church/:id/event/create" component={EventCreate}>
 			<IndexRoute component={EventInfo} />
 			<Route path="info" component={EventInfo} />
@@ -110,6 +113,7 @@ var Routes = (
 			<Route path="info" component={EventInfo} />
 			<Route path="attendees" component={EventAttendees} />
 			<Route path="volunteers" component={EventVolunteers} />
+			<Route path="email" component={EventEmail} />
 		</Route>
 		<Route path="church/:id/campus/create" component={CampusCreate}>
 			<IndexRoute component={CampusInfo} />
