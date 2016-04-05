@@ -65,10 +65,10 @@ var Groups = React.createClass({
       }
 
       var members = 0;
-      if (doc.attendees) {
+      if (doc.members) {
         members = doc.members.length;
       }
-      
+
       return (
         <EntitySubSummary onClick={onClick}>
           <h3 style={{margin:"5px 0",color:"#c36b74"}}>
