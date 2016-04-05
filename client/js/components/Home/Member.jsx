@@ -14,6 +14,11 @@ var Members = React.createClass({
 
   componentWillMount: function () {
     ChurchStore.get(function (docs) {
+      if (!docs) {
+        return this.setState({
+          members: []
+        });
+      }
       var result = [];
       for (var i = 0; i < docs.length; i++) {
         if (!docs[i].members) { continue; }

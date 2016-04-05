@@ -15,6 +15,11 @@ var Church = React.createClass({
 
   componentWillMount: function () {
     ChurchStore.get(function (docs) {
+      if (!docs) {
+        return this.setState({
+          churches: []
+        });
+      }
       this.setState({
         churches: docs,
       });

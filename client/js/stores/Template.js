@@ -14,9 +14,10 @@ module.exports = function(PlanManagerService) {
   this._ignore = false;
 
   this.executeRemainingRequests = function() {
-    if (this._requests.length > 0) {
-      for (var i = 0; i < this._requests.length; i++) {
-        var request = this._requests[i];
+    var requests = this._requests;
+    if (requests.length > 0) {
+      for (var i = 0; i < requests.length; i++) {
+        var request = requests[i];
 
         if (request.parameters["id"] && request.parameters["callback"]) {
           request.execute(request.parameters["id"], request.parameters["callback"]);
@@ -39,7 +40,7 @@ module.exports = function(PlanManagerService) {
         parameters["callback"] = callback;
 
         return this._requests.push({
-          execute: this.get,
+          execute: callback(this._docs),
           parameters: parameters,
         });
       } else {
@@ -47,10 +48,9 @@ module.exports = function(PlanManagerService) {
       }
 
       PlanManagerService.get(function(docs) {
-        this._ignore = false;
         this._docs = docs;
+        this._ignore = false;
         callback(this._docs);
-
         this.executeRemainingRequests();
       }.bind(this));
     } else {

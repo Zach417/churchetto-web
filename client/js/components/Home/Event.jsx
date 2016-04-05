@@ -14,6 +14,11 @@ var Events = React.createClass({
 
   componentWillMount: function () {
     ChurchStore.get(function (docs) {
+      if (!docs) {
+        return this.setState({
+          events: []
+        });
+      }
       var result = [];
       for (var i = 0; i < docs.length; i++) {
         if (!docs[i].events) { continue; }

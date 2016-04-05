@@ -14,6 +14,11 @@ var Groups = React.createClass({
 
   componentWillMount: function () {
     ChurchStore.get(function (docs) {
+      if (!docs) {
+        return this.setState({
+          groups: []
+        });
+      }
       var result = [];
       for (var i = 0; i < docs.length; i++) {
         if (!docs[i].groups) { continue; }
