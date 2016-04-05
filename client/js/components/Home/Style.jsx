@@ -1,6 +1,8 @@
 module.exports = {
   headerPadding: {
     minHeight: "100%",
+    fontFamily: "'Rokkitt', serif",
+    fontSize: "18px",
   },
   pageContainer: {
     color: "#3b3a36",
@@ -24,10 +26,32 @@ module.exports = {
   },
   entitySummary: {
     display: "block",
-    textAlign: "center",
-    padding: "20px 0",
-    backgroundColor: "#f1f4f6",
+    textAlign: "left",
+    padding: "20px",
+    backgroundColor: "#f4f4f4",
     border: "1px solid #ccc",
     borderRadius: "3px",
+  },
+  entitySummaryHover: {
+    display: "block",
+    textAlign: "left",
+    padding: "20px",
+    backgroundColor: "#ccc",
+    border: "1px solid #ccc",
+    borderRadius: "3px",
+    cursor: "pointer",
+  },
+  entitySubSummary: {
+    display: "block",
+    textAlign: "left",
+    padding: "10px",
+    backgroundColor: "#f4f4f4",
+  },
+  entitySubSummaryHover: {
+    display: "block",
+    textAlign: "left",
+    padding: "10px",
+    backgroundColor: "#ccc",
+    cursor: "pointer",
   }
 }

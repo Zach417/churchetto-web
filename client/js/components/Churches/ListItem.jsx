@@ -40,10 +40,9 @@ var ListItem = React.createClass({
           onMouseEnter={this.handleMouseEnter_Li}
           onMouseLeave={this.handleMouseLeave_Li}>
           <h3 style={{margin:"5px 0",color:"#c36b74"}}>{this.props.church.name}</h3>
-          <p>{this.props.church.missionStatement}</p>
           <p>
-            Members: {memberCount} |
-            Campuses: {campusCount}
+            {this.props.church.missionStatement}<br/>
+            Members: {memberCount} | Campuses: {campusCount}
           </p>
         </div>
 		);

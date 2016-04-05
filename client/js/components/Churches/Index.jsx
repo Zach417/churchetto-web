@@ -50,21 +50,16 @@ var Churches = React.createClass({
     return (
       <div style={Style.componentContainer}>
         <div className="row-fluid">
-          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12" style={{padding:"0"}}>
-            <h1 style={{margin:"5px 0"}}>Your churches</h1>
+          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-8" style={{padding:"0"}}>
+            <h1 style={{margin:"5px 0"}}>Churches</h1>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-6 hidden-xs" style={{padding:"0"}}>
+          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-4" style={{padding:"0"}}>
             <div style={{float:"right"}}>
               <ButtonPrimary label={"New"} onClick={this.handleClick_AddChurch} />
             </div>
           </div>
-          <div className="hidden-lg hidden-md hidden-sm col-xs-12" style={{padding:"0"}}>
-            <div style={{paddingBottom:"10px"}}>
-              <ButtonPrimary label={"New"} onClick={this.handleClick_AddChurch} />
-            </div>
-          </div>
         </div>
-        <div className="row-fluid">
+        <div className="row-fluid" style={{display:"none"}}>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
             <Input
               type={"text"}

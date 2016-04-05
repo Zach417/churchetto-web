@@ -25,6 +25,20 @@ module.exports = function (app) {
 			});
 		}
 
+    if (password.length < 8) {
+			return res.json({
+				success: false,
+				message: "Password length must be at least 8 characters.",
+			});
+    }
+
+    if (password.length > 160) {
+			return res.json({
+				success: false,
+				message: "Password length cannot be over 160 characters.",
+			});
+    }
+
 		User.findOne({
 			"email": email
 		}, function(err, user) {

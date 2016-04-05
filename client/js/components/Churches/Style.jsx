@@ -3,6 +3,8 @@ module.exports = {
     color: "#3b3a36",
     minHeight: "100%",
     fontFamily: "'Rokkitt', serif",
+    paddingTop: "20px",
+    paddingBottom: "20px",
   },
   jumbotron: {
     fontFamily: "'Rokkitt', serif",
@@ -20,7 +22,6 @@ module.exports = {
     border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
-    margin: "20px 0",
     padding: "20px",
   },
   listItem: {

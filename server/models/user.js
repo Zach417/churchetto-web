@@ -86,7 +86,7 @@ userSchema.methods.deleteExpiredTokens = function() {
   var activeTokens = [];
 
   for (var i = 0; i < tokens.length; i++) {
-    var isNotExpired = (addMinutes(tokens[i].createdOn, 600) > Date.now());
+    var isNotExpired = (addMinutes(tokens[i].createdOn, 525600) > Date.now()); // 1 year
     if (isNotExpired) {
       activeTokens.push(tokens[i]);
     }
