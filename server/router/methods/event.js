@@ -145,7 +145,7 @@ router.post('/event/:id/request-volunteers', function(req, res) {
               requestVolunteers.save();
 
               var html = EmailSender.Emails.RequestVolunteers
-                .replace(new RegExp("__LINK__", 'g'), "http://www.churchetto.com/methods/event/" + eventId + "/request-volunteers/" + tokenValue)
+                .replace(new RegExp("__LINK__", 'g'), "http://www.churchetto.com/event/" + eventId + "/request-volunteers/" + tokenValue)
                 .replace("__ROLES__", volunteerPositionsLabel)
                 .replace("__CHURCH__", churchName)
                 .replace("__EVENT__", event)
@@ -184,7 +184,7 @@ router.post('/event/:id/request-volunteers', function(req, res) {
                       requestVolunteers.save();
 
                       var html = EmailSender.Emails.RequestVolunteers
-                        .replace(new RegExp("__LINK__", 'g'), "http://www.churchetto.com/methods/event/" + eventId + "/request-volunteers/" + tokenValue)
+                        .replace(new RegExp("__LINK__", 'g'), "http://www.churchetto.com/event/" + eventId + "/request-volunteers/" + tokenValue)
                         .replace("__ROLES__", volunteerPositionsLabel)
                         .replace("__CHURCH__", churchName)
                         .replace("__EVENT__", event)
