@@ -1,3 +1,4 @@
+var moment = require('moment');
 var StoreTemplate = require('./Template');
 var ChurchettoDataService = require('../services/ChurchettoData');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
@@ -19,16 +20,48 @@ Store.getSubDocFromChurch = function (church, subDoc, id) {
 	return {};
 }
 
+function setDatesToUtc (church) {
+	if (church.events) {
+		for (var i = 0; i < church.events.length; i++) {
+			if (church.events[i].starts) {
+				church.events[i].starts = moment(church.events[i].starts).utc();
+			}
+			if (church.events[i].ends) {
+				church.events[i].ends = moment(church.events[i].ends).utc();
+			}
+	    if (church.events[i].attendees) {
+	      for (var j = 0; j < church.events[i].attendees.length; j++) {
+	        if (church.events[i].attendees[j].checkedInDate) {
+	          church.events[i].attendees[j].checkedInDate = moment(church.events[i].attendees[j].checkedInDate).utc();
+	        }
+	      }
+	    }
+		}
+	}
+	if (church.members) {
+		for (var i = 0; i < church.members.length; i++) {
+			if (church.members[i].dateOfBirth) {
+				church.members[i].dateOfBirth = moment(church.members[i].dateOfBirth).utc();
+			}
+			if (church.members[i].baptizedOn) {
+				church.members[i].baptizedOn = moment(church.members[i].baptizedOn).utc();
+			}
+		}
+	}
+}
+
 AppDispatcher.register(function(action) {
 	switch(action.actionType) {
 
 		case Constants.CHURCH_CREATE:
+			setDatesToUtc(action.doc);
 			Store.insert(action.doc, function(data) {
 				Store.emitChange();
 			});
 			break;
 
 		case Constants.CHURCH_UPDATE:
+			setDatesToUtc(action.doc);
 			Store.update(action.doc, function(data) {
 				Store.emitChange();
 			});
