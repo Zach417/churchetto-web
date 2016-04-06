@@ -11,10 +11,6 @@ var Highlights = React.createClass({
         <div style={Style.highlightsBody}>
           <div>
             <b>{"Powerful "}</b>
-            analytics
-          </div>
-          <div>
-            <b>{"Powerful "}</b>
             tools
           </div>
         </div>
@@ -23,13 +19,13 @@ var Highlights = React.createClass({
             <span style={Style.checkMark}>
               <b>{"✓ "}</b>
             </span>
-            Group Email Generator
+            Email Workflows
           </div>
           <div>
             <span style={Style.checkMark}>
               <b>{"✓ "}</b>
             </span>
-            Member Satisfaction Surveys
+            Volunteer Management
           </div>
           <div>
             <span style={Style.checkMark}>
