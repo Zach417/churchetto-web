@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 var Link = require('react-router').Link;
 var $ = require('jquery');
 
@@ -22,7 +23,7 @@ var HomePage = React.createClass({
         <Mumbotron />
 				<Jumbotron
           heading={"Sign up is simple and easy"}
-          subHeading={"you don't even have to talk to a salesperson"} />
+          subHeading={""} />
       </div>
     );
   },

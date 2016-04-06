@@ -24,7 +24,7 @@ var Mumbotron = React.createClass({
     					<div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
   							<h3 style={{margin:"0"}}><b>{"Really free"}</b></h3>
                 <p style={Style.text}>
-                  {"No hidden costs or additional paid features. Seriously."}
+                  {"No hidden costs or additional paid features."}
                 </p>
   						</div>
   					</div>
