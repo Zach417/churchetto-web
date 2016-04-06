@@ -1,8 +1,9 @@
 module.exports = {
   headerPadding: {
-    minHeight: "100%",
+    minHeight: "calc(100% - 65px)",
     fontFamily: "'Rokkitt', serif",
     fontSize: "18px",
+    padding: "20px 0",
   },
   pageContainer: {
     color: "#3b3a36",

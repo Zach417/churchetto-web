@@ -16,6 +16,7 @@ var EntitySummary = React.createClass({
 
     return (
       <div
+        key={this.props.key}
         style={style}
         onClick={this.props.onClick}
         onMouseEnter={this.handleMouseEnter}

@@ -20,7 +20,7 @@ var Create = React.createClass({
             {"out all of the information right now, and you can always "}
             {"organize your church's profile later."}
           </p>
-          <p style={{fontSize:"16px"}}>
+          <p style={{fontSize:"16px",display:"none"}}>
             {"If you want to find an existing church, click "}
             <Link to={"/church/find"}>here</Link>.
           </p>

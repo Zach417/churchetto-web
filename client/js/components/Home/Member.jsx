@@ -64,7 +64,7 @@ var Members = React.createClass({
   getEventComponents: function () {
     return this.state.members.sort(function(a,b){
       return new Date(b.date) - new Date(a.date);
-    }).map(function (doc) {
+    }).map(function (doc, i) {
       var onClick = function () {
         browserHistory.push("/church/" + doc.churchId + "/member/" + doc._id);
       }
@@ -85,7 +85,7 @@ var Members = React.createClass({
         phone = doc.phone.main;
       }
       return (
-        <EntitySubSummary onClick={onClick}>
+        <EntitySubSummary onClick={onClick} key={i}>
           <h3 style={{margin:"5px 0",color:"#c36b74"}}>
             {firstName + " " + lastName}
           </h3>

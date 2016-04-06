@@ -43,7 +43,7 @@ var Church = React.createClass({
     });
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     window.scrollTo(0, 0);
   },
 
@@ -124,10 +124,11 @@ var Church = React.createClass({
   handleClick_Submit: function () {
     if (this.state.church._id) {
       ChurchActions.update(this.state.church);
+      browserHistory.push("/church");
     } else {
       ChurchActions.create(this.state.church);
+      browserHistory.push("/");
     }
-    browserHistory.push("/church");
   },
 
   handleClick_Cancel: function () {
@@ -136,7 +137,7 @@ var Church = React.createClass({
 
   handleClick_Delete: function () {
     ChurchActions.destroy(this.state.church);
-    browserHistory.push("/church");
+    browserHistory.push("/");
   },
 });
 

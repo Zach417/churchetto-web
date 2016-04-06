@@ -15,10 +15,10 @@ var HomePage = React.createClass({
 
   render: function() {
     return (
-      <div style={Style.headerPadding}>
+      <div style={Style.headerPadding} className="container-fluid">
         <div className="row-fluid">
           <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-            style={{margin:"20px auto",padding:"0"}}>
+            style={{padding:"0"}}>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <Church />
               <div style={{marginTop:"20px"}} />

@@ -64,7 +64,7 @@ var Groups = React.createClass({
   getEventComponents: function () {
     return this.state.groups.sort(function(a,b){
       return new Date(b.date) - new Date(a.date);
-    }).map(function (doc) {
+    }).map(function (doc, i) {
       var onClick = function () {
         browserHistory.push("/church/" + doc.churchId + "/group/" + doc._id);
       }
@@ -75,7 +75,7 @@ var Groups = React.createClass({
       }
 
       return (
-        <EntitySubSummary onClick={onClick}>
+        <EntitySubSummary onClick={onClick} key={i}>
           <h3 style={{margin:"5px 0",color:"#c36b74"}}>
             {doc.name}
           </h3>

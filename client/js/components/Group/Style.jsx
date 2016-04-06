@@ -1,7 +1,7 @@
 module.exports = {
   pageContainer: {
     color: "#3b3a36",
-    minHeight: "100%",
+    minHeight: "calc(100% - 65px)",
     fontFamily: "'Rokkitt', serif",
   },
   jumbotron: {

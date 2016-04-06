@@ -15,6 +15,7 @@ module.exports = function(PlanManagerService) {
 
   this.executeRemainingRequests = function() {
     var requests = this._requests;
+
     if (requests.length > 0) {
       for (var i = 0; i < requests.length; i++) {
         var request = requests[i];
@@ -22,7 +23,7 @@ module.exports = function(PlanManagerService) {
         if (request.parameters["id"] && request.parameters["callback"]) {
           request.execute(request.parameters["id"], request.parameters["callback"]);
         } else if (request.parameters["callback"]) {
-          request.execute(request.parameters["callback"]);
+          request.execute(this._docs);
         } else {
           request.execute();
         }
@@ -40,7 +41,7 @@ module.exports = function(PlanManagerService) {
         parameters["callback"] = callback;
 
         return this._requests.push({
-          execute: callback(this._docs),
+          execute: callback,
           parameters: parameters,
         });
       } else {
