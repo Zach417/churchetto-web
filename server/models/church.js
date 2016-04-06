@@ -1,6 +1,11 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+var attendanceSchema = new mongoose.Schema({
+  date: Date,
+  count: Number,
+});
+
 var groupSchema = new mongoose.Schema({
   name: String,
   description: String,
@@ -88,6 +93,7 @@ var schema = new mongoose.Schema({
     state: String,
     zip: String,
   },
+  attendance: [attendanceSchema],
   campuses: [campusSchema],
   members: [memberSchema],
   events: [eventSchema],

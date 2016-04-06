@@ -1,0 +1,68 @@
+module.exports = {
+  pageContainer: {
+    color: "#3b3a36",
+    minHeight: "calc(100% - 65px)",
+    fontFamily: "'Rokkitt', serif",
+  },
+  jumbotron: {
+    fontFamily: "'Rokkitt', serif",
+    textAlign: "center",
+    padding: "150px 0",
+    margin: "0",
+  },
+  sectionContainer: {
+    backgroundColor: "#e1e3e4",
+    border: "1px solid #ccc",
+    paddingTop: "20px",
+    paddingBottom: "20px",
+  },
+  navigationContainer: {
+    padding: "0",
+  },
+  detailColumn: {
+    padding: "1px",
+  },
+  extraSmallNavigationContainer: {
+    backgroundColor: "#666666",
+    display: "block",
+    color: "#f1f4f6",
+    cursor: "pointer",
+    touchAction: "manipulation",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none",
+    padding: "18px",
+  },
+  componentContainer: {
+    backgroundColor: "#f4f4f4",
+    position: "relative",
+    border: "1px solid #ccc",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+    padding: "20px",
+  },
+  componentContainerNoPadding: {
+    backgroundColor: "#f4f4f4",
+    position: "relative",
+    border: "1px solid #ccc",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+  },
+  backContainer: {
+    position: "relative",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+    cursor: "pointer",
+  },
+  backContainerHover: {
+    color: "#f4f4f4",
+    position: "relative",
+    borderRadius: "3px",
+    overflow: "hidden",
+    margin: "20px 0",
+    cursor: "pointer",
+  },
+}

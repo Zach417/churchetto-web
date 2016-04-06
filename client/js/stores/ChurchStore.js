@@ -38,6 +38,13 @@ function setDatesToUtc (church) {
 	    }
 		}
 	}
+	if (church.attendance) {
+		for (var i = 0; i < church.attendance.length; i++) {
+			if (church.attendance[i].date) {
+				church.attendance[i].date = moment(church.attendance[i].date).utc();
+			}
+		}
+	}
 	if (church.members) {
 		for (var i = 0; i < church.members.length; i++) {
 			if (church.members[i].dateOfBirth) {

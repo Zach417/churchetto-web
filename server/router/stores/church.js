@@ -57,6 +57,23 @@ var readFilterSchema = {
         },
       },
     },
+    "attendance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+          },
+          "date": {
+            "type": "string",
+          },
+          "count": {
+            "type": "string",
+          },
+        },
+      },
+    },
     "members": {
       "type": "array",
       "items": {
@@ -337,6 +354,23 @@ var writeFilterSchema = {
         },
         "zip": {
           "type": "string",
+        },
+      },
+    },
+    "attendance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+          },
+          "date": {
+            "type": "string",
+          },
+          "count": {
+            "type": "string",
+          },
         },
       },
     },
