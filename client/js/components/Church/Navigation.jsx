@@ -1,6 +1,9 @@
 var React = require('react');
+var $ = require('jquery');
+require('jquery-ui');
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
+var ButtonPrimaryLarge = require('../Button/Index.jsx').Primary.Large;
 var ButtonSecondaryLarge = require('../Button/Index.jsx').Secondary.Large;
 
 var Church = React.createClass({
@@ -18,15 +21,27 @@ var Church = React.createClass({
     }
     return (
       <div className="container-fluid" style={Style.navigationContainer}>
-        <div className="row-fluid">
+        <div
+          id={"church-" + this.props.id + "-navigation"}
+          className="row-fluid">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
             <ButtonSecondaryLarge label={"Info"} onClick={this.handleClick_Info} />
-            <ButtonSecondaryLarge label={"Attendance"} onClick={this.handleClick_Attendance} />
             <ButtonSecondaryLarge label={"Members"} onClick={this.handleClick_Members} />
-            <ButtonSecondaryLarge label={"Groups"} onClick={this.handleClick_Groups} />
+            <ButtonSecondaryLarge label={"Giving"} onClick={this.handleClick_Members} />
+            <ButtonSecondaryLarge label={"Attendance"} onClick={this.handleClick_Attendance} />
             <ButtonSecondaryLarge label={"Events"} onClick={this.handleClick_Events} />
-            <ButtonSecondaryLarge label={"Campuses"} onClick={this.handleClick_Campuses} />
+            <ButtonSecondaryLarge label={". . ."} onClick={this.handleClick_More} />
           </div>
+      </div>
+      <div
+        id={"church-" + this.props.id + "-sub-navigation"}
+        style={{display:"none"}}
+        className="row-fluid">
+        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+          <ButtonSecondaryLarge label={"Campuses"} onClick={this.handleClick_Campuses} />
+          <ButtonSecondaryLarge label={"Groups"} onClick={this.handleClick_Groups} />
+          <ButtonSecondaryLarge label={". . ."} onClick={this.handleClick_More} />
+        </div>
       </div>
     </div>
     )
@@ -70,6 +85,11 @@ var Church = React.createClass({
     } else {
       browserHistory.push("/church/create/event");
     }
+  },
+
+  handleClick_More: function () {
+    $("#church-" + this.props.id + "-sub-navigation").toggle("bind");
+    $("#church-" + this.props.id + "-navigation").toggle("bind");
   },
 
   handleClick_Campuses: function () {

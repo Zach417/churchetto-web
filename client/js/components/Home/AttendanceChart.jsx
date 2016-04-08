@@ -126,7 +126,7 @@ var Attendance = React.createClass({
         });
       });
     });
-    console.log(result);
+
     return result;
   },
 

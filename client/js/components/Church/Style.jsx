@@ -18,6 +18,7 @@ module.exports = {
   },
   navigationContainer: {
     padding: "0",
+    height: "56px",
   },
   detailColumn: {
     padding: "1px",

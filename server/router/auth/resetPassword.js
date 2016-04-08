@@ -105,6 +105,20 @@ module.exports = function(app) {
       return sendFailedJson(res);
     }
 
+    if (password.length < 8) {
+			return res.json({
+				success: false,
+				message: "Password length must be at least 8 characters.",
+			});
+    }
+
+    if (password.length > 160) {
+			return res.json({
+				success: false,
+				message: "Password length cannot be over 160 characters.",
+			});
+    }
+
     PasswordReset.findOne({
       "_id": id,
     }, function(err, passwordReset) {
