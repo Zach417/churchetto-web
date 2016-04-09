@@ -64,7 +64,7 @@ module.exports = {
     width: "350px",
     display: "none",
     zIndex: "1",
-    position: "fixed",
+    position: "absolute",
     top: "65px",
     right: "0",
     backgroundColor: "transparent",
