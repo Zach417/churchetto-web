@@ -53,6 +53,13 @@ function setDatesToUtc (church) {
 	    }
 		}
 	}
+	if (church.contributions) {
+		for (var i = 0; i < church.contributions.length; i++) {
+			if (church.contributions[i].date) {
+				church.contributions[i].date = moment(church.contributions[i].date).utc();
+			}
+		}
+	}
 	if (church.attendance) {
 		for (var i = 0; i < church.attendance.length; i++) {
 			if (church.attendance[i].date) {
