@@ -82,9 +82,9 @@ var Churches = React.createClass({
   },
 
   getChurches: function () {
-    return this.state.churches.map(function (doc) {
+    return this.state.churches.map(function (doc, i) {
       return (
-        <ListItem key={doc._id} church={doc} />
+        <ListItem key={i} church={doc} />
       )
     });
   },

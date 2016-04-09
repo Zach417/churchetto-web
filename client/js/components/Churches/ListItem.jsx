@@ -35,7 +35,6 @@ var ListItem = React.createClass({
 		return (
 				<div
           style={style}
-          key={this.props.key}
           onClick={this.handleClick_Li}
           onMouseEnter={this.handleMouseEnter_Li}
           onMouseLeave={this.handleMouseLeave_Li}>

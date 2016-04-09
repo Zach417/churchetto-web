@@ -47,6 +47,9 @@ var Info = React.createClass({
 
   getMemberOptions: function () {
     var result = []
+    if (!this.props.church || !this.props.church.members) {
+      return result;
+    }
     for (var i = 0; i < this.props.church.members.length; i++) {
       result.push({
         value: this.props.church.members[i]._id,

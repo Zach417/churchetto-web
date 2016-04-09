@@ -32,6 +32,10 @@ var Contribution = React.createClass({
       this.contribution.date = moment(this.contribution.date).format("MM/DD/YYYY");
     }
 
+    if (this.contribution.amount) {
+      this.contribution.amount = "$" + this.contribution.amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    }
+
     if (!this.contribution._id && !this.contribution.date) {
       this.contribution.date = moment().format("MM/DD/YYYY");
     }
@@ -51,12 +55,16 @@ var Contribution = React.createClass({
     }
     this.contribution = resolveSubDocuments(nextProps.contribution);
 
-    if (nextProps.contribution.date && moment(nextProps.contribution.date).isValid()) {
-      this.contribution.date = moment(nextProps.contribution.date).format("MM/DD/YYYY");
+    if (this.contribution.date && moment(this.contribution.date).isValid()) {
+      this.contribution.date = moment(this.contribution.date).format("MM/DD/YYYY");
     }
 
-    if (!nextProps.contribution._id && !nextProps.contribution.date) {
-      nextProps.contribution.date = moment().format("MM/DD/YYYY");
+    if (this.contribution.amount) {
+      this.contribution.amount = "$" + this.contribution.amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    }
+
+    if (!this.contribution._id && !this.contribution.date) {
+      this.contribution.date = moment().format("MM/DD/YYYY");
     }
 
     this.setState({

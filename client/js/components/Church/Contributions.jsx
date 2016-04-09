@@ -76,11 +76,17 @@ var Contribution = React.createClass({
           member = doc.firstName + " " + doc.lastName;
         }
       }.bind(this));
+      var amount = "";
+      if (this.props.church.contributions[i].amount) {
+        amount = "$" + parseFloat(this.props.church.contributions[i].amount)
+          .toFixed(2)
+          .replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+      }
       result.push({
         "contributionId": this.props.church.contributions[i]._id,
         "churchId": this.props.church._id,
         "Date": date,
-        "Amount": this.props.church.contributions[i].amount,
+        "Amount": amount,
         "Member": member,
       });
     }

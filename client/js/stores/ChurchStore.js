@@ -20,6 +20,21 @@ Store.getSubDocFromChurch = function (church, subDoc, id) {
 	return {};
 }
 
+function removeMoneyFormat (church) {
+	if (church.contributions) {
+		church.contributions.map(function (contribution, i) {
+			if (contribution.amount) {
+				church.contributions[i].amount = parseFloat (
+					contribution.amount
+						.toString()
+						.replace(new RegExp('\\$', 'g'), '')
+						.replace(new RegExp(',', 'g'), '')
+				);
+			}
+		});
+	}
+}
+
 function setDatesToUtc (church) {
 	if (church.events) {
 		for (var i = 0; i < church.events.length; i++) {
@@ -62,6 +77,7 @@ AppDispatcher.register(function(action) {
 
 		case Constants.CHURCH_CREATE:
 			setDatesToUtc(action.doc);
+			removeMoneyFormat(action.doc);
 			Store.insert(action.doc, function(data) {
 				Store.emitChange();
 			});
@@ -69,6 +85,7 @@ AppDispatcher.register(function(action) {
 
 		case Constants.CHURCH_UPDATE:
 			setDatesToUtc(action.doc);
+			removeMoneyFormat(action.doc);
 			Store.update(action.doc, function(data) {
 				Store.emitChange();
 			});

@@ -1,7 +1,7 @@
 var React = require('react');
 var moment = require('moment');
 var $ = require('jquery');
-var LineChart = require('react-chartjs').Line;
+var LineChart = require('react-chartjs').Bar;
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var EntitySubSummary = require('./EntitySubSummary.jsx');
@@ -77,7 +77,7 @@ var Contributions = React.createClass({
 
     var datasets = [];
     datasets[0] = {
-      fillColor: "rgba(204,204,204,0.2)",
+      fillColor: "rgba(204,204,204,0.8)",
       strokeColor: "#666666",
       pointColor: "#f4f4f4",
       pointStrokeColor: "#666666",
@@ -86,7 +86,7 @@ var Contributions = React.createClass({
       data: []
     }
     datasets[1] = {
-      fillColor: "rgba(230,230,230,0.2)",
+      fillColor: "rgba(230,230,230,0.8)",
       strokeColor: "#666666",
       pointColor: "#f4f4f4",
       pointStrokeColor: "#666666",
@@ -126,6 +126,7 @@ var Contributions = React.createClass({
   getChartOptions: function () {
     return {
       responsive: true,
+      scaleBeginAtZero: false,
       scaleShowGridLines : true,
       scaleGridLineColor : "rgba(0,0,0,.05)",
       scaleGridLineWidth : 1,
