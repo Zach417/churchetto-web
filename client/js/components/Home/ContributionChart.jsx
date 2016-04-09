@@ -33,16 +33,16 @@ var Contributions = React.createClass({
     if (!this.state.churches || this.state.churches.length === 0) {
       return (
         <div id="contributions-chart-container" style={{textAlign:"center"}}>
-          <h1 style={{margin:"5px 0"}}>{"Contributions"}</h1>
+          <h1 style={{margin:"5px 0"}}>{"Total Contributions"}</h1>
         </div>
       )
     }
     return (
       <div id="contributions-chart-container" style={{textAlign:"center"}}>
-        <h1 style={{margin:"5px 0"}}>{"Contributions"}</h1>
+        <h1 style={{margin:"5px 0"}}>{"Total Contributions"}</h1>
         <LineChart
           id="contributions-chart"
-          data={this.getChartData()}
+          data={this.getChartData("month")}
           options={this.getChartOptions()}
           width="450"
           height="337.5" />
@@ -50,23 +50,28 @@ var Contributions = React.createClass({
     )
   },
 
-  getChartData: function () {
+  getChartData: function (group) {
     var result = {
       labels: [],
       datasets: []
     };
 
+    var format = "MMMM YY";
+    if (group == "year") {
+      format = "YYYY";
+    }
+
     // set labels
     this.state.churches.map(function (church, i) {
       church.contributions.map(function (contribution, j) {
         var exists = false;
-        for (var k = 0; k < result.labels; k++) {
-          if (result.labels[k] === moment(contribution.date).format("MM/DD/YYYY")) {
+        for (var k = 0; k < result.labels.length; k++) {
+          if (result.labels[k] === moment(contribution.date).format(format)) {
             exists = true;
           }
         }
         if (!exists) {
-          result.labels.push(moment(contribution.date).format("MM/DD/YYYY"));
+          result.labels.push(moment(contribution.date).format(format));
         }
       });
     });
@@ -107,13 +112,18 @@ var Contributions = React.createClass({
         result.datasets[i] = datasets[i];
         result.datasets[i].label = label;
       }
+
       church.contributions.map(function (contribution, j) {
         result.labels.map(function (label, k) {
           if (!result.datasets[i].data[k]) {
-            if (label === moment(contribution.date).format("MM/DD/YYYY")) {
+            if (label === moment(contribution.date).format(format)) {
               result.datasets[i].data[k] = contribution.amount;
             } else {
               result.datasets[i].data[k] = null;
+            }
+          } else {
+            if (label === moment(contribution.date).format(format)) {
+              result.datasets[i].data[k] = result.datasets[i].data[k] + contribution.amount;
             }
           }
         });

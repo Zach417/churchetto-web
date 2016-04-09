@@ -7,6 +7,7 @@ var Style = require('./Style.jsx');
 var Jumbotron = require('./Jumbotron.jsx');
 var Mumbotron = require('./Mumbotron.jsx');
 var Gumbotron = require('./Gumbotron.jsx');
+var Tumbotron = require('./Tumbotron.jsx');
 
 var HomePage = React.createClass({
   componentDidMount: function () {
@@ -22,8 +23,9 @@ var HomePage = React.createClass({
   			<Gumbotron />
         <Mumbotron />
 				<Jumbotron
-          heading={"Sign up is simple and easy"}
-          subHeading={""} />
+          heading={"Churchetto is 100% web-based"}
+          subHeading={"no downloads and no installations"} />
+        <Tumbotron />
       </div>
     );
   },

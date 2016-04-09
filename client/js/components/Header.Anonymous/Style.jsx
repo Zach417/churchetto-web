@@ -9,12 +9,14 @@ module.exports = {
     width: "100%",
     position: "fixed",
     zIndex: "1",
+    borderBottom: "1px solid #ccc",
   },
   navigationMobile: {
     backgroundColor: "#f4f4f4",
     color: "#3b3a36",
     display: "inline-block",
     width: "100%",
+    borderBottom: "1px solid #ccc",
   },
   logo: {
     height: "60px",

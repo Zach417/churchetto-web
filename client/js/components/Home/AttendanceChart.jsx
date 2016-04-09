@@ -33,16 +33,16 @@ var Attendance = React.createClass({
     if (!this.state.churches || this.state.churches.length === 0) {
       return (
         <div id="attendance-chart-container" style={{textAlign:"center"}}>
-          <h1 style={{margin:"5px 0"}}>{"Attendance"}</h1>
+          <h1 style={{margin:"5px 0"}}>{"Average Attendance"}</h1>
         </div>
       )
     }
     return (
       <div id="attendance-chart-container" style={{textAlign:"center"}}>
-        <h1 style={{margin:"5px 0"}}>{"Attendance"}</h1>
+        <h1 style={{margin:"5px 0"}}>{"Average Attendance"}</h1>
         <LineChart
           id="attendance-chart"
-          data={this.getChartData()}
+          data={this.getChartData("month")}
           options={this.getChartOptions()}
           width="450"
           height="337.5" />
@@ -50,23 +50,28 @@ var Attendance = React.createClass({
     )
   },
 
-  getChartData: function () {
+  getChartData: function (group) {
     var result = {
       labels: [],
       datasets: []
     };
 
+    var format = "MMMM YY";
+    if (group == "year") {
+      format = "YYYY";
+    }
+
     // set labels
     this.state.churches.map(function (church, i) {
       church.attendance.map(function (attendance, j) {
         var exists = false;
-        for (var k = 0; k < result.labels; k++) {
-          if (result.labels[k] === moment(attendance.date).format("MM/DD/YYYY")) {
+        for (var k = 0; k < result.labels.length; k++) {
+          if (result.labels[k] === moment(attendance.date).format(format)) {
             exists = true;
           }
         }
         if (!exists) {
-          result.labels.push(moment(attendance.date).format("MM/DD/YYYY"));
+          result.labels.push(moment(attendance.date).format(format));
         }
       });
     });
@@ -107,13 +112,23 @@ var Attendance = React.createClass({
         result.datasets[i] = datasets[i];
         result.datasets[i].label = label;
       }
+      var runningTotals = {};
+      var runningCounts = {};
       church.attendance.map(function (attendance, j) {
         result.labels.map(function (label, k) {
           if (!result.datasets[i].data[k]) {
-            if (label === moment(attendance.date).format("MM/DD/YYYY")) {
+            if (label === moment(attendance.date).format(format)) {
               result.datasets[i].data[k] = attendance.count;
+              runningTotals[label] = attendance.count;
+              runningCounts[label] = 1;
             } else {
               result.datasets[i].data[k] = null;
+            }
+          } else {
+            if (label === moment(attendance.date).format(format)) {
+              runningTotals[label] = runningTotals[label] + attendance.count;
+              runningCounts[label]++;
+              result.datasets[i].data[k] = (runningTotals[label] / runningCounts[label]);
             }
           }
         });

@@ -28,4 +28,8 @@ router.get('/mkt/church-members', function (req, res, next) {
 	res.sendFile(path.join(__dirname, _root, '/mkt/church-members.png'));
 });
 
+router.get('/mkt/church-contributions', function (req, res, next) {
+	res.sendFile(path.join(__dirname, _root, '/mkt/church-contributions.png'));
+});
+
 module.exports = router;

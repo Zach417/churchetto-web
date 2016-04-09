@@ -26,18 +26,17 @@ var Gumbotron = React.createClass({
         <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
           style={{padding:"0"}}>
           <div className="col-lg-8 col-md-8 hidden-sm hidden-xs">
-            <img src="/img/mkt/volunteering" style={{width:"100%"}} />
+            <img src="/img/mkt/church-members" style={{width:"100%"}} />
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <h1 style={{margin:"0"}}>Find Volunteers</h1>
+            <h1 style={{margin:"0"}}>Manage members</h1>
             <p>
-              Use email workflows to organize events and
-              fill volunteer positions with a click of a
-              button.
+              {"Effortlessly keep up with your members' most "}
+              {"important details."}
             </p>
           </div>
           <div className="hidden-lg hidden-md col-sm-12 col-xs-12">
-            <img src="/img/mkt/volunteering" style={{width:"100%"}} />
+            <img src="/img/mkt/church-members" style={{width:"100%"}} />
           </div>
         </div>
         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
@@ -45,14 +44,14 @@ var Gumbotron = React.createClass({
         <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
           style={{padding:"0"}}>
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <h1 style={{margin:"0"}}>Manage your data</h1>
+            <h1 style={{margin:"0"}}>Track contributions</h1>
             <p>
-              Keeping up with members, groups, and events
-              at your church has never been easier.
+              Follow contribution patterns over time
+              to gain key insight into your congregation.
             </p>
           </div>
           <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <img src="/img/mkt/church-members" style={{width:"100%"}} />
+            <img src="/img/mkt/church-contributions" style={{width:"100%"}} />
           </div>
         </div>
       </div>
