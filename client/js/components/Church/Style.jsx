@@ -8,7 +8,7 @@ module.exports = {
     fontFamily: "'Rokkitt', serif",
     textAlign: "center",
     padding: "150px 0",
-    margin: "0",
+    margin: "0px",
   },
   sectionContainer: {
     backgroundColor: "#e1e3e4",
@@ -17,7 +17,7 @@ module.exports = {
     paddingBottom: "20px",
   },
   navigationContainer: {
-    padding: "0",
+    padding: "0px",
     height: "56px",
   },
   detailColumn: {

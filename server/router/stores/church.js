@@ -57,6 +57,26 @@ var readFilterSchema = {
         },
       },
     },
+    "contributions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+          },
+          "memberId": {
+            "type": "string",
+          },
+          "date": {
+            "type": "string",
+          },
+          "amount": {
+            "type": "string",
+          },
+        },
+      },
+    },
     "attendance": {
       "type": "array",
       "items": {
@@ -354,6 +374,26 @@ var writeFilterSchema = {
         },
         "zip": {
           "type": "string",
+        },
+      },
+    },
+    "contributions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+          },
+          "memberId": {
+            "type": "string",
+          },
+          "date": {
+            "type": "string",
+          },
+          "amount": {
+            "type": "string",
+          },
         },
       },
     },

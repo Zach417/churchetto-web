@@ -5,6 +5,7 @@ var Navigation = require('./Navigation.jsx');
 var Info = require('./Info.jsx');
 var Contact = require('./Contact.jsx');
 var Attendances = require('./Attendances.jsx');
+var Contributions = require('./Contributions.jsx');
 var Members = require('./Members.jsx');
 var Campuses = require('./Campuses.jsx');
 var Groups = require('./Groups.jsx');
@@ -18,6 +19,7 @@ function resolveSubDocuments (church) {
   if (!church.phone) { church.phone = {} }
   if (!church.fax) { church.fax = {} }
   if (!church.address) { church.address = {} }
+  if (!church.contributions) { church.contributions = [] }
   if (!church.attendance) { church.attendance = [] }
   if (!church.members) { church.members = [] }
   if (!church.campuses) { church.campuses = [] }
@@ -101,6 +103,10 @@ var Church = React.createClass({
     } else if (path === basePath + "/attendance") {
       return (
         <Attendances church={this.state.church} onChange={this.handleChange_Child} />
+      )
+    } else if (path === basePath + "/contribution") {
+      return (
+        <Contributions church={this.state.church} onChange={this.handleChange_Child} />
       )
     } else if (path === basePath + "/member") {
       return (

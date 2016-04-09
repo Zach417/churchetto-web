@@ -8,6 +8,7 @@ var Event = require('./Event.jsx');
 var Campuses = require('./Campuses.jsx');
 var Attendance = require('./Attendance.jsx');
 var AttendanceChart = require('./AttendanceChart.jsx');
+var ContributionChart = require('./ContributionChart.jsx');
 var Group = require('./Group.jsx');
 var Member = require('./Member.jsx');
 
@@ -22,6 +23,8 @@ var HomePage = React.createClass({
         <div className="row-fluid">
           <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <AttendanceChart />
+            <div style={{marginTop:"20px"}} />
+            <ContributionChart />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <Church />

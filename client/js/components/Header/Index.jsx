@@ -13,7 +13,7 @@ var Header = React.createClass({
 			<div style={Style.headerContainer}>
 				<div style={Style.navigation} className="hidden-sm hidden-xs">
 					<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
-						style={{padding:"0"}}>
+						style={{padding:"0px"}}>
 						<Link to="/" style={Style.title}>{"Churchetto"}</Link>
 						<Link to="/">
 							<img style={Style.logo} src="/img/logo-icon" onClick={this.handleClick_Logo} />
@@ -26,7 +26,7 @@ var Header = React.createClass({
 				</div>
 				<div style={Style.navigationMobile}>
 					<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
-						style={{padding:"0"}}>
+						style={{padding:"0px"}}>
 						<Link to="/" style={Style.title}>{"Churchetto"}</Link>
 						<Link to="/">
 							<img style={Style.logo} src="/img/logo-icon" onClick={this.handleClick_Logo} />

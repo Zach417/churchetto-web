@@ -39,7 +39,7 @@ var Churches = React.createClass({
         <div style={Style.pageContainer}>
     			<div className="row-fluid" style={Style.jumbotron} onClick={this.handleClick_AddChurch}>
     				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-              style={{padding:"0"}}>
+              style={{padding:"0px"}}>
               <img src="/img/wait" />
             </div>
           </div>
@@ -50,30 +50,30 @@ var Churches = React.createClass({
     return (
       <div style={Style.componentContainer}>
         <div className="row-fluid">
-          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-8" style={{padding:"0"}}>
+          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-8" style={{padding:"0px"}}>
             <h1 style={{margin:"5px 0"}}>Churches</h1>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-4" style={{padding:"0"}}>
+          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-4" style={{padding:"0px"}}>
             <div style={{float:"right"}}>
               <ButtonPrimary label={"New"} onClick={this.handleClick_AddChurch} />
             </div>
           </div>
         </div>
         <div className="row-fluid" style={{display:"none"}}>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0px"}}>
             <Input
               type={"text"}
               placeholder={"Search..."}
               onChange={this.handleChange_Search} />
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0px"}}>
             <div style={{float:"right",padding:"5px 0"}}>
               <span>Count: {this.state.churches.length}</span>
             </div>
           </div>
         </div>
         <div className="row-fluid">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0px"}}>
             {this.getChurches()}
           </div>
         </div>

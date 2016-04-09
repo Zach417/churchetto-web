@@ -117,7 +117,7 @@ var Attendance = React.createClass({
       church.attendance.map(function (attendance, j) {
         result.labels.map(function (label, k) {
           if (!result.datasets[i].data[k]) {
-            if (result.labels[k] === moment(attendance.date).format("MM/DD/YYYY")) {
+            if (label === moment(attendance.date).format("MM/DD/YYYY")) {
               result.datasets[i].data[k] = attendance.count;
             } else {
               result.datasets[i].data[k] = null;

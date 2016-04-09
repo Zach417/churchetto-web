@@ -12,7 +12,7 @@ var Church = React.createClass({
       return (
         <div className="container-fluid" style={Style.navigationContainer}>
           <div className="row-fluid">
-            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0px"}}>
               <ButtonSecondaryLarge label={"Info"} onClick={this.handleClick_Info} />
             </div>
         </div>
@@ -24,10 +24,10 @@ var Church = React.createClass({
         <div
           id={"church-" + this.props.id + "-navigation"}
           className="row-fluid">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0px"}}>
             <ButtonSecondaryLarge label={"Info"} onClick={this.handleClick_Info} />
             <ButtonSecondaryLarge label={"Members"} onClick={this.handleClick_Members} />
-            <ButtonSecondaryLarge label={"Giving"} onClick={this.handleClick_Members} />
+            <ButtonSecondaryLarge label={"Giving"} onClick={this.handleClick_Contribution} />
             <ButtonSecondaryLarge label={"Attendance"} onClick={this.handleClick_Attendance} />
             <ButtonSecondaryLarge label={"Events"} onClick={this.handleClick_Events} />
             <ButtonSecondaryLarge label={". . ."} onClick={this.handleClick_More} />
@@ -37,7 +37,7 @@ var Church = React.createClass({
         id={"church-" + this.props.id + "-sub-navigation"}
         style={{display:"none"}}
         className="row-fluid">
-        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0"}}>
+        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{padding:"0px"}}>
           <ButtonSecondaryLarge label={"Campuses"} onClick={this.handleClick_Campuses} />
           <ButtonSecondaryLarge label={"Groups"} onClick={this.handleClick_Groups} />
           <ButtonSecondaryLarge label={". . ."} onClick={this.handleClick_More} />
@@ -52,6 +52,14 @@ var Church = React.createClass({
       browserHistory.push("/church/" + this.props.id + "/info");
     } else {
       browserHistory.push("/church/create/info");
+    }
+  },
+
+  handleClick_Contribution: function () {
+    if (this.props.id) {
+      browserHistory.push("/church/" + this.props.id + "/contribution");
+    } else {
+      browserHistory.push("/church/create/contribution");
     }
   },
 

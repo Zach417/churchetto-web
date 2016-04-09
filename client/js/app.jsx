@@ -9,6 +9,7 @@ var IndexRoute = require('react-router').IndexRoute;
 
 var Church = require('./components/Church/Page.jsx');
 var ChurchInfo = require('./components/Church/Info.jsx');
+var ChurchContributions = require('./components/Church/Contributions.jsx');
 var ChurchAttendances = require('./components/Church/Attendances.jsx');
 var ChurchMembers = require('./components/Church/Members.jsx');
 var ChurchCampuses = require('./components/Church/Campuses.jsx');
@@ -29,6 +30,8 @@ var EventRequestVolunteers = require('./components/Event/RequestVolunteers.jsx')
 var EventEmail = require('./components/Event/Email.jsx');
 var Attendance = require('./components/Attendance/Page.jsx');
 var AttendanceCreate = require('./components/Attendance/Create.jsx');
+var Contribution = require('./components/Contribution/Page.jsx');
+var ContributionCreate = require('./components/Contribution/Create.jsx');
 var Member = require('./components/Member/Page.jsx');
 var MemberInfo = require('./components/Member/Info.jsx');
 var MemberContact = require('./components/Member/Contact.jsx');
@@ -88,6 +91,7 @@ var Routes = (
       <Route path=":id" component={Church}>
 				<IndexRoute component={ChurchInfo} />
 				<Route path="info" component={ChurchInfo} />
+				<Route path="contribution" component={ChurchContributions} />
 				<Route path="attendance" component={ChurchAttendances} />
 				<Route path="member" component={ChurchMembers}/>
 				<Route path="group" component={ChurchGroups}/>
@@ -95,6 +99,8 @@ var Routes = (
 				<Route path="campus" component={ChurchCampuses}/>
 			</Route>
     </Route>
+		<Route path="church/:id/contribution/create" component={ContributionCreate} />
+		<Route path="church/:id/contribution/:mid" component={Contribution} />
 		<Route path="church/:id/attendance/create" component={AttendanceCreate} />
 		<Route path="church/:id/attendance/:mid" component={Attendance} />
 		<Route path="church/:id/group/create" component={GroupCreate}>
