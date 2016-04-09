@@ -23,3 +23,10 @@ app.use('/', require('./server/router'));
 
 app.listen(80);
 console.log('Churchetto Web on port 80');
+
+/*
+  1.  Reporting
+  2.  CRM/Membership Management
+  3.  Contribution tracking
+  4.  Customization
+*/

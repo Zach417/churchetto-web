@@ -1,22 +1,22 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
-var Constants = require('../constants/CampusConstants.js');
+var Constants = require('../constants/ReportConstants.js');
 
 var Actions = {
 	update: function(doc) {
 		AppDispatcher.dispatch({
-			actionType: Constants.CAMPUS_UPDATE,
+			actionType: Constants.REPORT_UPDATE,
 			doc: doc
 		});
 	},
 	create: function(doc) {
 		AppDispatcher.dispatch({
-			actionType: Constants.CAMPUS_CREATE,
+			actionType: Constants.REPORT_CREATE,
 			doc: doc
 		});
 	},
 	destroy: function(doc) {
 		AppDispatcher.dispatch({
-			actionType: Constants.CAMPUS_DESTROY,
+			actionType: Constants.REPORT_DESTROY,
 			doc: doc
 		});
 	},

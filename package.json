@@ -7,7 +7,8 @@
     "start": "node index.js",
     "build": "browserify -t reactify client/js/app.anonymous.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.anonymous.js && browserify -t reactify client/js/app.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.js",
     "build-anonymous": "browserify -t reactify client/js/app.anonymous.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.anonymous.js",
-    "build-authorized": "browserify -t reactify client/js/app.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.js"
+    "build-authorized": "browserify -t reactify client/js/app.jsx -t envify --NODE_ENV development | uglifyjs --compress --mangle > client/build/bundle.js",
+    "build-au": "browserify -t reactify client/js/app.jsx  > client/build/bundle.js"
   },
   "repository": {
     "type": "git",
