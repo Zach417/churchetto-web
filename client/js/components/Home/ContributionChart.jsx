@@ -29,14 +29,6 @@ var Contributions = React.createClass({
     }.bind(this));
   },
 
-  componentDidMount: function () {
-    $("canvas").css({
-      "max-width": "100%",
-      "width": "",
-      "height": "",
-    });
-  },
-
   render: function () {
     if (!this.state.churches || this.state.churches.length === 0) {
       return (
@@ -49,6 +41,7 @@ var Contributions = React.createClass({
       <div id="contributions-chart-container" style={{textAlign:"center"}}>
         <h1 style={{margin:"5px 0"}}>{"Contributions"}</h1>
         <LineChart
+          id="contributions-chart"
           data={this.getChartData()}
           options={this.getChartOptions()}
           width="450"
@@ -132,6 +125,7 @@ var Contributions = React.createClass({
 
   getChartOptions: function () {
     return {
+      responsive: true,
       scaleShowGridLines : true,
       scaleGridLineColor : "rgba(0,0,0,.05)",
       scaleGridLineWidth : 1,

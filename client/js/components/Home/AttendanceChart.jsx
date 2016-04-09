@@ -29,14 +29,6 @@ var Attendance = React.createClass({
     }.bind(this));
   },
 
-  componentDidMount: function () {
-    $("canvas").css({
-      "max-width": "100%",
-      "width": "",
-      "height": "",
-    });
-  },
-
   render: function () {
     if (!this.state.churches || this.state.churches.length === 0) {
       return (
@@ -49,6 +41,7 @@ var Attendance = React.createClass({
       <div id="attendance-chart-container" style={{textAlign:"center"}}>
         <h1 style={{margin:"5px 0"}}>{"Attendance"}</h1>
         <LineChart
+          id="attendance-chart"
           data={this.getChartData()}
           options={this.getChartOptions()}
           width="450"
@@ -132,6 +125,7 @@ var Attendance = React.createClass({
 
   getChartOptions: function () {
     return {
+      responsive: true,
       scaleShowGridLines : true,
       scaleGridLineColor : "rgba(0,0,0,.05)",
       scaleGridLineWidth : 1,
