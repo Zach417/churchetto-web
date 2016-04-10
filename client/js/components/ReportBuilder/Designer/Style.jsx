@@ -1,5 +1,10 @@
 module.exports = {
   container: {
-    backgroundColor: "#ffffff",
+    position: "relative",
+  },
+  designer: {
+    position: "absolute",
+    top: "0px",
+    left: "175px",
   },
 }

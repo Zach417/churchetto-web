@@ -1,8 +1,13 @@
 module.exports = {
-  container: {
+  page: {
     color: "#3b3a36",
-    minHeight: "calc(100% - 65px)",
+    height: "100%",
     fontFamily: "'Rokkitt', serif",
     margin: "20px 0",
+  },
+  container: {
+    width: "100%",
+    height: "100%",
+    overflowX: "scroll",
   },
 }

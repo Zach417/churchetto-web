@@ -4,8 +4,8 @@ module.exports = {
     backgroundColor: "#fff",
   },
   size: {
-    x: 1654,
-    y: 2339,
+    x: "8.27in",
+    y: "11in",
   },
   segments: {
     page: {
@@ -79,7 +79,7 @@ module.exports = {
         entity: "church",
         attribute: "name",
         header: [{
-          name: "GH1",
+          name: "G1H1",
           style: {
             height: "20px",
           },
@@ -95,7 +95,7 @@ module.exports = {
             value: "{report.data.church.name}",
           }],
         },{
-          name: "GH2",
+          name: "G1H2",
           style: {
             height: "20px",
           },
@@ -106,7 +106,7 @@ module.exports = {
               textAlign: "left",
               top: "0px",
               left: "15px",
-              width: "100%",
+              width: "200px",
               height: "20px",
             },
             value: "Date",
@@ -117,7 +117,7 @@ module.exports = {
               textAlign: "left",
               top: "0px",
               left: "300px",
-              width: "100%",
+              width: "200px",
               height: "20px",
             },
             value: "Count",
@@ -135,7 +135,7 @@ module.exports = {
               textAlign: "left",
               top: "0px",
               left: "300px",
-              width: "100%",
+              width: "200px",
               height: "20px",
             },
             value: "{report.data.church.attendance.count.sum}",
@@ -153,7 +153,7 @@ module.exports = {
             textAlign: "left",
             top: "0px",
             left: "15px",
-            width: "300px",
+            width: "200px",
             height: "20px",
           },
           value: "{report.data.church.attendance.date}",
@@ -163,7 +163,7 @@ module.exports = {
             textAlign: "left",
             top: "0px",
             left: "300px",
-            width: "300px",
+            width: "200px",
             height: "20px",
           },
           value: "{report.data.church.attendance.count}",

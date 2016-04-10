@@ -34,7 +34,7 @@ var Page = React.createClass({
 
   render: function () {
     return (
-      <div style={Style.container}
+      <div style={Style.page}
         className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <Report
           report={this.state.report}
