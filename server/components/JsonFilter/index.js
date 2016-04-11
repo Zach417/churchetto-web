@@ -27,7 +27,6 @@ module.exports = function(schema, doc) {
           }
         } else if (sp.type == 'objectId') {
           if (doc[key] == "") {
-            console.log(results[key]);
             results[key] = undefined;
           } else {
             results[key] = doc[key];

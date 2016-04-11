@@ -10,6 +10,14 @@ var Segment = React.createClass({
     }
   },
 
+  componentWillMount: function () {
+    this.segment = this.props.segment;
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    this.segment = nextProps.segment;
+  },
+
   render: function () {
     return (
       <div
@@ -28,11 +36,13 @@ var Segment = React.createClass({
 
   getReportObjects: function () {
     return this.props.segment.objects.map(function (doc, i) {
+      doc.segment = this.props.segment;
       return (
         <ReportObject
           key={i}
-          report={this.props.report}
-          reportObject={doc} />
+          segment={this.props.segment}
+          reportObject={doc}
+          onChange={this.handleChange} />
       )
     }.bind(this));
   },
@@ -55,24 +65,24 @@ var Segment = React.createClass({
 
   getBodyStyle: function () {
     var result = $.extend(true, {}, Style.body);
-    // give it defaults of report
-    if (this.props.report.style) {
-      for (var key in this.props.report.style) {
-        if (!this.props.report.style.hasOwnProperty(key)) continue;
-        result[key] = this.props.report.style[key];
-      }
-    }
-    // overwrite with any segment-specific styles
     if (this.props.segment.style) {
       for (var key in this.props.segment.style) {
         if (!this.props.segment.style.hasOwnProperty(key)) continue;
         result[key] = this.props.segment.style[key];
       }
     }
-    result.width = this.props.report.size.x;
     result.position = "relative";
     result.overflow = "hidden";
     return result;
+  },
+
+  handleChange: function (object) {
+    this.segment.objects.map(function (doc, i) {
+      if (doc.index === object) {
+        this.segment.objects[i] = object;
+      }
+    }.bind(this));
+    this.props.onChange(this.segment);
   },
 
   handleMouseEnter_Container: function () {

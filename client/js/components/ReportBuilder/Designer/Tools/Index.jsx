@@ -7,6 +7,7 @@ var ReportBuilder = React.createClass({
     return (
       <div style={Style.container}>
         <h3 style={Style.header}>Tools</h3>
+        <Button label={"Save"} onClick={this.props.onSave} />
         <Button label={"Objects"} />
         <Button label={"Fields"} />
         <Button label={"Equations"} />

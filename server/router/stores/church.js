@@ -6,55 +6,31 @@ var readFilterSchema = {
   "title": "User Schema",
   "type": "object",
   "properties": {
-    "_id": {
-      "type": "string",
-    },
-    "name": {
-      "type": "string",
-    },
-    "website": {
-      "type": "string",
-    },
-    "missionStatement": {
-      "type": "string",
-    },
-    "visionStatement": {
-      "type": "string",
-    },
+    "_id": { "type":"string" },
+    "name": { "type":"string" },
+    "website": { "type":"string" },
+    "missionStatement": { "type":"string" },
+    "visionStatement": { "type":"string" },
     "phone": {
       "type": "object",
       "properties": {
-        "main": {
-          "type": "string",
-        },
+        "main": { "type":"string" },
       },
     },
     "fax": {
       "type": "object",
       "properties": {
-        "main": {
-          "type": "string",
-        },
+        "main": { "type":"string" },
       },
     },
     "address": {
       "type": "object",
       "properties": {
-        "line1": {
-          "type": "string",
-        },
-        "line2": {
-          "type": "string",
-        },
-        "city": {
-          "type": "string",
-        },
-        "state": {
-          "type": "string",
-        },
-        "zip": {
-          "type": "string",
-        },
+        "line1": { "type":"string" },
+        "line2": { "type":"string" },
+        "city": { "type":"string" },
+        "state": { "type":"string" },
+        "zip": { "type":"string" },
       },
     },
     "contributions": {
@@ -62,18 +38,10 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string",
-          },
-          "memberId": {
-            "type": "string",
-          },
-          "date": {
-            "type": "string",
-          },
-          "amount": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "memberId": { "type":"string" },
+          "date": { "type":"string" },
+          "amount": { "type":"string" },
         },
       },
     },
@@ -82,15 +50,9 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string",
-          },
-          "date": {
-            "type": "string",
-          },
-          "count": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "date": { "type":"string" },
+          "count": { "type":"string" },
         },
       },
     },
@@ -99,71 +61,33 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "firstName": {
-            "type": "string",
-          },
-          "lastName": {
-            "type": "string",
-          },
-          "title": {
-            "type": "string",
-          },
-          "nickName": {
-            "type": "string",
-          },
-          "dateOfBirth": {
-            "type": "date",
-          },
-          "baptizedOn": {
-            "type": "date",
-          },
-          "occupation": {
-            "type": "string",
-          },
-          "employer": {
-            "type": "string",
-          },
-          "gender": {
-            "type": "string",
-          },
-          "email": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "firstName": { "type":"string" },
+          "lastName": { "type":"string" },
+          "title": { "type":"string" },
+          "nickName": { "type":"string" },
+          "dateOfBirth": { "type":"date" },
+          "baptizedOn": { "type":"date" },
+          "occupation": { "type":"string" },
+          "employer": { "type":"string" },
+          "gender": { "type":"string" },
+          "email": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {
-              "main": {
-                "type": "string",
-              },
-              "cell": {
-                "type": "string",
-              },
-              "business": {
-                "type": "string",
-              },
+              "main": { "type":"string" },
+              "cell": { "type":"string" },
+              "business": { "type":"string" },
             },
           },
           "address": {
             "type": "object",
             "properties": {
-              "line1": {
-                "type": "string",
-              },
-              "line2": {
-                "type": "string",
-              },
-              "city": {
-                "type": "string",
-              },
-              "state": {
-                "type": "string",
-              },
-              "zip": {
-                "type": "string",
-              },
+              "line1": { "type":"string" },
+              "line2": { "type":"string" },
+              "city": { "type":"string" },
+              "state": { "type":"string" },
+              "zip": { "type":"string" },
             },
           },
         },
@@ -174,49 +98,29 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "name": {
-            "type": "string",
-          },
-          "website": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "name": { "type":"string" },
+          "website": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {
-              "main": {
-                "type": "string",
-              },
+              "main": { "type":"string" },
             },
           },
           "fax": {
             "type": "object",
             "properties": {
-              "main": {
-                "type": "string",
-              },
+              "main": { "type":"string" },
             },
           },
           "address": {
             "type": "object",
             "properties": {
-              "line1": {
-                "type": "string",
-              },
-              "line2": {
-                "type": "string",
-              },
-              "city": {
-                "type": "string",
-              },
-              "state": {
-                "type": "string",
-              },
-              "zip": {
-                "type": "string",
-              },
+              "line1": { "type":"string" },
+              "line2": { "type":"string" },
+              "city": { "type":"string" },
+              "state": { "type":"string" },
+              "zip": { "type":"string" },
             },
           },
         },
@@ -227,38 +131,20 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "name": {
-            "type": "string",
-          },
-          "description": {
-            "type": "string",
-          },
-          "starts": {
-            "type": "date",
-          },
-          "ends": {
-            "type": "date",
-          },
-          "isAllDay": {
-            "type": "bool",
-          },
-          "group": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "name": { "type":"string" },
+          "description": { "type":"string" },
+          "starts": { "type":"date" },
+          "ends": { "type":"date" },
+          "isAllDay": { "type": "bool" },
+          "group": { "type":"string" },
           "attendees": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "type":"objectId",
-                },
-                "checkedInDate": {
-                  "type":"date",
-                },
+                "memberId": { "type":"objectId" },
+                "checkedInDate": { "type":"date" },
               },
             },
           },
@@ -267,12 +153,8 @@ var readFilterSchema = {
             "items": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "type":"objectId",
-                },
-                "role": {
-                  "type":"string",
-                },
+                "memberId": { "type":"objectId" },
+                "role": { "type":"string" },
               },
             },
           },
@@ -284,44 +166,26 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "name": {
-            "type": "string",
-          },
-          "description": {
-            "type": "string",
-          },
-          "type": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "name": { "type":"string" },
+          "description": { "type":"string" },
+          "type": { "type":"string" },
           "members": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "type":"string",
-                },
+                "memberId": { "type":"string" },
               },
             },
           },
         },
       }
     },
-    "createdBy": {
-      "type": "string",
-    },
-    "createdOn": {
-      "type": "date",
-    },
-    "modifiedBy": {
-      "type": "string",
-    },
-    "modifiedOn": {
-      "type": "date",
-    },
+    "createdBy": { "type":"string" },
+    "createdOn": { "type": "date" },
+    "modifiedBy": { "type":"string" },
+    "modifiedOn": { "type": "date" },
   },
 }
 
@@ -329,52 +193,30 @@ var writeFilterSchema = {
   "title": "User Schema",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-    },
-    "website": {
-      "type": "string",
-    },
-    "missionStatement": {
-      "type": "string",
-    },
-    "visionStatement": {
-      "type": "string",
-    },
+    "name": { "type":"string" },
+    "website": { "type":"string" },
+    "missionStatement": { "type":"string" },
+    "visionStatement": { "type":"string" },
     "phone": {
       "type": "object",
       "properties": {
-        "main": {
-          "type": "string",
-        },
+        "main": { "type":"string" },
       },
     },
     "fax": {
       "type": "object",
       "properties": {
-        "main": {
-          "type": "string",
-        },
+        "main": { "type":"string" },
       },
     },
     "address": {
       "type": "object",
       "properties": {
-        "line1": {
-          "type": "string",
-        },
-        "line2": {
-          "type": "string",
-        },
-        "city": {
-          "type": "string",
-        },
-        "state": {
-          "type": "string",
-        },
-        "zip": {
-          "type": "string",
-        },
+        "line1": { "type":"string" },
+        "line2": { "type":"string" },
+        "city": { "type":"string" },
+        "state": { "type":"string" },
+        "zip": { "type":"string" },
       },
     },
     "contributions": {
@@ -382,18 +224,10 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string",
-          },
-          "memberId": {
-            "type": "string",
-          },
-          "date": {
-            "type": "string",
-          },
-          "amount": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "memberId": { "type":"string" },
+          "date": { "type":"string" },
+          "amount": { "type":"string" },
         },
       },
     },
@@ -402,15 +236,9 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string",
-          },
-          "date": {
-            "type": "string",
-          },
-          "count": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "date": { "type":"string" },
+          "count": { "type":"string" },
         },
       },
     },
@@ -419,71 +247,33 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "firstName": {
-            "type": "string",
-          },
-          "lastName": {
-            "type": "string",
-          },
-          "title": {
-            "type": "string",
-          },
-          "nickName": {
-            "type": "string",
-          },
-          "dateOfBirth": {
-            "type": "date",
-          },
-          "baptizedOn": {
-            "type": "date",
-          },
-          "occupation": {
-            "type": "string",
-          },
-          "employer": {
-            "type": "string",
-          },
-          "gender": {
-            "type": "string",
-          },
-          "email": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "firstName": { "type":"string" },
+          "lastName": { "type":"string" },
+          "title": { "type":"string" },
+          "nickName": { "type":"string" },
+          "dateOfBirth": { "type":"date" },
+          "baptizedOn": { "type":"date" },
+          "occupation": { "type":"string" },
+          "employer": { "type":"string" },
+          "gender": { "type":"string" },
+          "email": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {
-              "main": {
-                "type": "string",
-              },
-              "cell": {
-                "type": "string",
-              },
-              "business": {
-                "type": "string",
-              },
+              "main": { "type":"string" },
+              "cell": { "type":"string" },
+              "business": { "type":"string" },
             },
           },
           "address": {
             "type": "object",
             "properties": {
-              "line1": {
-                "type": "string",
-              },
-              "line2": {
-                "type": "string",
-              },
-              "city": {
-                "type": "string",
-              },
-              "state": {
-                "type": "string",
-              },
-              "zip": {
-                "type": "string",
-              },
+              "line1": { "type":"string" },
+              "line2": { "type":"string" },
+              "city": { "type":"string" },
+              "state": { "type":"string" },
+              "zip": { "type":"string" },
             },
           },
         },
@@ -494,49 +284,29 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "name": {
-            "type": "string",
-          },
-          "website": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "name": { "type":"string" },
+          "website": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {
-              "main": {
-                "type": "string",
-              },
+              "main": { "type":"string" },
             },
           },
           "fax": {
             "type": "object",
             "properties": {
-              "main": {
-                "type": "string",
-              },
+              "main": { "type":"string" },
             },
           },
           "address": {
             "type": "object",
             "properties": {
-              "line1": {
-                "type": "string",
-              },
-              "line2": {
-                "type": "string",
-              },
-              "city": {
-                "type": "string",
-              },
-              "state": {
-                "type": "string",
-              },
-              "zip": {
-                "type": "string",
-              },
+              "line1": { "type":"string" },
+              "line2": { "type":"string" },
+              "city": { "type":"string" },
+              "state": { "type":"string" },
+              "zip": { "type":"string" },
             },
           },
         },
@@ -547,38 +317,20 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "name": {
-            "type": "string",
-          },
-          "description": {
-            "type": "string",
-          },
-          "starts": {
-            "type": "date",
-          },
-          "ends": {
-            "type": "date",
-          },
-          "isAllDay": {
-            "type": "bool",
-          },
-          "group": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "name": { "type":"string" },
+          "description": { "type":"string" },
+          "starts": { "type":"date" },
+          "ends": { "type":"date" },
+          "isAllDay": { "type": "bool" },
+          "group": { "type":"string" },
           "attendees": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "type":"objectId",
-                },
-                "checkedInDate": {
-                  "type":"date",
-                },
+                "memberId": { "type":"objectId" },
+                "checkedInDate": { "type":"date" },
               },
             },
           },
@@ -587,12 +339,8 @@ var writeFilterSchema = {
             "items": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "type":"objectId",
-                },
-                "role": {
-                  "type":"string",
-                },
+                "memberId": { "type":"objectId" },
+                "role": { "type":"string" },
               },
             },
           },
@@ -604,26 +352,16 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type":"string",
-          },
-          "name": {
-            "type": "string",
-          },
-          "description": {
-            "type": "string",
-          },
-          "type": {
-            "type": "string",
-          },
+          "_id": { "type":"string" },
+          "name": { "type":"string" },
+          "description": { "type":"string" },
+          "type": { "type":"string" },
           "members": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "type":"string",
-                },
+                "memberId": { "type":"string" },
               },
             },
           },

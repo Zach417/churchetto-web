@@ -3,21 +3,35 @@ var Style = require('./Style.jsx');
 var Report = require('./Index.jsx');
 var ReportStore = require('../../stores/ReportStore');
 
+function resolveSubDocs (report) {
+  if (!report.size) { report.size = { x: '0in', y: '0in' }; }
+  if (!report.style) { report.style = {}; }
+  if (!report.segments) { report.segments = {}; }
+  if (!report.segments.page) { report.segments.page = {} };
+  if (!report.segments.page.header) { report.segments.page.header = [] };
+  if (!report.segments.page.footer) { report.segments.page.footer = [] };
+  if (!report.segments.report) { report.segments.report = {} };
+  if (!report.segments.report.header) { report.segments.report.header = [] };
+  if (!report.segments.report.footer) { report.segments.report.footer = [] };
+  if (!report.segments.body) { report.segments.body = {} };
+  if (!report.segments.body.groups) { report.segments.body.groups = [] };
+  if (!report.segments.body.details) { report.segments.body.details = [] };
+  return report;
+}
+
 var Page = React.createClass({
   getInitialState: function () {
     return {
-      report: {}
+      report: resolveSubDocs({}),
     }
   },
 
   componentWillMount: function () {
-    return this.setState({
-      report: require('./TestData.jsx'),
-    })
     if (this.props.params && this.props.params.id) {
       ReportStore.getOne(this.props.params.id, function (report) {
+        console.log(report);
         this.setState({
-          report: report
+          report: resolveSubDocs(report),
         });
       }.bind(this));
     }
@@ -45,7 +59,9 @@ var Page = React.createClass({
   },
 
   handleChange_Child: function (report) {
-    this.setState(report);
+    this.setState({
+      report: report
+    });
   },
 
   handleChange_ReportStore: function () {

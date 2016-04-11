@@ -3,7 +3,7 @@ var ChurchettoDataService = require('../services/ChurchettoData');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var Constants = require('../constants/ReportConstants.js');
 
-var Store = new StoreTemplate(ChurchettoDataService.leads);
+var Store = new StoreTemplate(ChurchettoDataService.reports);
 
 AppDispatcher.register(function(action) {
 	switch(action.actionType) {

@@ -1,38 +1,39 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+var styleSchema = new mongoose.Schema({
+  fontSize: String,
+  textAlign: String,
+  top: String,
+  left: String,
+  width: String,
+  height: String,
+  color: String,
+  backgroundColor: String,
+});
+
 var objectSchema = new mongoose.Schema({
-  style: mongoose.Schema.Mixed,
-  position: {
-    x: Number, //0px
-    y: Number, //0px
-  },
-  size: {
-    x: Number, //1654px
-    y: Number, //500px
-  },
-  key: String, //{report.data.church.attendance.count.sum}
+  value: String, //{report.data.church.attendance.count.sum}
+  style: styleSchema,
 });
 
 var segmentSchema = new mongoose.Schema({
-  size: {
-    y: Number, //500px
+  name: String,
+  style: {
+    height: String,
+    backgroundColor: String,
   },
-  style: mongoose.Schema.Mixed,
   objects: [objectSchema],
-});
-
-var groupSchema = new mongoose.Schema({
-  key: String, //{report.data.church.attendance.date.month}
-  segments: [segmentSchema],
 });
 
 var schema = new mongoose.Schema({
   name: String, //Attendance by month
-  style: mongoose.Schema.Mixed,
+  style: {
+    backgroundColor: String,
+  },
   size: {
-    x: Number, //1654px
-    y: Number, //2339px
+    x: String, //1654px
+    y: String, //2339px
   },
   segments: {
     page: {
@@ -43,15 +44,19 @@ var schema = new mongoose.Schema({
       header: [segmentSchema],
       footer: [segmentSchema],
     },
-    body: [{
-      groups: [groupSchema],
-      detail: [segmentSchema],
-    }],
+    body: {
+      groups: [{
+        entity: String,
+        attribute: String,
+        header: [segmentSchema],
+        footer: [segmentSchema],
+      }],
+      details: [segmentSchema],
+    },
   },
   data: {
     entity: {
       name: String, //church
-      fields: [mongoose.Schema.Mixed],
     },
   },
   createdBy: {

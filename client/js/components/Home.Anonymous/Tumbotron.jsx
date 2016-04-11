@@ -20,8 +20,8 @@ var Tumbotron = React.createClass({
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
         <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-          style={{padding:"0"}}>
-					<h1 style={{margin:"0"}}>Click here to sign up</h1>
+          style={{padding:"0px"}}>
+					<h1 style={{margin:"0px",padding:"150px 0px"}}>Click here to sign up</h1>
         </div>
       </div>
     );

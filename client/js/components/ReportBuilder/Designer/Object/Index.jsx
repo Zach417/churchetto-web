@@ -3,16 +3,24 @@ var $ = require('jquery');
 require('jquery-ui/draggable');
 var Style = require('./Style.jsx');
 
-function roundToTen (x) {
-  return 10*(Math.round(x/10));
+function snapToGrid (x) {
+  return 0.25*(Math.round(x/0.25));
 }
 
-var Segment = React.createClass({
+var Object = React.createClass({
   getInitialState: function () {
     return {
       isHovered: false,
       id: Math.floor((Math.random() * 1000000000) + 1),
     }
+  },
+
+  componentWillMount: function () {
+    this.reportObject = this.props.reportObject;
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    this.reportObject = nextProps.reportObject;
   },
 
   componentDidMount: function () {
@@ -21,13 +29,13 @@ var Segment = React.createClass({
       id: Math.floor((Math.random() * 1000000000) + 1),
     });
     $("#" + this.state.id).draggable();
-    $("#" + this.state.id).on('mousemove',this.handleMouseMove_Container);
+    $("#" + this.state.id).on('mousedown',this.handleMouseDown_Container);
     $("#" + this.state.id).on('mouseup',this.handleMouseUp_Container);
     this.setPositionToGrid();
   },
 
   componentWillUnmount: function () {
-    $("#" + this.state.id).off('mousemove',this.handleMouseMove_Container);
+    $("#" + this.state.id).off('mousedown',this.handleMouseDown_Container);
     $("#" + this.state.id).off('mouseup',this.handleMouseUp_Container);
   },
 
@@ -64,12 +72,18 @@ var Segment = React.createClass({
     return result;
   },
 
-  handleMouseMove_Container: function (event) {
+  handleMouseUp_Container: function (event) {
+    $("#" + this.state.id).css({"z-index":""});
+    $("#" + this.state.id).parent().css({"overflow":"hidden"});
+    $("#report-builder").css({"overflow-x":"scroll"});
     this.setPositionToGrid();
+    this.props.onChange(this.reportObject);
   },
 
-  handleMouseUp_Container: function (event) {
-    this.setPositionToGrid();
+  handleMouseDown_Container: function (event) {
+    $("#" + this.state.id).css({"z-index":"1"});
+    $("#" + this.state.id).parent().css({"overflow":"visible"});
+    $("#report-builder").css({"overflow-x":"visible"});
   },
 
   handleMouseEnter_Container: function () {
@@ -85,33 +99,41 @@ var Segment = React.createClass({
   },
 
   setPositionToGrid: function () {
-    var position = $("#" + this.state.id).position();
-    if (position.top) {
-      position.top = roundToTen(position.top);
-      if (position.top < 0) {
-        position.top = 0;
-      }
+    var position = {};
+
+    //div used to estimate inches to px
+    //super duper error-prone and won't work on phones
+    var dpi = document.getElementById("dpi").offsetHeight;
+
+    this.reportObject.style.top = parseFloat($("#" + this.state.id).position().top / dpi) + "in";
+    this.reportObject.style.left = parseFloat($("#" + this.state.id).position().left / dpi) + "in";
+    position.top = parseFloat(this.reportObject.style.top.replace('in',''));
+    position.left = parseFloat(this.reportObject.style.left.replace('in',''));
+    var objectHeight = parseFloat(this.props.reportObject.style.height.replace('in','')).toFixed(2);
+    var objectWidth = parseFloat(this.props.reportObject.style.width.replace('in','')).toFixed(2);
+    var segmentHeight = parseFloat(this.props.segment.style.height.replace('in','')).toFixed(2);
+    var segmentWidth = parseFloat(this.props.reportObject.segment.report.size.x.replace('in','')).toFixed(2);
+    position.top = snapToGrid(position.top);
+    if (position.top <= 0) {
+      position.top = 0;
     }
-    if (position.left) {
-      position.left = roundToTen(position.left);
-      if (position.left < 0) {
-        position.left = 0;
-      }
+    if (position.top >= segmentHeight) {
+      position.top = snapToGrid(segmentHeight - 0.25);
     }
-    if (position.right) {
-      position.right = roundToTen(position.right);
-      if (position.right < 0) {
-        position.right = 0;
-      }
+    position.left = snapToGrid(position.left);
+    if (position.left <= 0) {
+      position.left = 0;
     }
-    if (position.bottom) {
-      position.bottom = roundToTen(position.bottom);
-      if (position.bottom < 0) {
-        position.bottom = 0;
-      }
+    if (position.left >= segmentWidth - objectWidth) {
+      position.left = snapToGrid(segmentWidth - objectWidth);
     }
-    $("#" + this.state.id).css({top: position.top, left: position.left});
+    this.reportObject.style.top = position.top + "in";
+    this.reportObject.style.left = position.left + "in";
+    $("#" + this.state.id).css({
+      top: position.top + "in",
+      left: position.left + "in",
+    });
   },
 });
 
-module.exports = Segment;
+module.exports = Object;

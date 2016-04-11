@@ -82,6 +82,7 @@ var Routes = (
   <Route path="/" component={App}>
 		<IndexRoute component={Home} />
     <Route path="sign-out" component={SignOut}/>
+		<Route path="report/:id" component={ReportBuilder} />
 		<Route path="report" component={ReportBuilder} />
     <Route path="church">
       <IndexRoute component={Churches}/>
