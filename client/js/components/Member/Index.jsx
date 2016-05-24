@@ -32,6 +32,10 @@ var Member = React.createClass({
       this.member.dateOfBirth = moment(this.member.dateOfBirth).startOf("day").format("MM/DD/YYYY");
     }
 
+    if (this.member.dateOfDeath && moment(this.member.dateOfDeath).isValid()) {
+      this.member.dateOfDeath = moment(this.member.dateOfDeath).startOf("day").format("MM/DD/YYYY");
+    }
+
     if (this.member.baptizedOn && moment(this.member.baptizedOn).isValid()) {
       this.member.baptizedOn = moment(this.member.baptizedOn).startOf("day").format("MM/DD/YYYY");
     }
@@ -53,6 +57,10 @@ var Member = React.createClass({
 
     if (nextProps.member.dateOfBirth && moment(nextProps.member.dateOfBirth).isValid()) {
       this.member.dateOfBirth = moment(nextProps.member.dateOfBirth).format("MM/DD/YYYY");
+    }
+
+    if (this.member.dateOfDeath && moment(this.member.dateOfDeath).isValid()) {
+      this.member.dateOfDeath = moment(this.member.dateOfDeath).startOf("day").format("MM/DD/YYYY");
     }
 
     if (nextProps.member.baptizedOn && moment(nextProps.member.baptizedOn).isValid()) {

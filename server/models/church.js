@@ -44,6 +44,8 @@ var memberSchema = new mongoose.Schema({
   nickName: String,
   title: String,
   dateOfBirth: Date,
+  dateOfDeath: Date,
+  type: String, //contributor, attender
   baptizedOn: Date,
   occupation: String,
   employer: String,

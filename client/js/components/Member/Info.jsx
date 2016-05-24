@@ -57,6 +57,24 @@ var Info = React.createClass({
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
+            <Label isRequired={false} label={"Gender"} />
+            <Select
+              type={"text"}
+              value={this.member.gender}
+              options={["Male","Female"]}
+              onChange={this.handleChange_Gender} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Member Type"} />
+            <Select
+              type={"text"}
+              value={this.member.type}
+              options={["Contributor","Attendee","Other"]}
+              onChange={this.handleChange_Type} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Date of Birth"} />
             <Input
               type={"text"}
@@ -65,12 +83,11 @@ var Info = React.createClass({
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"Gender"} />
-            <Select
+            <Label isRequired={false} label={"Date of Death"} />
+            <Input
               type={"text"}
-              value={this.member.gender}
-              options={["Male","Female"]}
-              onChange={this.handleChange_Gender} />
+              value={this.member.dateOfDeath}
+              onChange={this.handleChange_DateOfDeath} />
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
             style={{marginTop:"20px"}} />
@@ -131,13 +148,23 @@ var Info = React.createClass({
     this.props.onChange(this.member);
   },
 
+  handleChange_Gender: function (event) {
+    this.member.gender = event.target.value;
+    this.props.onChange(this.member);
+  },
+
+  handleChange_Type: function (event) {
+    this.member.type = event.target.value;
+    this.props.onChange(this.member);
+  },
+
   handleChange_DateOfBirth: function (event) {
     this.member.dateOfBirth = event.target.value;
     this.props.onChange(this.member);
   },
 
-  handleChange_Gender: function (event) {
-    this.member.gender = event.target.value;
+  handleChange_DateOfDeath: function (event) {
+    this.member.dateOfDeath = event.target.value;
     this.props.onChange(this.member);
   },
 
