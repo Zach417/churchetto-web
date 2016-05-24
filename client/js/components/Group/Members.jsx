@@ -1,6 +1,7 @@
 var React = require('react');
 var moment = require('moment');
 var Griddle = require('griddle-react');
+var jsonexport = require('jsonexport');
 var browserHistory = require('react-router').browserHistory;
 var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
@@ -45,7 +46,11 @@ var Members = React.createClass({
     }
 
     return (
-      <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
+      <div>
+        <ButtonSecondary label={"Export"} onClick={this.handleClick_Export} />
+        <span style={{marginRight:"10px"}} />
+        <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
+      </div>
     )
   },
 
@@ -123,6 +128,45 @@ var Members = React.createClass({
       index: this.props.group.members.length,
       memberId: '',
     })
+  },
+
+  handleClick_Export: function () {
+    if (!this.props.group.members) { return; }
+
+    var members = this.props.church.members;
+    var groupMembers = [];
+    this.props.group.members.map(function (groupMember) {
+      if (groupMember.memberId) {
+        var memberId = groupMember.memberId;
+        members.map(function (member) {
+          if (memberId == member._id) {
+            delete member._id;
+            if (member.baptizedOn) {
+              member.baptizedOn = moment(member.baptizedOn).format('MM/DD/YYYY');
+            }
+            if (member.dateOfBirth) {
+              member.dateOfBirth = moment(member.dateOfBirth).format('MM/DD/YYYY');
+            }
+            groupMember = member;
+          }
+        });
+      }
+      groupMembers.push(groupMember);
+    });
+
+    jsonexport(groupMembers ,function(err, csv){
+        if(err) return console.log(err);
+
+        var fileName = "Churchetto - " + this.props.group.name + " Members";
+        var uri = 'data:text/csv;charset=utf-8,' + escape(csv);
+        var link = document.createElement("a");
+        link.href = uri;
+        link.style = "visibility:hidden";
+        link.download = fileName + ".csv";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }.bind(this));
   },
 
   handleClick_Submit: function () {

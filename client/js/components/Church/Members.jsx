@@ -1,9 +1,26 @@
 var React = require('react');
 var Griddle = require('griddle-react');
+var jsonexport = require('jsonexport');
+var moment = require('moment');
 var browserHistory = require('react-router').browserHistory;
 var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
+var ButtonSecondary = require('../Button/Index.jsx').Secondary;
+
+function convertToCSV(objArray) {
+  var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+  var str = '';
+  for (var i = 0; i < array.length; i++) {
+    var line = '';
+    for (var index in array[i]) {
+      if (line != '') line += ','
+      line += array[i][index];
+    }
+    str += line + '\r\n';
+  }
+  return str;
+}
 
 var LinkComponent = React.createClass({
   render: function(){
@@ -49,6 +66,8 @@ var Info = React.createClass({
           <div style={{position:"relative"}}>
             <h3 style={{display:"inline-block",margin:"0 0 17px 0"}}>Members</h3>
             <div style={{position:"absolute",top:"-8px",right:"0"}}>
+              <ButtonSecondary label={"Export"} onClick={this.handleClick_Export} />
+              <span style={{marginRight:"10px"}} />
               <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
             </div>
           </div>
@@ -85,6 +104,36 @@ var Info = React.createClass({
 
   handleClick_Add: function () {
     browserHistory.push("/church/" + this.props.church._id + "/member/create");
+  },
+
+  handleClick_Export: function () {
+    if (!this.props.church.members) { return; }
+
+    var members = [];
+    this.props.church.members.map(function (member) {
+      delete member._id;
+      if (member.baptizedOn) {
+        member.baptizedOn = moment(member.baptizedOn).format('MM/DD/YYYY');
+      }
+      if (member.dateOfBirth) {
+        member.dateOfBirth = moment(member.dateOfBirth).format('MM/DD/YYYY');
+      }
+      members.push(member);
+    });
+
+    jsonexport(members ,function(err, csv){
+        if(err) return console.log(err);
+
+        var fileName = "Churchetto - " + this.props.church.name + " Members";
+        var uri = 'data:text/csv;charset=utf-8,' + escape(csv);
+        var link = document.createElement("a");
+        link.href = uri;
+        link.style = "visibility:hidden";
+        link.download = fileName + ".csv";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }.bind(this));
   },
 
   handleClick_Row: function (gridRow, event) {

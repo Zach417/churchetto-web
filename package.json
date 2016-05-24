@@ -33,6 +33,7 @@
     "griddle-react": "^0.4.1",
     "jquery": "^2.2.2",
     "jquery-ui": "^1.10.5",
+    "jsonexport": "^1.1.0",
     "keymirror": "^0.1.1",
     "latest-version": "^2.0.0",
     "moment": "^2.12.0",
