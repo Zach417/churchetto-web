@@ -138,6 +138,7 @@ var readFilterSchema = {
           "description": { "type":"string" },
           "starts": { "type":"date" },
           "ends": { "type":"date" },
+          "notes": { "type":"string" },
           "isAllDay": { "type": "bool" },
           "group": { "type":"string" },
           "attendees": {
@@ -326,6 +327,7 @@ var writeFilterSchema = {
           "description": { "type":"string" },
           "starts": { "type":"date" },
           "ends": { "type":"date" },
+          "notes": { "type":"string" },
           "isAllDay": { "type": "bool" },
           "group": { "type":"string" },
           "attendees": {
