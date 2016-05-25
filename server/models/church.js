@@ -27,6 +27,7 @@ var eventSchema = new mongoose.Schema({
   starts: Date,
   ends: Date,
   isAllDay: Boolean,
+  status: String,
   group: mongoose.Schema.ObjectId,
   attendees: [{
     memberId: mongoose.Schema.ObjectId,

@@ -5,6 +5,7 @@ var browserHistory = require('react-router').browserHistory;
 var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
+var Select = require('../Form/Index.jsx').Select;
 
 var LinkComponent = React.createClass({
   render: function () {
@@ -42,13 +43,28 @@ var columnMeta = [
 ];
 
 var Events = React.createClass({
+  getInitialState: function () {
+    return {
+      filter: ''
+    }
+  },
+
   render: function () {
     if (!this.props.church) { return (<div/>) }
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <div style={{position:"relative"}}>
-            <h3 style={{display:"inline-block",margin:"0 0 17px 0"}}>Events</h3>
+            <h3 style={{display:"inline-block",margin:"0 0 17px 0"}}>
+              <select
+                style={{lineHeight:"30px",border:"none",backgroundColor:"#e1e3e4"}}
+                onChange={this.handleChange_View}>
+                <option value="">All Events</option>
+                <option value="Pending">Pending Events</option>
+                <option value="Completed">Completed Events</option>
+                <option value="Canceled">Canceled Events</option>
+              </select>
+            </h3>
             <div style={{position:"absolute",top:"-8px",right:"0"}}>
               <ButtonPrimary label={"Add"} onClick={this.handleClick_Add} />
             </div>
@@ -71,25 +87,49 @@ var Events = React.createClass({
   },
 
   getGriddleData: function () {
+    var events = this.props.church.events;
     var result = [];
-    for (var i = 0; i < this.props.church.events.length; i++) {
+
+    if (this.state.filter) {
+      events = this.state.filter(events);
+    }
+
+    for (var i = 0; i < events.length; i++) {
       var starts = '';
-      if (this.props.church.events[i].starts) {
-        starts = moment(this.props.church.events[i].starts).format('MM/DD/YYYY h:mm a')
+      if (events[i].starts) {
+        starts = moment(events[i].starts).format('MM/DD/YYYY h:mm a')
       }
       var ends = '';
-      if (this.props.church.events[i].ends) {
-        ends = moment(this.props.church.events[i].ends).format('MM/DD/YYYY h:mm a')
+      if (events[i].ends) {
+        ends = moment(events[i].ends).format('MM/DD/YYYY h:mm a')
       }
       result.push({
-        "eventId": this.props.church.events[i]._id,
+        "eventId": events[i]._id,
         "churchId": this.props.church._id,
-        "Name": this.props.church.events[i].name,
+        "Name": events[i].name,
         "Start Time": starts,
         "End Time": ends,
       });
     }
     return result;
+  },
+
+  handleChange_View: function (event) {
+    var filterType = event.target.value;
+
+    if (!filterType) {
+      return this.setState({
+        filter: ''
+      });
+    }
+
+    this.setState({
+      filter: function (events) {
+        return events.filter(function (e) {
+          return e.status === filterType;
+        });
+      },
+    });
   },
 
   handleClick_Add: function () {

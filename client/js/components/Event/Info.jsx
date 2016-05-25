@@ -63,6 +63,15 @@ var Info = React.createClass({
               options={this.getGroupOptions()}
               onChange={this.handleChange_Group} />
           </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Status"} />
+            <Select
+              type={"text"}
+              value={this.props.event.status}
+              options={["Pending","Completed","Canceled"]}
+              onChange={this.handleChange_Status} />
+          </div>
         </div>
       </div>
     )
@@ -101,6 +110,11 @@ var Info = React.createClass({
 
   handleChange_Group: function (event) {
     this.event.group = event.target.value;
+    this.props.onChange(this.event);
+  },
+
+  handleChange_Status: function (event) {
+    this.event.status = event.target.value;
     this.props.onChange(this.event);
   },
 });
