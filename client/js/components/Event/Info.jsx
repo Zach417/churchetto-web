@@ -63,7 +63,6 @@ var Info = React.createClass({
               options={this.getGroupOptions()}
               onChange={this.handleChange_Group} />
           </div>
-<<<<<<< HEAD
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Status"} />
@@ -72,7 +71,7 @@ var Info = React.createClass({
               value={this.props.event.status}
               options={["Pending","Completed","Canceled"]}
               onChange={this.handleChange_Status} />
-=======
+          </div>
           <div className="col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Notes"} />
@@ -80,7 +79,6 @@ var Info = React.createClass({
               type={"text"}
               value={this.props.event.notes}
               onChange={this.handleChange_Notes} />
->>>>>>> 38269661a0ab9059727a35de6bd9534fa1ec61e8
           </div>
         </div>
       </div>
