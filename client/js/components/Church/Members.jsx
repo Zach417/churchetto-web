@@ -118,6 +118,9 @@ var Info = React.createClass({
       if (member.dateOfBirth) {
         member.dateOfBirth = moment(member.dateOfBirth).format('MM/DD/YYYY');
       }
+      if (member.dateOfDeath) {
+        member.dateOfDeath = moment(member.dateOfDeath).format('MM/DD/YYYY');
+      }
       members.push(member);
     });
 

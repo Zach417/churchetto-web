@@ -72,6 +72,9 @@ function setDatesToUtc (church) {
 			if (church.members[i].dateOfBirth) {
 				church.members[i].dateOfBirth = moment(church.members[i].dateOfBirth).utc();
 			}
+			if (church.members[i].dateOfDeath) {
+				church.members[i].dateOfDeath = moment(church.members[i].dateOfDeath).utc();
+			}
 			if (church.members[i].baptizedOn) {
 				church.members[i].baptizedOn = moment(church.members[i].baptizedOn).utc();
 			}

@@ -22,7 +22,7 @@ var Info = React.createClass({
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>The Basics</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Name"} />
             <Input
@@ -30,7 +30,7 @@ var Info = React.createClass({
               value={this.props.event.name}
               onChange={this.handleChange_Name} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Description"} />
             <Input
@@ -38,7 +38,7 @@ var Info = React.createClass({
               value={this.props.event.description}
               onChange={this.handleChange_Description} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Start Time"} />
             <Input
@@ -46,7 +46,7 @@ var Info = React.createClass({
               value={this.props.event.starts}
               onChange={this.handleChange_Starts} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"End Time"} />
             <Input
@@ -54,7 +54,7 @@ var Info = React.createClass({
               value={this.props.event.ends}
               onChange={this.handleChange_Ends} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Group"} />
             <Select
@@ -63,6 +63,7 @@ var Info = React.createClass({
               options={this.getGroupOptions()}
               onChange={this.handleChange_Group} />
           </div>
+<<<<<<< HEAD
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Status"} />
@@ -71,6 +72,15 @@ var Info = React.createClass({
               value={this.props.event.status}
               options={["Pending","Completed","Canceled"]}
               onChange={this.handleChange_Status} />
+=======
+          <div className="col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Notes"} />
+            <TextArea
+              type={"text"}
+              value={this.props.event.notes}
+              onChange={this.handleChange_Notes} />
+>>>>>>> 38269661a0ab9059727a35de6bd9534fa1ec61e8
           </div>
         </div>
       </div>
@@ -105,6 +115,11 @@ var Info = React.createClass({
 
   handleChange_Ends: function (event) {
     this.event.ends = event.target.value;
+    this.props.onChange(this.event);
+  },
+
+  handleChange_Notes: function (event) {
+    this.event.notes = event.target.value;
     this.props.onChange(this.event);
   },
 
