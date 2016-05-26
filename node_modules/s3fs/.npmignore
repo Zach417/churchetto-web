@@ -1,0 +1,9 @@
+coverage
+test
+.travis.yml
+.buddyrc
+.eslintignore
+.eslintrc
+.gitignore
+.jscsrc
+.jsinspectrc

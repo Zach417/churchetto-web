@@ -1,10 +1,12 @@
 var React = require('react');
 var moment = require('moment');
 var Style = require('./Style.jsx');
+var MemberImage = require('./Image.jsx');
 var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
 var TextArea = require('../Form/Index.jsx').TextArea;
 var Select = require('../Form/Index.jsx').Select;
+var ImageService = require('../../services/ImageService');
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -15,6 +17,10 @@ var Info = React.createClass({
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
+          <MemberImage
+            path={this.props.member.imagePath}
+            onUpload={this.handleUpload_ImagePath} />
+          <div className="col-xs-12" style={{marginTop:"20px"}} />
           <h3 style={{margin:"0"}}>The Basics</h3>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
@@ -167,5 +173,12 @@ var Info = React.createClass({
     member[attribute] = value;
     this.props.onChange(member);
   },
+
+  handleUpload_ImagePath: function (imagePath) {
+    var member = this.props.member;
+    member.imagePath = imagePath;
+    this.props.onChange(member);
+  },
 });
+
 module.exports = Info;

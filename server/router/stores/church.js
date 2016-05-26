@@ -76,6 +76,7 @@ var readFilterSchema = {
           "email": { "type":"string" },
           "family": { "type":"string" },
           "familyRelationship": { "type":"string" },
+          "imagePath": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {
@@ -268,6 +269,7 @@ var writeFilterSchema = {
           "email": { "type":"string" },
           "family": { "type":"string" },
           "familyRelationship": { "type":"string" },
+          "imagePath": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {

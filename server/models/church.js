@@ -55,6 +55,7 @@ var memberSchema = new mongoose.Schema({
   email: String,
   family: String,
   familyRelationship: String,
+  imagePath: String,
   phone: {
     main: String,
     cell: String,

@@ -25,6 +25,7 @@
     "body-parser": "^1.15.0",
     "chart.js": "^1.1.1",
     "connect-mongo": "^1.1.0",
+    "connect-multiparty": "^2.0.0",
     "cookie-parser": "^1.4.1",
     "envify": "^3.4.0",
     "express": "^4.13.4",
@@ -45,6 +46,7 @@
     "react-chartjs": "^0.7.3",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.1",
+    "s3fs": "^2.4.7",
     "string": "^3.3.1",
     "uglifyjs": "^2.4.10"
   },
