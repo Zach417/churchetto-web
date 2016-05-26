@@ -56,7 +56,7 @@ var Page = React.createClass({
             {"Churchetto is committed to making a fantastic "}
             {"organizational tool for churches for free. "}
             {"If there is something missing that you need, "}
-            {"email me at zach@churchetto, and I'll add it to "}
+            {"email me at zach@churchetto.com, and I'll add it to "}
             {"the app!"}
           </p>
         </div>
