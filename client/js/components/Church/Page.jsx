@@ -51,15 +51,13 @@ var Page = React.createClass({
           children={this.props.children}
           onChange={this.handleChange_Child} />
         <div style={Style.componentContainer}>
-          <h1 style={{margin:"5px 0"}}>Did you know?</h1>
+          <h1 style={{margin:"5px 0"}}>Missing something?</h1>
           <p style={{fontSize:"16px"}}>
-            {"You can add multiple churches to your churchetto "}
-            {"account. Organize a small group on the side, or see "}
-            {"what it would take to start a new church."}
-          </p>
-          <p style={{fontSize:"16px"}}>
-            {"Whatever the reason, you can add another church "}
-            <Link to={"/church/create"}>here</Link>.
+            {"Churchetto is committed to making a fantastic "}
+            {"organizational tool for churches for free. "}
+            {"If there is something missing that you need, "}
+            {"email me at zach@churchetto, and I'll add it to "}
+            {"the app!"}
           </p>
         </div>
       </div>

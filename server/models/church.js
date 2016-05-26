@@ -53,6 +53,8 @@ var memberSchema = new mongoose.Schema({
   employer: String,
   gender: String,
   email: String,
+  family: String,
+  familyRelationship: String,
   phone: {
     main: String,
     cell: String,

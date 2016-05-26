@@ -141,7 +141,7 @@ var Member = React.createClass({
 
   handleChange_Child: function (member) {
     this.setState({
-      member: this.member
+      member: member
     });
   },
 

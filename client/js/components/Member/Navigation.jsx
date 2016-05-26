@@ -35,7 +35,7 @@ var Navigation = React.createClass({
       browserHistory.push("/church/" + this.props.cid
         + "/member/" + this.props.mid + "/contact");
     }
-  }
+  },
 });
 
 module.exports = Navigation;

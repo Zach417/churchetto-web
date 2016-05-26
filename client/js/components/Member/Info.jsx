@@ -6,181 +6,166 @@ var Label = require('../Form/Index.jsx').Label;
 var TextArea = require('../Form/Index.jsx').TextArea;
 var Select = require('../Form/Index.jsx').Select;
 
-var Info = React.createClass({
-  componentWillMount: function () {
-    this.member = this.props.member;
-    if (this.member.dateOfBirth) {
-      this.member.dateOfBirth = moment(this.member.dateOfBirth).format("MM/DD/YYYY");
-    }
-    if (this.member.baptizedOn) {
-      this.member.baptizedOn = moment(this.member.baptizedOn).format("MM/DD/YYYY");
-    }
-  },
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
+var Info = React.createClass({
   render: function () {
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>The Basics</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"First Name"} />
             <Input
               type={"text"}
-              value={this.member.firstName}
-              onChange={this.handleChange_FirstName} />
+              attribute={"firstName"}
+              value={this.props.member.firstName}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Last Name"} />
             <Input
               type={"text"}
-              value={this.member.lastName}
-              onChange={this.handleChange_LastName} />
+              attribute={"lastName"}
+              value={this.props.member.lastName}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Nick Name"} />
             <Input
               type={"text"}
-              value={this.member.nickName}
-              onChange={this.handleChange_NickName} />
+              attribute={"nickName"}
+              value={this.props.member.nickName}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Title"} />
             <Select
               type={"text"}
-              value={this.member.title}
+              attribute={"title"}
+              value={this.props.member.title}
               options={["Mr.","Mrs.","Ms."]}
-              onChange={this.handleChange_Title} />
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Gender"} />
             <Select
               type={"text"}
-              value={this.member.gender}
+              attribute={"gender"}
+              value={this.props.member.gender}
               options={["Male","Female"]}
-              onChange={this.handleChange_Gender} />
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Member Type"} />
             <Select
               type={"text"}
-              value={this.member.type}
+              attribute={"type"}
+              value={this.props.member.type}
               options={["Contributor","Attendee","Other"]}
-              onChange={this.handleChange_Type} />
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Date of Birth"} />
             <Input
               type={"text"}
-              value={this.member.dateOfBirth}
-              onChange={this.handleChange_DateOfBirth} />
+              attribute={"dateOfBirth"}
+              value={this.props.member.dateOfBirth}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Date of Death"} />
             <Input
-              type={"text"}
-              value={this.member.dateOfDeath}
-              onChange={this.handleChange_DateOfDeath} />
+              type={"dateOfDeath"}
+              value={this.props.member.dateOfDeath}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style={{marginTop:"20px"}} />
+          <div className="col-xs-12" style={{marginTop:"20px"}} />
         </div>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>Work</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Occupation"} />
             <Input
               type={"text"}
-              value={this.member.occupation}
-              onChange={this.handleChange_Occupation} />
+              attribute={"occupation"}
+              value={this.props.member.occupation}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Employer"} />
             <Input
               type={"text"}
-              value={this.member.employer}
-              onChange={this.handleChange_Employer} />
+              attribute={"employer"}
+              value={this.props.member.employer}
+              onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style={{marginTop:"20px"}} />
+          <div className="col-xs-12" style={{marginTop:"20px"}} />
+        </div>
+        <div className="row-fluid">
+          <h3 style={{margin:"0"}}>Family</h3>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Family Unit"} />
+            <Input
+              type={"text"}
+              attribute={"family"}
+              placeholder={this.getFamilyPlaceholder()}
+              value={this.props.member.family}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Relationship"} />
+            <Select
+              type={"text"}
+              attribute={"familyRelationship"}
+              value={this.props.member.familyRelationship}
+              options={["Husband","Wife","Child","Guardian","Other"]}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-xs-12" style={{marginTop:"20px"}} />
         </div>
         <div className="row-fluid">
           <h3 style={{margin:"0"}}>Faith</h3>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Baptized On"} />
             <Input
               type={"text"}
-              value={this.member.baptizedOn}
-              onChange={this.handleChange_BaptizedOn} />
+              attribute={"baptizedOn"}
+              value={this.props.member.baptizedOn}
+              onChange={this.handleChange_Attribute} />
           </div>
         </div>
       </div>
     )
   },
 
-  handleChange_Title: function (event) {
-    this.member.title = event.target.value;
-    this.props.onChange(this.member);
+  getFamilyPlaceholder: function () {
+    if (this.props.member.lastName) {
+      return "The " + this.props.member.lastName + " Family";
+    } else {
+      return "The Johnson Family";
+    }
   },
 
-  handleChange_FirstName: function (event) {
-    this.member.firstName = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_LastName: function (event) {
-    this.member.lastName = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_NickName: function (event) {
-    this.member.nickName = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_Gender: function (event) {
-    this.member.gender = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_Type: function (event) {
-    this.member.type = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_DateOfBirth: function (event) {
-    this.member.dateOfBirth = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_DateOfDeath: function (event) {
-    this.member.dateOfDeath = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_Occupation: function (event) {
-    this.member.occupation = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_Employer: function (event) {
-    this.member.employer = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_BaptizedOn: function (event) {
-    this.member.baptizedOn = event.target.value;
-    this.props.onChange(this.member);
+  handleChange_Attribute: function (attribute, value) {
+    var member = this.props.member;
+    member[attribute] = value;
+    this.props.onChange(member);
   },
 });
 module.exports = Info;

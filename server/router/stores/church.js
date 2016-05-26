@@ -74,6 +74,8 @@ var readFilterSchema = {
           "employer": { "type":"string" },
           "gender": { "type":"string" },
           "email": { "type":"string" },
+          "family": { "type":"string" },
+          "familyRelationship": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {
@@ -264,6 +266,8 @@ var writeFilterSchema = {
           "employer": { "type":"string" },
           "gender": { "type":"string" },
           "email": { "type":"string" },
+          "family": { "type":"string" },
+          "familyRelationship": { "type":"string" },
           "phone": {
             "type": "object",
             "properties": {

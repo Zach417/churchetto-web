@@ -18,7 +18,7 @@ var FormSelect = React.createClass({
         onMouseLeave={this.handleMouseLeave}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onChange={this.props.onChange}>
+        onChange={this.handleChange}>
         <option value="" />
         {this.getOptions()}
       </select>
@@ -26,14 +26,15 @@ var FormSelect = React.createClass({
   },
 
   getOptions: function () {
-    return this.props.options.map(function (option) {
+    return this.props.options.map(function (option, i) {
+      var key = "option-" + option.label + "-" + i;
       if (typeof option === "string") {
         return (
-          <option value={option}>{option}</option>
+          <option key={key} value={option}>{option}</option>
         )
       }
       return (
-        <option value={option.value}>{option.label}</option>
+        <option key={key} value={option.value}>{option.label}</option>
       )
     });
   },
@@ -79,6 +80,15 @@ var FormSelect = React.createClass({
       isHovered: this.state.isHovered,
       isFocused: false,
     });
+  },
+
+  handleChange: function (event) {
+    var value = event.target.value;
+    if (this.props.attribute) {
+      this.props.onChange(this.props.attribute, value);
+    } else {
+      this.props.onChange(value);
+    }
   },
 });
 
