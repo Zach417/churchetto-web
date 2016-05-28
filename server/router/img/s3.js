@@ -71,9 +71,9 @@ router.get('/:id', function (req, res) {
 
   console.log(req.headers);
 
-  if (req.headers.email && req.headers.accessToken) {
+  if (req.headers.email && req.headers.token) {
     var email = req.headers.email;
-    var accessToken = req.headers.accessToken;
+    var accessToken = req.headers.token;
 
     console.log("email and access token");
 
