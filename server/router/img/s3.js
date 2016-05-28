@@ -99,20 +99,20 @@ router.get('/:id', function (req, res) {
         });
       }
     });
-  }
+  } else {
+    if (!req.session || !req.cookies.accessToken) {
+      return res.json({
+        success: false,
+        message: "Authentication error."
+      });
+    }
 
-  if (!req.session || !req.cookies.accessToken) {
-    return res.json({
-      success: false,
-      message: "Authentication error."
+    s3fsBucket.readFile(req.params.id, function (err, data) {
+      if (err) { console.error(err); }
+     res.writeHead(200, {'Content-Type': 'image/gif' });
+     res.end(data, 'binary');
     });
   }
-
-  s3fsBucket.readFile(req.params.id, function (err, data) {
-    if (err) { console.error(err); }
-   res.writeHead(200, {'Content-Type': 'image/gif' });
-   res.end(data, 'binary');
-  });
 });
 
 module.exports = router;
