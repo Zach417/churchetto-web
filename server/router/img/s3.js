@@ -73,6 +73,8 @@ router.get('/:id', function (req, res) {
     var email = req.headers.email;
     var accessToken = req.headers.accessToken;
 
+    console.log(email, accessToken);
+
     getChurchAndValidate({
       email: email,
       accessToken: accessToken,
@@ -87,12 +89,14 @@ router.get('/:id', function (req, res) {
       });
 
       if (access === true) {
+        console.log('access true');
         s3fsBucket.readFile(req.params.id, function (err, data) {
           if (err) { console.error(err); }
          res.writeHead(200, {'Content-Type': 'image/gif' });
          res.end(data, 'binary');
         });
       } else {
+        console.log('access false');
         return res.json({
           success: false,
           message: "Authentication error."
