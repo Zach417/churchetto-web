@@ -75,7 +75,7 @@ router.get('/:id', function (req, res) {
     var email = req.headers.email;
     var accessToken = req.headers.accessToken;
 
-    console.log(email, accessToken);
+    console.log("email and access token");
 
     getChurchAndValidate({
       email: email,
@@ -106,6 +106,9 @@ router.get('/:id', function (req, res) {
       }
     });
   } else {
+
+    console.log("session and access token");
+
     if (!req.session || !req.cookies.accessToken) {
       return res.json({
         success: false,
