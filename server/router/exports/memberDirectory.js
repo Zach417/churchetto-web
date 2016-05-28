@@ -79,7 +79,9 @@ router.get('/:id', function (req, res) {
 
       var image = "";
       if (member.imagePath) {
-        image = "<img src=\"/img/s3/" + member.imagePath + "\" style=\"height:150px;padding-right:10px;\" />";
+        image = "<img src=\"http://churchetto.com/img/s3/" + member.imagePath + "\" style=\"height:150px;padding-right:10px;\" />";
+      } else {
+        image = "<img src=\"https://pixabay.com/static/uploads/photo/2014/04/02/10/25/man-303792_960_720.png\" style=\"height:150px;padding-right:10px;\" />";
       }
 
       var memberAddress = "";
