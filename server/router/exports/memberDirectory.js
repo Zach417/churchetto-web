@@ -75,7 +75,25 @@ router.get('/:id', function (req, res) {
 
     var members = "";
     church.members.sort(function (a,b) {
-      return (a.lastName + a.firstName) > (b.lastName + b.firstName);
+      var nameA = "";
+      var nameB = "";
+      if (a.lastName) {
+        nameA = a.lastName.toLowerCase();
+        if (a.firstName) {
+          nameA = nameA + a.firstName.toLowerCase();
+        }
+      }
+      if (b.lastName) {
+        nameB = b.lastName.toLowerCase();
+        if (b.firstName) {
+          nameB = nameB + b.firstName.toLowerCase();
+        }
+      }
+      if (nameA < nameB) //sort string ascending
+        return -1;
+      if (nameA > nameB)
+        return 1;
+      return 0; //default return value (no sorting)
     }).map(function (member) {
       if (!member.address) { member.address = {} }
 
