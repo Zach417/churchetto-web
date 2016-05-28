@@ -137,11 +137,11 @@ router.get('/:id', function (req, res) {
     });
     html = html.replace('{MEMBERS}',members);
 
-    //res.send(html);
-    pdf.create(html, options).toStream(function(err, stream){
+    res.send(html);
+    /*pdf.create(html, options).toStream(function(err, stream){
       if (err) return console.log(err);
       stream.pipe(res);
-    });
+    });*/
   });
 
 });
