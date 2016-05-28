@@ -48,7 +48,7 @@ router.get('/:id', function (req, res) {
     var html = fs.readFileSync(path.join(__dirname,'./memberDirectory.html'), 'utf8');
     var options = {
       "format": "Letter",
-      "base": "http://localhost/",
+      "base": "http://churchetto.com/",
       "httpHeaders": {
         "email": email,
         "token": accessToken,
