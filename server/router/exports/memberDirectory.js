@@ -79,9 +79,9 @@ router.get('/:id', function (req, res) {
 
       var image = "";
       if (member.imagePath) {
-        image = "<img src=\"http://churchetto.com/img/s3/" + member.imagePath + "\" style=\"height:150px;padding-right:10px;\" />";
+        image = "<img src=\"http://churchetto.com/img/s3/" + member.imagePath + "\" style=\"width:150px;padding-right:10px;\" />";
       } else {
-        image = "<img src=\"https://pixabay.com/static/uploads/photo/2014/04/02/10/25/man-303792_960_720.png\" style=\"height:150px;padding-right:10px;\" />";
+        image = "<img src=\"https://pixabay.com/static/uploads/photo/2014/04/02/10/25/man-303792_960_720.png\" style=\"width:150px;padding-right:10px;\" />";
       }
 
       var memberAddress = "";
@@ -139,11 +139,11 @@ router.get('/:id', function (req, res) {
     });
     html = html.replace('{MEMBERS}',members);
 
-    res.send(html);
-    /*pdf.create(html, options).toStream(function(err, stream){
+    //res.send(html);
+    pdf.create(html, options).toStream(function(err, stream){
       if (err) return console.log(err);
       stream.pipe(res);
-    });*/
+    });
   });
 
 });
