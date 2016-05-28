@@ -14,10 +14,8 @@ var router = express.Router();
 function getChurchAndValidate (options, callback) {
   User.getUserAndValidate(options.email, options.accessToken, function (user) {
     Church
-      .findOne({
-        "_id": options.id
-      })
-      .where({
+      .find()
+  		.where({
         $or: [{
           "_id": {
             $in : user.churches
@@ -69,36 +67,32 @@ router.post('/', function (req, res) {
 router.get('/:id', function (req, res) {
   var id = req.params.id;
 
-  console.log(req.headers);
-
   if (req.headers.email && req.headers.token) {
     var email = req.headers.email;
     var accessToken = req.headers.token;
-
-    console.log("email and access token");
 
     getChurchAndValidate({
       email: email,
       accessToken: accessToken,
       id: id,
-    }, function (church) {
+    }, function (churches) {
       var access = false;
 
-      church.members.map(function (member) {
-        if (member.imagePath === id) {
-          access = true;
-        }
-      });
+      churches.map(function (church) {
+        church.members.map(function (member) {
+          if (member.imagePath === id) {
+            access = true;
+          }
+        });
+      })
 
       if (access === true) {
-        console.log('access true');
         s3fsBucket.readFile(req.params.id, function (err, data) {
           if (err) { console.error(err); }
          res.writeHead(200, {'Content-Type': 'image/gif' });
          res.end(data, 'binary');
         });
       } else {
-        console.log('access false');
         return res.json({
           success: false,
           message: "Authentication error."
@@ -106,9 +100,6 @@ router.get('/:id', function (req, res) {
       }
     });
   } else {
-
-    console.log("session and access token");
-
     if (!req.session || !req.cookies.accessToken) {
       return res.json({
         success: false,
