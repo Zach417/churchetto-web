@@ -74,7 +74,9 @@ router.get('/:id', function (req, res) {
     html = html.replace('{HEADER}',header);
 
     var members = "";
-    church.members.map(function (member) {
+    church.members.sort(function (a,b) {
+      return a.lastName + a.firstName > b.lastName + b.firstName;
+    }).map(function (member) {
       if (!member.address) { member.address = {} }
 
       var image = "";
@@ -128,8 +130,8 @@ router.get('/:id', function (req, res) {
         + image
         + "<div style=\"display:inline-block;vertical-align:top;\">"
           + "<h3 style=\"margin:0px;font-size:24px;\">"
-            + member.firstName
-            + " " + member.lastName
+            + member.lastName
+            + ", " + member.firstName
           + "</h3>"
           + memberAddress
           + "<br />"
