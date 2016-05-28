@@ -69,6 +69,8 @@ router.post('/', function (req, res) {
 router.get('/:id', function (req, res) {
   var id = req.params.id;
 
+  console.log(req.headers);
+
   if (req.headers.email && req.headers.accessToken) {
     var email = req.headers.email;
     var accessToken = req.headers.accessToken;
