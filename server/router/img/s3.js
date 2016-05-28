@@ -5,8 +5,32 @@ var multiparty = require('connect-multiparty');
 var config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../../config.json"), "utf8"));
 var s3fsBucket = new s3fs('churchetto-images', config.awsAccessCredentials);
 
+var User = require('../../models/user');
+var Church = require('../../models/church');
+
 var express = require('express');
 var router = express.Router();
+
+function getChurchAndValidate (options, callback) {
+  User.getUserAndValidate(options.email, options.accessToken, function (user) {
+    Church
+      .findOne({
+        "_id": options.id
+      })
+      .where({
+        $or: [{
+          "_id": {
+            $in : user.churches
+          }
+        }, {
+          "createdBy": user._id,
+        }]
+      })
+      .exec(function(err, result) {
+        return callback(result);
+      });
+  });
+}
 
 router.use(multiparty());
 
@@ -43,6 +67,40 @@ router.post('/', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
+  var id = req.params.id;
+
+  if (req.headers.email && req.headers.accessToken) {
+    var email = req.headers.email;
+    var accessToken = req.headers.accessToken;
+
+    getChurchAndValidate({
+      email: email,
+      accessToken: accessToken,
+      id: id,
+    }, function (church) {
+      var access = false;
+
+      church.members.map(function (member) {
+        if (member.imagePath === id) {
+          access = true;
+        }
+      });
+
+      if (access === true) {
+        s3fsBucket.readFile(req.params.id, function (err, data) {
+          if (err) { console.error(err); }
+         res.writeHead(200, {'Content-Type': 'image/gif' });
+         res.end(data, 'binary');
+        });
+      } else {
+        return res.json({
+          success: false,
+          message: "Authentication error."
+        });
+      }
+    });
+  }
+
   if (!req.session || !req.cookies.accessToken) {
     return res.json({
       success: false,
