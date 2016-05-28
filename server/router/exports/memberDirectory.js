@@ -75,7 +75,7 @@ router.get('/:id', function (req, res) {
 
     var members = "";
     church.members.sort(function (a,b) {
-      return a.lastName + a.firstName > b.lastName + b.firstName;
+      return (a.lastName + a.firstName) > (b.lastName + b.firstName);
     }).map(function (member) {
       if (!member.address) { member.address = {} }
 
