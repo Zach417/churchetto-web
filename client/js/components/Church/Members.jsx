@@ -71,10 +71,10 @@ var Info = React.createClass({
                 <ButtonSecondary label={"Export"} onClick={this.handleClick_ExportDropdown} />
                 <div id="member-export-dropdown" style={{display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} href={"/exports/member-directory/" + this.props.church._id} target="_blank">
-                    Picture Directory
+                    {"Picture Directory (.pdf)"}
                   </a>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} onClick={this.handleClick_Export}>
-                    {"Member Data (.csv file)"}
+                    {"Member Data (.csv)"}
                   </a>
                 </div>
               </div>

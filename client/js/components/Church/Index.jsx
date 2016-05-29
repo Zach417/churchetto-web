@@ -136,9 +136,11 @@ var Church = React.createClass({
   handleClick_Submit: function () {
     if (this.state.church._id) {
       ChurchActions.update(this.state.church);
+      this.setState({church:resolveSubDocuments({})});
       browserHistory.push("/church");
     } else {
       ChurchActions.create(this.state.church);
+      this.setState({church:resolveSubDocuments({})});
       browserHistory.push("/");
     }
   },
@@ -149,6 +151,7 @@ var Church = React.createClass({
 
   handleClick_Delete: function () {
     ChurchActions.destroy(this.state.church);
+    this.setState({church:resolveSubDocuments({})});
     browserHistory.push("/");
   },
 });

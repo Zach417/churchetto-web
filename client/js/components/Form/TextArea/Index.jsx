@@ -20,7 +20,7 @@ var FormTextArea = React.createClass({
         onMouseLeave={this.handleMouseLeave}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onChange={this.props.onChange}/>
+        onChange={this.handleChange}/>
     )
   },
 
@@ -65,6 +65,15 @@ var FormTextArea = React.createClass({
       isHovered: this.state.isHovered,
       isFocused: false,
     });
+  },
+
+  handleChange: function (event) {
+    var value = event.target.value;
+    if (this.props.attribute) {
+      this.props.onChange(this.props.attribute, value);
+    } else {
+      this.props.onChange(value);
+    }
   },
 });
 

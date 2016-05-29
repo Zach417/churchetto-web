@@ -3,8 +3,8 @@ var path = require('path');
 var pdf = require('html-pdf');
 var express = require('express');
 var router = express.Router();
-var User = require('../../models/user');
-var Church = require('../../models/church');
+var User = require('../../../models/user');
+var Church = require('../../../models/church');
 
 function getChurchAndValidate (options, callback) {
   User.getUserAndValidate(options.email, options.accessToken, function (user) {
