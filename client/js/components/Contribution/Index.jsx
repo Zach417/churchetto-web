@@ -33,6 +33,11 @@ var Contribution = React.createClass({
     }
 
     if (this.contribution.amount) {
+      this.contribution.amount = this.contribution.amount
+        .toString()
+        .replace(new RegExp('\\$', 'g'), '')
+        .replace(new RegExp(',', 'g'), '');
+      this.contribution.amount = parseFloat(this.contribution.amount);
       this.contribution.amount = "$" + this.contribution.amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     }
 
@@ -60,6 +65,11 @@ var Contribution = React.createClass({
     }
 
     if (this.contribution.amount) {
+      this.contribution.amount = this.contribution.amount
+        .toString()
+        .replace(new RegExp('\\$', 'g'), '')
+        .replace(new RegExp(',', 'g'), '');
+      this.contribution.amount = parseFloat(this.contribution.amount);
       this.contribution.amount = "$" + this.contribution.amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     }
 

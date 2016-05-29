@@ -5,6 +5,8 @@ var contributionSchema = new mongoose.Schema({
   memberId: mongoose.Schema.ObjectId,
   date: Date,
   amount: Number,
+  description: String,
+  isTaxDeductible: Boolean,
 });
 
 var attendanceSchema = new mongoose.Schema({

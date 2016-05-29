@@ -19,26 +19,46 @@ var Info = React.createClass({
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Member"} />
             <Select
-              type={"text"}
+              attribute={"memberId"}
               value={this.props.contribution.memberId}
               options={this.getMemberOptions()}
-              onChange={this.handleChange_Member} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Date"} />
             <Input
               type={"text"}
+              attribute={"date"}
               value={this.props.contribution.date}
-              onChange={this.handleChange_Date} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Amount"} />
             <Input
               type={"text"}
+              attribute={"amount"}
               value={this.props.contribution.amount}
-              onChange={this.handleChange_Amount} />
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Description"} />
+            <Input
+              type={"text"}
+              attribute={"description"}
+              value={this.props.contribution.description}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Is Tax Deductible"} />
+            <Select
+              options={["true","false"]}
+              attribute={"isTaxDeductible"}
+              value={this.props.contribution.isTaxDeductible}
+              onChange={this.handleChange_Attribute} />
           </div>
         </div>
       </div>
@@ -63,19 +83,10 @@ var Info = React.createClass({
     });
   },
 
-  handleChange_Member: function (event) {
-    this.contribution.memberId = event.target.value;
-    this.props.onChange(this.contribution);
-  },
-
-  handleChange_Date: function (event) {
-    this.contribution.date = event.target.value;
-    this.props.onChange(this.contribution);
-  },
-
-  handleChange_Amount: function (event) {
-    this.contribution.amount = event.target.value;
-    this.props.onChange(this.contribution);
+  handleChange_Attribute: function (attribute, value) {
+    var contribution = this.props.contribution;
+    contribution[attribute] = value;
+    this.props.onChange(contribution);
   },
 });
 module.exports = Info;

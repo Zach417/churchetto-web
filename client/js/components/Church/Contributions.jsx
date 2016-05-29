@@ -82,7 +82,11 @@ var Contribution = React.createClass({
       }.bind(this));
       var amount = "";
       if (this.props.church.contributions[i].amount) {
-        amount = "$" + parseFloat(this.props.church.contributions[i].amount)
+        amount = this.props.church.contributions[i].amount
+          .toString()
+          .replace(new RegExp('\\$', 'g'), '')
+          .replace(new RegExp(',', 'g'), '');
+        amount = "$" + parseFloat(amount)
           .toFixed(2)
           .replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
       }
