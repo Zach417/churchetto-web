@@ -21,8 +21,9 @@ var Info = React.createClass({
               <Label isRequired={false} label={"Email"} />
               <Input
                 type={"text"}
+                attribute={"email"}
                 value={this.props.member.email}
-                onChange={this.handleChange_Email} />
+                onChange={this.handleChange_Attribute} />
             </div>
           </div>
           <div className="row-fluid">
@@ -31,24 +32,27 @@ var Info = React.createClass({
               <Label isRequired={false} label={"Main Phone"} />
               <Input
                 type={"text"}
+                attribute={"main"}
                 value={this.props.member.phone.main}
-                onChange={this.handleChange_PhoneMain} />
+                onChange={this.handleChange_AttributePhone} />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"Cell Phone"} />
               <Input
                 type={"text"}
+                attribute={"cell"}
                 value={this.props.member.phone.cell}
-                onChange={this.handleChange_PhoneCell} />
+                onChange={this.handleChange_AttributePhone} />
             </div>
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"Business Phone"} />
               <Input
                 type={"text"}
+                attribute={"business"}
                 value={this.props.member.phone.business}
-                onChange={this.handleChange_PhoneBusiness} />
+                onChange={this.handleChange_AttributePhone} />
             </div>
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
               style={{marginTop:"20px"}} />
@@ -60,40 +64,45 @@ var Info = React.createClass({
               <Label isRequired={false} label={"Address Line 1"} />
               <Input
                 type={"text"}
+                attribute={"line1"}
                 value={this.props.member.address.line1}
-                onChange={this.handleChange_AddressLine1} />
+                onChange={this.handleChange_AttributeAddress} />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"Address Line 2"} />
               <Input
                 type={"text"}
+                attribute={"line2"}
                 value={this.props.member.address.line2}
-                onChange={this.handleChange_AddressLine2} />
+                onChange={this.handleChange_AttributeAddress} />
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"City"} />
               <Input
                 type={"text"}
+                attribute={"city"}
                 value={this.props.member.address.city}
-                onChange={this.handleChange_AddressCity} />
+                onChange={this.handleChange_AttributeAddress} />
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"State"} />
               <Input
                 type={"text"}
+                attribute={"state"}
                 value={this.props.member.address.state}
-                onChange={this.handleChange_AddressState} />
+                onChange={this.handleChange_AttributeAddress} />
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
               style={Style.detailColumn}>
               <Label isRequired={false} label={"Zip Code"} />
               <Input
                 type={"text"}
+                attribute={"zip"}
                 value={this.props.member.address.zip}
-                onChange={this.handleChange_AddressZip} />
+                onChange={this.handleChange_AttributeAddress} />
             </div>
           </div>
         </div>
@@ -101,49 +110,22 @@ var Info = React.createClass({
     )
   },
 
-  handleChange_Email: function (event) {
-    this.member.email = event.target.value;
-    this.props.onChange(this.member);
+  handleChange_Attribute: function (attribute, value) {
+    var member = this.props.member;
+    member[attribute] = value;
+    this.props.onChange(member);
   },
 
-  handleChange_PhoneMain: function (event) {
-    this.member.phone.main = event.target.value;
-    this.props.onChange(this.member);
+  handleChange_AttributePhone: function (attribute, value) {
+    var member = this.props.member;
+    member.phone[attribute] = value;
+    this.props.onChange(member);
   },
 
-  handleChange_PhoneCell: function (event) {
-    this.member.phone.cell = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_PhoneBusiness: function (event) {
-    this.member.phone.business = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_AddressLine1: function (event) {
-    this.member.address.line1 = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_AddressLine2: function (event) {
-    this.member.address.line2 = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_AddressCity: function (event) {
-    this.member.address.city = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_AddressState: function (event) {
-    this.member.address.state = event.target.value;
-    this.props.onChange(this.member);
-  },
-
-  handleChange_AddressZip: function (event) {
-    this.member.address.zip = event.target.value;
-    this.props.onChange(this.member);
+  handleChange_AttributeAddress: function (attribute, value) {
+    var member = this.props.member;
+    member.address[attribute] = value;
+    this.props.onChange(member);
   },
 });
 module.exports = Info;
