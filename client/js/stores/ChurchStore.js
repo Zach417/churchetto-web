@@ -78,6 +78,18 @@ function setDatesToUtc (church) {
 			if (church.members[i].baptizedOn) {
 				church.members[i].baptizedOn = moment(church.members[i].baptizedOn).utc();
 			}
+			if (church.members[i].dateOfMembership) {
+				church.members[i].dateOfMembership = moment(church.members[i].dateOfMembership).utc();
+			}
+			if (church.members[i].dateOfAnniversary) {
+				church.members[i].dateOfAnniversary = moment(church.members[i].dateOfAnniversary).utc();
+			}
+			if (church.members[i].dateOfFaithConfirmation) {
+				church.members[i].dateOfFaithConfirmation = moment(church.members[i].dateOfFaithConfirmation).utc();
+			}
+			if (church.members[i].dateOfFaithReaffirmation) {
+				church.members[i].dateOfFaithReaffirmation = moment(church.members[i].dateOfFaithReaffirmation).utc();
+			}
 		}
 	}
 }
