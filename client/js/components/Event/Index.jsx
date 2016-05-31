@@ -12,12 +12,6 @@ function resolveSubDocuments (event) {
   if (!event) { event = {} }
   if (!event.attendees) { event.attendees = [] }
   if (!event.volunteers) { event.volunteers = [] }
-  if (event.starts) {
-    event.starts = moment(event.starts).format('MM/DD/YYYY h:mm a');
-  }
-  if (event.ends) {
-    event.ends = moment(event.ends).format('MM/DD/YYYY h:mm a');
-  }
   return event;
 }
 
@@ -31,6 +25,12 @@ var Event = React.createClass({
 
   componentWillMount: function () {
     this.event = resolveSubDocuments(this.props.event);
+    if (this.event.starts) {
+      this.event.starts = moment(this.event.starts).format('MM/DD/YYYY h:mm a');
+    }
+    if (this.event.ends) {
+      this.event.ends = moment(this.event.ends).format('MM/DD/YYYY h:mm a');
+    }
     this.setState({
       event: this.event
     });
@@ -45,6 +45,12 @@ var Event = React.createClass({
       return;
     }
     this.event = resolveSubDocuments(nextProps.event);
+    if (this.event.starts) {
+      this.event.starts = moment(this.event.starts).format('MM/DD/YYYY h:mm a');
+    }
+    if (this.event.ends) {
+      this.event.ends = moment(this.event.ends).format('MM/DD/YYYY h:mm a');
+    }
     this.setState({
       event: this.event
     });
