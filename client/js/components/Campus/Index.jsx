@@ -81,24 +81,11 @@ var Campus = React.createClass({
   },
 
   getChildComponent: function () {
-    var path = window.location.pathname;
-    var basePath = "/church/" + this.props.church._id + "/campus/" + this.state.campus._id;
-    if (!this.state.campus._id) {
-      basePath = "/church/" + this.props.church._id + "/campus/create";
-    }
-    if (path === basePath) {
-      return (
-        <Info campus={this.state.campus} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/info") {
-      return (
-        <Info campus={this.state.campus} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/contact") {
-      return (
-        <Contact campus={this.state.campus} onChange={this.handleChange_Child} />
-      )
-    }
+    return React.cloneElement(this.props.children, {
+      campus: this.state.campus,
+      church: this.props.church,
+      onChange: this.handleChange_Child,
+    });
   },
 
   handleChange_Child: function (campus) {

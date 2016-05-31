@@ -3,10 +3,6 @@ var moment = require('moment');
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Navigation = require('./Navigation.jsx');
-var Info = require('./Info.jsx');
-var Attendees = require('./Attendees.jsx');
-var Volunteers = require('./Volunteers.jsx');
-var Email = require('./Email.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
@@ -16,6 +12,12 @@ function resolveSubDocuments (event) {
   if (!event) { event = {} }
   if (!event.attendees) { event.attendees = [] }
   if (!event.volunteers) { event.volunteers = [] }
+  if (event.starts) {
+    event.starts = moment(event.starts).format('MM/DD/YYYY h:mm a');
+  }
+  if (event.ends) {
+    event.ends = moment(event.ends).format('MM/DD/YYYY h:mm a');
+  }
   return event;
 }
 
@@ -74,44 +76,22 @@ var Event = React.createClass({
   },
 
   getHeading: function () {
-    var event = this.state.event;
-    if (!event._id && !event.name) {
+    if (!this.state.event._id && !this.state.event.name) {
       return "New Event";
     }
-    return event.name;
+    return this.state.event.name;
   },
 
   getChildComponent: function () {
-    var path = window.location.pathname;
-    var basePath = "/church/" + this.props.church._id + "/event/"
-      + this.state.event._id;
-    if (!this.state.event._id) {
-      basePath = "/church/" + this.props.church._id + "/event/create";
-    }
-    if (path === basePath) {
-      return (
-        <Info event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/info") {
-      return (
-        <Info event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/attendees") {
-      return (
-        <Attendees event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/volunteers") {
-      return (
-        <Volunteers event={this.state.event} church={this.props.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/email") {
-      return (
-        <Email event={this.state.event} church={this.props.church} />
-      )
-    }
+    return React.cloneElement(this.props.children, {
+      event: this.state.event,
+      church: this.props.church,
+      onChange: this.handleChange_Child,
+    });
   },
 
   handleChange_Child: function (event) {
+    this.event = resolveSubDocuments(event);
     this.setState({
       event: this.event
     });
@@ -149,13 +129,16 @@ var Event = React.createClass({
       return;
     }
 
-    for (var i = 0; i < this.props.church.events.length; i++) {
-      if (this.props.church.events[i]._id == this.state.event._id) {
-        var church = this.props.church;
-        church.events.splice(i,1);
-        ChurchActions.update(church);
-        browserHistory.push("/church/" + this.props.church._id + "/event");
-        return;
+    var message = "Are you sure you wish to delete this event?";
+    if (confirm(message)) {
+      for (var i = 0; i < this.props.church.events.length; i++) {
+        if (this.props.church.events[i]._id == this.state.event._id) {
+          var church = this.props.church;
+          church.events.splice(i,1);
+          ChurchActions.update(church);
+          browserHistory.push("/church/" + this.props.church._id + "/event");
+          return;
+        }
       }
     }
   },

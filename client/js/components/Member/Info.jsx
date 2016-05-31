@@ -76,7 +76,7 @@ var Info = React.createClass({
               type={"text"}
               attribute={"type"}
               value={this.props.member.type}
-              options={["Contributor","Attendee","Other"]}
+              options={["Member","Contributor","Attendee","Other"]}
               onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"

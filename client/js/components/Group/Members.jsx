@@ -105,6 +105,7 @@ var Members = React.createClass({
     var result = [];
     for (var i = 0; i < this.props.group.members.length; i++) {
       var member = '';
+      if (!this.props.church.members) { return []; }
       for (var j = 0; j < this.props.church.members.length; j++) {
         if (this.props.church.members[j]._id ==
           this.props.group.members[i].memberId) {

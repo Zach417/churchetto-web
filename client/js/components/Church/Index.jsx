@@ -2,20 +2,11 @@ var React = require('react');
 var browserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Navigation = require('./Navigation.jsx');
-var Info = require('./Info.jsx');
-var Contact = require('./Contact.jsx');
-var Attendances = require('./Attendances.jsx');
-var Contributions = require('./Contributions.jsx');
-var Members = require('./Members.jsx');
-var Campuses = require('./Campuses.jsx');
-var Groups = require('./Groups.jsx');
-var Events = require('./Events.jsx');
-var ButtonPrimary = require('../Button/Index.jsx').Primary;
-var ButtonSecondary = require('../Button/Index.jsx').Secondary;
-var ButtonDanger = require('../Button/Index.jsx').Danger;
+var Button = require('../Button/Index.jsx');
 var ChurchActions = require('../../actions/ChurchActions');
 
 function resolveSubDocuments (church) {
+  if (!church) { church = {} }
   if (!church.phone) { church.phone = {} }
   if (!church.fax) { church.fax = {} }
   if (!church.address) { church.address = {} }
@@ -36,12 +27,6 @@ var Church = React.createClass({
   },
 
   componentWillMount: function () {
-    if (!this.props.church) {
-      return this.setState({
-        church: resolveSubDocuments({})
-      });
-    }
-
     this.setState({
       church: resolveSubDocuments(this.props.church)
     });
@@ -72,61 +57,21 @@ var Church = React.createClass({
           {this.getChildComponent()}
         </div>
         <div style={{padding:"0 20px 20px 20px"}}>
-          <ButtonPrimary label={"Save"} onClick={this.handleClick_Submit} />
+          <Button.Primary label={"Save"} onClick={this.handleClick_Submit} />
           <span style={{display:"inline-block",width:"5px"}} />
-          <ButtonSecondary label={"Cancel"} onClick={this.handleClick_Cancel} />
+          <Button.Secondary label={"Cancel"} onClick={this.handleClick_Cancel} />
           <span style={{display:"inline-block",width:"5px"}} />
-          <ButtonDanger label={"Delete"} onClick={this.handleClick_Delete} />
+          <Button.Danger label={"Delete"} onClick={this.handleClick_Delete} />
         </div>
       </div>
     )
   },
 
   getChildComponent: function () {
-    var path = window.location.pathname;
-    var basePath = "/church/" + this.state.church._id;
-    if (!this.state.church._id) {
-      basePath = "/church/create";
-    }
-    if (path === basePath) {
-      return (
-        <Info church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/info") {
-      return (
-        <Info church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/contact") {
-      return (
-        <Contact church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/attendance") {
-      return (
-        <Attendances church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/contribution") {
-      return (
-        <Contributions church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/member") {
-      return (
-        <Members church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/campus") {
-      return (
-        <Campuses church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/event") {
-      return (
-        <Events church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/group") {
-      return (
-        <Groups church={this.state.church} onChange={this.handleChange_Child} />
-      )
-    } else {
-      return this.props.children;
-    }
+    return React.cloneElement(this.props.children, {
+      church: this.state.church,
+      onChange: this.handleChange_Child,
+    });
   },
 
   handleChange_Child: function (church) {
@@ -150,9 +95,14 @@ var Church = React.createClass({
   },
 
   handleClick_Delete: function () {
-    ChurchActions.destroy(this.state.church);
-    this.setState({church:resolveSubDocuments({})});
-    browserHistory.push("/");
+    var message = "Are you sure you wish to delete this church? "
+      + "This is almost certainly a terrible idea, and you most "
+      + "likely clicked this by mistake.";
+    if (confirm(message)) {
+      ChurchActions.destroy(this.state.church);
+      this.setState({church:resolveSubDocuments({})});
+      browserHistory.push("/");
+    }
   },
 });
 

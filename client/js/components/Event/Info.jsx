@@ -1,5 +1,4 @@
 var React = require('react');
-var moment = require('moment');
 var Style = require('./Style.jsx');
 var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
@@ -7,16 +6,6 @@ var TextArea = require('../Form/Index.jsx').TextArea;
 var Select = require('../Form/Index.jsx').Select;
 
 var Info = React.createClass({
-  componentWillMount: function () {
-    this.event = this.props.event;
-    if (this.event.starts) {
-      this.event.starts = moment(this.event.starts).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.ends) {
-      this.event.ends = moment(this.event.ends).format('MM/DD/YYYY h:mm a');
-    }
-  },
-
   render: function () {
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
@@ -27,58 +16,63 @@ var Info = React.createClass({
             <Label isRequired={true} label={"Name"} />
             <Input
               type={"text"}
+              attribute={"name"}
               value={this.props.event.name}
-              onChange={this.handleChange_Name} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Description"} />
             <Input
               type={"text"}
+              attribute={"description"}
               value={this.props.event.description}
-              onChange={this.handleChange_Description} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Start Time"} />
             <Input
               type={"text"}
+              attribute={"starts"}
               value={this.props.event.starts}
-              onChange={this.handleChange_Starts} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"End Time"} />
             <Input
               type={"text"}
+              attribute={"ends"}
               value={this.props.event.ends}
-              onChange={this.handleChange_Ends} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Group"} />
             <Select
-              type={"text"}
+              attribute={"group"}
               value={this.props.event.group}
               options={this.getGroupOptions()}
-              onChange={this.handleChange_Group} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Status"} />
             <Select
-              type={"text"}
+              attribute={"status"}
               value={this.props.event.status}
               options={["Pending","Completed","Canceled"]}
-              onChange={this.handleChange_Status} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Notes"} />
             <TextArea
               type={"text"}
+              attribute={"notes"}
               value={this.props.event.notes}
-              onChange={this.handleChange_Notes} />
+              onChange={this.handleChange_Attribute} />
           </div>
         </div>
       </div>
@@ -86,6 +80,7 @@ var Info = React.createClass({
   },
 
   getGroupOptions: function () {
+    if (!this.props.church.groups) { return []; }
     var result = [];
     for (var i = 0; i < this.props.church.groups.length; i++) {
       result.push({
@@ -96,39 +91,10 @@ var Info = React.createClass({
     return result;
   },
 
-  handleChange_Name: function (event) {
-    this.event.name = event.target.value;
-    this.props.onChange(this.event);
-  },
-
-  handleChange_Description: function (event) {
-    this.event.description = event.target.value;
-    this.props.onChange(this.event);
-  },
-
-  handleChange_Starts: function (event) {
-    this.event.starts = event.target.value;
-    this.props.onChange(this.event);
-  },
-
-  handleChange_Ends: function (event) {
-    this.event.ends = event.target.value;
-    this.props.onChange(this.event);
-  },
-
-  handleChange_Notes: function (event) {
-    this.event.notes = event.target.value;
-    this.props.onChange(this.event);
-  },
-
-  handleChange_Group: function (event) {
-    this.event.group = event.target.value;
-    this.props.onChange(this.event);
-  },
-
-  handleChange_Status: function (event) {
-    this.event.status = event.target.value;
-    this.props.onChange(this.event);
+  handleChange_Attribute: function (attribute, value) {
+    var event = this.props.event;
+    event[attribute] = value;
+    this.props.onChange(event);
   },
 });
 module.exports = Info;

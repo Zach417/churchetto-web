@@ -96,8 +96,8 @@ var Church = React.createClass({
   },
 
   handleClick_More: function () {
-    $("#church-" + this.props.id + "-sub-navigation").toggle("bind");
-    $("#church-" + this.props.id + "-navigation").toggle("bind");
+    $("#church-" + this.props.id + "-sub-navigation").toggle("slide");
+    $("#church-" + this.props.id + "-navigation").toggle("slide");
   },
 
   handleClick_Campuses: function () {

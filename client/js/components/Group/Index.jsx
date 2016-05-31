@@ -79,25 +79,11 @@ var Group = React.createClass({
   },
 
   getChildComponent: function () {
-    var path = window.location.pathname;
-    var basePath = "/church/" + this.props.church._id + "/group/"
-      + this.state.group._id;
-    if (!this.state.group._id) {
-      basePath = "/church/" + this.props.church._id + "/group/create";
-    }
-    if (path === basePath) {
-      return (
-        <Info group={this.state.group} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/info") {
-      return (
-        <Info group={this.state.group} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/members") {
-      return (
-        <Members group={this.state.group} church={this.props.church} onChange={this.handleChange_Child} />
-      )
-    }
+    return React.cloneElement(this.props.children, {
+      group: this.state.group,
+      church: this.props.church,
+      onChange: this.handleChange_Child,
+    });
   },
 
   handleChange_Child: function (group) {

@@ -119,24 +119,11 @@ var Member = React.createClass({
   },
 
   getChildComponent: function () {
-    var path = window.location.pathname;
-    var basePath = "/church/" + this.props.church._id + "/member/" + this.state.member._id;
-    if (!this.state.member._id) {
-      basePath = "/church/" + this.props.church._id + "/member/create";
-    }
-    if (path === basePath) {
-      return (
-        <Info member={this.state.member} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/info") {
-      return (
-        <Info member={this.state.member} onChange={this.handleChange_Child} />
-      )
-    } else if (path === basePath + "/contact") {
-      return (
-        <Contact member={this.state.member} onChange={this.handleChange_Child} />
-      )
-    }
+    return React.cloneElement(this.props.children, {
+      member: this.state.member,
+      church: this.props.church,
+      onChange: this.handleChange_Child,
+    });
   },
 
   handleChange_Child: function (member) {
