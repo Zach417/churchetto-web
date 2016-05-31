@@ -73,6 +73,9 @@ var Info = React.createClass({
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} href={"/exports/member-directory/" + this.props.church._id} target="_blank">
                     {"Picture Directory (.pdf)"}
                   </a>
+                  <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} href={"/exports/birthday-report/" + this.props.church._id + "?month=" + moment().format("MMMM")} target="_blank">
+                    {"Birthdays (.pdf)"}
+                  </a>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} onClick={this.handleClick_Export}>
                     {"Member Data (.csv)"}
                   </a>
