@@ -14,6 +14,7 @@ function resolveSubDocuments (member) {
   if (!member) { member = {} }
   if (!member.phone) { member.phone = {} }
   if (!member.address) { member.address = {} }
+  if (!member.addressAlternate) { member.addressAlternate = {} }
   return member;
 }
 
@@ -38,6 +39,22 @@ var Member = React.createClass({
 
     if (this.member.baptizedOn && moment(this.member.baptizedOn).isValid()) {
       this.member.baptizedOn = moment(this.member.baptizedOn).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (this.member.dateOfMembership && moment(this.member.dateOfMembership).isValid()) {
+      this.member.dateOfMembership = moment(this.member.dateOfMembership).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (this.member.dateOfAnniversary && moment(this.member.dateOfAnniversary).isValid()) {
+      this.member.dateOfAnniversary = moment(this.member.dateOfAnniversary).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (this.member.dateOfFaithConfirmation && moment(this.member.dateOfFaithConfirmation).isValid()) {
+      this.member.dateOfFaithConfirmation = moment(this.member.dateOfFaithConfirmation).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (this.member.dateOfFaithReaffirmation && moment(this.member.dateOfFaithReaffirmation).isValid()) {
+      this.member.dateOfFaithReaffirmation = moment(this.member.dateOfFaithReaffirmation).startOf("day").format("MM/DD/YYYY");
     }
 
     this.setState({
@@ -65,6 +82,22 @@ var Member = React.createClass({
 
     if (nextProps.member.baptizedOn && moment(nextProps.member.baptizedOn).isValid()) {
       this.member.baptizedOn = moment(nextProps.member.baptizedOn).format("MM/DD/YYYY");
+    }
+
+    if (nextProps.member.dateOfMembership && moment(nextProps.member.dateOfMembership).isValid()) {
+      this.member.dateOfMembership = moment(nextProps.member.dateOfMembership).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (nextProps.member.dateOfAnniversary && moment(nextProps.member.dateOfAnniversary).isValid()) {
+      this.member.dateOfAnniversary = moment(nextProps.member.dateOfAnniversary).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (nextProps.member.dateOfFaithConfirmation && moment(nextProps.member.dateOfFaithConfirmation).isValid()) {
+      this.member.dateOfFaithConfirmation = moment(nextProps.member.dateOfFaithConfirmation).startOf("day").format("MM/DD/YYYY");
+    }
+
+    if (nextProps.member.dateOfFaithReaffirmation && moment(nextProps.member.dateOfFaithReaffirmation).isValid()) {
+      this.member.dateOfFaithReaffirmation = moment(nextProps.member.dateOfFaithReaffirmation).startOf("day").format("MM/DD/YYYY");
     }
 
     this.setState({

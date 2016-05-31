@@ -49,7 +49,14 @@ var memberSchema = new mongoose.Schema({
   title: String,
   dateOfBirth: Date,
   dateOfDeath: Date,
+  dateOfMembership: Date,
+  dateOfAnniversary: Date,
+  dateOfFaithConfirmation: Date,
+  dateOfFaithReaffirmation: Date,
   type: String, //contributor, attender
+  maritalStatus: String, //married, single, divorced, widow, widower
+  envelopeNumber: String,
+  notes: String,
   baptizedOn: Date,
   occupation: String,
   employer: String,
@@ -64,6 +71,13 @@ var memberSchema = new mongoose.Schema({
     business: String,
   },
   address: {
+    line1: String,
+    line2: String,
+    city: String,
+    state: String,
+    zip: String,
+  },
+  addressAlternate: {
     line1: String,
     line2: String,
     city: String,

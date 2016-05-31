@@ -54,8 +54,7 @@ var Info = React.createClass({
                 value={this.props.member.phone.business}
                 onChange={this.handleChange_AttributePhone} />
             </div>
-            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-              style={{marginTop:"20px"}} />
+            <div className="col-xs-12" style={{marginTop:"20px"}} />
           </div>
           <div className="row-fluid">
             <h3 style={{margin:"0"}}>Address</h3>
@@ -104,6 +103,55 @@ var Info = React.createClass({
                 value={this.props.member.address.zip}
                 onChange={this.handleChange_AttributeAddress} />
             </div>
+            <div className="col-xs-12" style={{marginTop:"20px"}} />
+          </div>
+          <div className="row-fluid">
+            <h3 style={{margin:"0"}}>Alternate Address</h3>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+              style={Style.detailColumn}>
+              <Label isRequired={false} label={"Address Line 1"} />
+              <Input
+                type={"text"}
+                attribute={"line1"}
+                value={this.props.member.addressAlternate.line1}
+                onChange={this.handleChange_AttributeAddressAlternate} />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+              style={Style.detailColumn}>
+              <Label isRequired={false} label={"Address Line 2"} />
+              <Input
+                type={"text"}
+                attribute={"line2"}
+                value={this.props.member.addressAlternate.line2}
+                onChange={this.handleChange_AttributeAddressAlternate} />
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              style={Style.detailColumn}>
+              <Label isRequired={false} label={"City"} />
+              <Input
+                type={"text"}
+                attribute={"city"}
+                value={this.props.member.addressAlternate.city}
+                onChange={this.handleChange_AttributeAddressAlternate} />
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              style={Style.detailColumn}>
+              <Label isRequired={false} label={"State"} />
+              <Input
+                type={"text"}
+                attribute={"state"}
+                value={this.props.member.addressAlternate.state}
+                onChange={this.handleChange_AttributeAddressAlternate} />
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              style={Style.detailColumn}>
+              <Label isRequired={false} label={"Zip Code"} />
+              <Input
+                type={"text"}
+                attribute={"zip"}
+                value={this.props.member.addressAlternate.zip}
+                onChange={this.handleChange_AttributeAddressAlternate} />
+            </div>
           </div>
         </div>
       </div>
@@ -125,6 +173,12 @@ var Info = React.createClass({
   handleChange_AttributeAddress: function (attribute, value) {
     var member = this.props.member;
     member.address[attribute] = value;
+    this.props.onChange(member);
+  },
+
+  handleChange_AttributeAddressAlternate: function (attribute, value) {
+    var member = this.props.member;
+    member.addressAlternate[attribute] = value;
     this.props.onChange(member);
   },
 });

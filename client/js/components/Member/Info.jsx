@@ -61,6 +61,16 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
+            <Label isRequired={false} label={"Marital Status"} />
+            <Select
+              type={"text"}
+              attribute={"maritalStatus"}
+              value={this.props.member.maritalStatus}
+              options={["Married","Single","Divorced","Widow","Widower"]}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Gender"} />
             <Select
               type={"text"}
@@ -71,12 +81,30 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
+            <Label isRequired={false} label={"Member Date"} />
+            <Input
+              type={"text"}
+              attribute={"dateOfMembership"}
+              value={this.props.member.dateOfMembership}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
             <Label isRequired={false} label={"Member Type"} />
             <Select
               type={"text"}
               attribute={"type"}
               value={this.props.member.type}
               options={["Member","Contributor","Attendee","Other"]}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Anniversary Date"} />
+            <Input
+              type={"text"}
+              attribute={"dateOfAnniversary"}
+              value={this.props.member.dateOfAnniversary}
               onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"
@@ -92,8 +120,27 @@ var Info = React.createClass({
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Date of Death"} />
             <Input
-              type={"dateOfDeath"}
+              type={"text"}
+              attribute={"dateOfDeath"}
               value={this.props.member.dateOfDeath}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Envelope Number"} />
+            <Input
+              type={"text"}
+              attribute={"envelopeNumber"}
+              value={this.props.member.envelopeNumber}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Notes"} />
+            <TextArea
+              type={"text"}
+              attribute={"notes"}
+              value={this.props.member.notes}
               onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-xs-12" style={{marginTop:"20px"}} />
@@ -153,6 +200,24 @@ var Info = React.createClass({
               type={"text"}
               attribute={"baptizedOn"}
               value={this.props.member.baptizedOn}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Faith Confirmed On"} />
+            <Input
+              type={"text"}
+              attribute={"dateOfFaithConfirmation"}
+              value={this.props.member.dateOfFaithConfirmation}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label isRequired={false} label={"Faith Reaffirmed On"} />
+            <Input
+              type={"text"}
+              attribute={"dateOfFaithReaffirmation"}
+              value={this.props.member.dateOfFaithReaffirmation}
               onChange={this.handleChange_Attribute} />
           </div>
         </div>
