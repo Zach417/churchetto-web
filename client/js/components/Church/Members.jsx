@@ -1,5 +1,6 @@
 var React = require('react');
 var $ = require ('jquery');
+var Link = require('react-router').Link;
 var Griddle = require('griddle-react');
 var jsonexport = require('jsonexport');
 var moment = require('moment');
@@ -70,12 +71,16 @@ var Info = React.createClass({
               <div style={{position:"relative",display:"inline-block"}}>
                 <ButtonSecondary label={"Export"} onClick={this.handleClick_ExportDropdown} />
                 <div id="member-export-dropdown" style={{display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}>
-                  <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} href={"/exports/member-directory/" + this.props.church._id} target="_blank">
+                  <Link
+                    style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
+                    to={"/report-viewer/member-directory"}>
                     {"Picture Directory (.pdf)"}
-                  </a>
-                  <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} href={"/exports/birthday-report/" + this.props.church._id + "?month=" + moment().format("MMMM")} target="_blank">
+                  </Link>
+                  <Link
+                    style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
+                    to={"/report-viewer/birthday-report"}>
                     {"Birthdays (.pdf)"}
-                  </a>
+                  </Link>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} onClick={this.handleClick_Export}>
                     {"Member Data (.csv)"}
                   </a>
