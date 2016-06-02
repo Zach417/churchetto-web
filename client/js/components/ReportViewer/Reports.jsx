@@ -23,4 +23,8 @@ module.exports = [{
   label: "Member Directory",
   path: "member-directory",
   parameters: [],
+}, {
+  label: "Mailing Labels",
+  path: "mailing-labels",
+  parameters: [],
 }]

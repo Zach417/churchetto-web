@@ -189,19 +189,24 @@ var Component = React.createClass({
     $("#report-viewer-wait").fadeIn("slow").delay(6000).fadeOut("slow");
 
     return (
-      <object
-        id={"report-viewer-" + this.state.options.report}
-        style={{height:"8.5in"}}
-        data={this.getReportPath()}
-        type="application/pdf"
-        width="100%"
-        height="100%">
-        <p>
-          {"Click "}
-          <a href={this.getReportPath()}>here</a>
-          {" to view the report."}
-        </p>
-      </object>
+      <div>
+        <ButtonPrimary
+          label={"Download"}
+          onClick={this.handleClick_Download} />
+        <object
+          id={"report-viewer-" + this.state.options.report}
+          style={{height:"8.5in",marginTop:"15px"}}
+          data={this.getReportPath()}
+          type="application/pdf"
+          width="100%"
+          height="100%">
+          <p>
+            {"Click "}
+            <a href={this.getReportPath()}>here</a>
+            {" to view the report."}
+          </p>
+        </object>
+      </div>
     )
   },
 
@@ -280,6 +285,10 @@ var Component = React.createClass({
     var state = this.state;
     state.options.go = true;
     this.setState(state);
+  },
+
+  handleClick_Download: function () {
+    window.open(this.getReportPath(),"_blank");
   },
 });
 
