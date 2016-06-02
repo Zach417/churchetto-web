@@ -110,6 +110,13 @@ router.get('/:id', function (req, res) {
         return 1;
       return 0; //default return value (no sorting)
     }).map(function (member, i) {
+      if (!member.address) { member.address = {} }
+      if (!member.address.line1) { member.address.line1 = "" }
+      if (!member.address.line2) { member.address.line2 = "" }
+      if (!member.address.city) { member.address.city = "" }
+      if (!member.address.state) { member.address.state = "" }
+      if (!member.address.zip) { member.address.zip = "" }
+
       var memberHtml = fs.readFileSync(path.join(__dirname,'./member.html'), 'utf8');
       var contributionTableHtml = fs.readFileSync(path.join(__dirname,'./contributionTable.html'), 'utf8');
       var contributionRowHtml = fs.readFileSync(path.join(__dirname,'./contributionRow.html'), 'utf8');

@@ -78,6 +78,11 @@ var Info = React.createClass({
                   </Link>
                   <Link
                     style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
+                    to={"/report-viewer/mailing-labels"}>
+                    {"Mailing Labels (.pdf)"}
+                  </Link>
+                  <Link
+                    style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
                     to={"/report-viewer/birthday-report"}>
                     {"Birthdays (.pdf)"}
                   </Link>

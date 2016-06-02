@@ -45,7 +45,7 @@ router.get('/:id', function (req, res) {
     id: id,
   }, function (church) {
     // create html generation from returned church
-    var html = fs.readFileSync(path.join(__dirname,'./memberDirectory.html'), 'utf8');
+    var html = fs.readFileSync(path.join(__dirname,'./mailingLabels.html'), 'utf8');
     var options = {
       "format": "Letter",
       "base": "http://churchetto.com/",
@@ -55,25 +55,8 @@ router.get('/:id', function (req, res) {
       }
     };
 
-    var churchAddress = "";
-    if (church.address && church.address.line1) {
-      churchAddress =
-        "<div style=\"font-size:14px;\">"
-          + church.address.line1
-          + "<br />" + church.address.city
-          + ", " + church.address.state
-          + " " + church.address.zip
-        + "</div>"
-    } else {
-      churchAddress = "<div style=\"font-size:14px;\">No Address Data Available</div>";
-    }
-
-    var header = "";
-    header = header + "<h1 style=\"margin:0px;font-family:'Poiret One', cursive;\">" + church.name + "</h1>";
-    header = header + "<div>" + churchAddress + "</div>";
-    html = html.replace('{HEADER}',header);
-
     var members = "";
+    var openRow = false;
     church.members.sort(function (a,b) {
       var nameA = "";
       var nameB = "";
@@ -94,7 +77,7 @@ router.get('/:id', function (req, res) {
       if (nameA > nameB)
         return 1;
       return 0; //default return value (no sorting)
-    }).map(function (member) {
+    }).map(function (member,i) {
       if (!member.address) { member.address = {} }
       if (!member.address.line1) { member.address.line1 = "" }
       if (!member.address.line2) { member.address.line2 = "" }
@@ -102,66 +85,48 @@ router.get('/:id', function (req, res) {
       if (!member.address.state) { member.address.state = "" }
       if (!member.address.zip) { member.address.zip = "" }
 
-      var image = "";
-      if (member.imagePath) {
-        image = "<img src=\"http://churchetto.com/img/s3/" + member.imagePath + "\" style=\"width:150px;padding-right:10px;\" />";
-      } else {
-        image = "<img src=\"https://pixabay.com/static/uploads/photo/2014/04/02/10/25/man-303792_960_720.png\" style=\"width:150px;padding-right:10px;\" />";
-      }
-
       var memberAddress = "";
       if (member.address && member.address.line1) {
         memberAddress =
-          "<div style=\"font-size:14px;\">"
+          "<div>"
             + member.address.line1
             + "<br />" + member.address.city
             + ", " + member.address.state
             + " " + member.address.zip
           + "</div>"
       } else {
-        memberAddress = "<div style=\"font-size:14px;\">No Address Data Available</div>";
+        memberAddress = "<div>No Address Data Available</div>";
       }
 
-      var memberPhone = "";
-      if (member.phone && member.phone.main) {
-        memberPhone =
-          "<div style=\"font-size:14px;\">"
-            + "<b>Phone:</b> " + member.phone.main
-          + "</div>"
-      } else {
-        memberPhone =
-          "<div style=\"font-size:14px;\">"
-            + "<b>Phone:</b> n/a"
-          + "</div>"
-      }
-
-      var memberEmail = "";
-      if (member.email) {
-        memberEmail =
-          "<div style=\"font-size:14px;\">"
-            + "<b>Email:</b> " + member.email
-          + "</div>"
-      } else {
-        memberEmail =
-          "<div style=\"font-size:14px;\">"
-            + "<b>Email:</b> n/a"
-          + "</div>"
+      var remainder = i % 3;
+      if (remainder === 0) {
+        openRow = true;
+        members = members
+        + "<div class=\"row\">";
       }
 
       members = members
-      + "<div style=\"border-top:1px solid #ccc;margin-top:10px;padding-top:10px;\">"
-        + image
-        + "<div style=\"display:inline-block;vertical-align:top;\">"
-          + "<h3 style=\"margin:0px;font-size:24px;\">"
-            + member.lastName
-            + ", " + member.firstName
+      + "<div class=\"col-xs-4\" style=\"padding:10px;\">"
+        + "<div>"
+          + "<h3 style=\"margin:0px;font-size:14px;\">"
+            + member.firstName
+            + " " + member.lastName
           + "</h3>"
           + memberAddress
-          + "<br />"
-          + memberPhone
-          + memberEmail
+        + "</div>"
       + "</div>";
+
+      if (remainder === 2) {
+        openRow = false;
+        members = members
+        + "</div>";
+      }
     });
+
+    if (openRow === false) {
+      members = members + "</div>"
+    }
+
     html = html.replace('{MEMBERS}',members);
 
     //res.send(html);
