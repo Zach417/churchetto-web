@@ -90,6 +90,7 @@ router.get('/:id', function (req, res) {
         memberAddress =
           "<div>"
             + member.address.line1
+            + " " + member.address.line2
             + "<br />" + member.address.city
             + ", " + member.address.state
             + " " + member.address.zip
