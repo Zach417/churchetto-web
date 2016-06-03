@@ -195,10 +195,8 @@ var Member = React.createClass({
         var message = "It appears that another member already has "
           + "this name. Are you sure you would like to continue "
           + "and create this record?";
-        if (confirm(message)) {
-          members.push(this.member);
-          church.members = members;
-          ChurchActions.update(church);
+        if (confirm(message) === false) {
+          return;
         }
       } else {
         members.push(this.member);
