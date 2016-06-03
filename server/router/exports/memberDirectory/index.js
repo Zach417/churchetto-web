@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var moment = require('moment');
 var pdf = require('html-pdf');
 var express = require('express');
 var router = express.Router();
@@ -128,12 +129,25 @@ router.get('/:id', function (req, res) {
       if (member.phone && member.phone.main) {
         memberPhone =
           "<div style=\"font-size:14px;\">"
-            + "<b>Phone:</b> " + member.phone.main
+            + "<b>Main Phone:</b> " + member.phone.main
           + "</div>"
       } else {
         memberPhone =
           "<div style=\"font-size:14px;\">"
-            + "<b>Phone:</b> n/a"
+            + "<b>Main Phone:</b> n/a"
+          + "</div>"
+      }
+
+      var memberCellPhone = "";
+      if (member.phone && member.phone.cell) {
+        memberCellPhone =
+          "<div style=\"font-size:14px;\">"
+            + "<b>Cell Phone:</b> " + member.phone.cell
+          + "</div>"
+      } else {
+        memberCellPhone =
+          "<div style=\"font-size:14px;\">"
+            + "<b>Cell Phone:</b> n/a"
           + "</div>"
       }
 
@@ -150,6 +164,19 @@ router.get('/:id', function (req, res) {
           + "</div>"
       }
 
+      var memberBirthday = "";
+      if (member.dateOfBirth) {
+        memberBirthday =
+          "<div style=\"font-size:14px;\">"
+            + "<b>Date of Birth:</b> " + moment(member.dateOfBirth).format("MM/DD/YYYY")
+          + "</div>"
+      } else {
+        memberBirthday =
+          "<div style=\"font-size:14px;\">"
+            + "<b>Date of Birth:</b> n/a"
+          + "</div>"
+      }
+
       members = members
       + "<div style=\"border-top:1px solid #ccc;margin-top:10px;padding-top:10px;\">"
         + image
@@ -161,7 +188,9 @@ router.get('/:id', function (req, res) {
           + memberAddress
           + "<br />"
           + memberPhone
+          + memberCellPhone
           + memberEmail
+          + memberBirthday
       + "</div>";
     });
     html = html.replace('{MEMBERS}',members);
