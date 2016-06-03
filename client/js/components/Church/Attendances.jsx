@@ -61,8 +61,12 @@ var Attendance = React.createClass({
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Date","Count"]} resultsPerPage={20}
+            <Griddle
+              results={this.getGriddleData()}
+              columnMetadata={columnMeta}
+              showFilter={true}
+              columns={["Date","Count"]}
+              resultsPerPage={20}
               onRowClick={this.handleClick_Row} />
           </div>
         </div>

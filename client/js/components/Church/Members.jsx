@@ -97,14 +97,22 @@ var Info = React.createClass({
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12 hidden-xs"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Name","Phone","Email"]} resultsPerPage={20}
+            <Griddle
+              results={this.getGriddleData()}
+              columnMetadata={columnMeta}
+              showFilter={true}
+              columns={["Name","Phone","Email"]}
+              resultsPerPage={20}
               onRowClick={this.handleClick_Row} />
           </div>
           <div className="hidden-lg hidden-md hidden-sm col-xs-12"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Name"]} resultsPerPage={10}
+            <Griddle
+              results={this.getGriddleData()}
+              columnMetadata={columnMeta}
+              showFilter={true}
+              columns={["Name"]}
+              resultsPerPage={10}
               onRowClick={this.handleClick_Row} />
           </div>
         </div>
@@ -114,15 +122,25 @@ var Info = React.createClass({
 
   getGriddleData: function () {
     var result = [];
-    for (var i = 0; i < this.props.church.members.length; i++) {
+    this.props.church.members.sort(function (a,b) {
+      if (!a.firstName) { a.firstName = ""; }
+      if (!a.lastName) { a.lastName = ""; }
+      if (!b.firstName) { b.firstName = ""; }
+      if (!b.lastName) { b.lastName = ""; }
+      var nameA = a.lastName.toLowerCase() + a.firstName.toLowerCase();
+      var nameB = b.lastName.toLowerCase() + b.firstName.toLowerCase();
+      if (nameA < nameB) { return -1; }
+      if (nameA > nameB) { return 1; }
+      return 0;
+    }).map(function (member) {
       result.push({
-        "memberId": this.props.church.members[i]._id,
+        "memberId": member._id,
         "churchId": this.props.church._id,
-        "Name": this.props.church.members[i].lastName + ", " + this.props.church.members[i].firstName,
-        "Phone": this.props.church.members[i].phone.main,
-        "Email": this.props.church.members[i].email,
+        "Name": member.lastName + ", " + member.firstName,
+        "Phone": member.phone.main,
+        "Email": member.email,
       });
-    }
+    }.bind(this));
     return result;
   },
 

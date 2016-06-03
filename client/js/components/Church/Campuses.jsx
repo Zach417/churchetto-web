@@ -54,14 +54,22 @@ var Info = React.createClass({
           </div>
           <div className="col-lg-12 col-md-12 col-sm-12 hidden-xs"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Name","City","State"]} resultsPerPage={20}
+            <Griddle
+              results={this.getGriddleData()}
+              columnMetadata={columnMeta}
+              showFilter={true}
+              columns={["Name","City","State"]}
+              resultsPerPage={20}
               onRowClick={this.handleClick_Row} />
           </div>
           <div className="hidden-lg hidden-md hidden-sm col-xs-12"
             style={Style.detailColumn}>
-            <Griddle results={this.getGriddleData()} columnMetadata={columnMeta}
-              columns={["Name","City"]} resultsPerPage={10}
+            <Griddle
+              results={this.getGriddleData()}
+              columnMetadata={columnMeta}
+              showFilter={true}
+              columns={["Name","City"]}
+              resultsPerPage={10}
               onRowClick={this.handleClick_Row} />
           </div>
         </div>
