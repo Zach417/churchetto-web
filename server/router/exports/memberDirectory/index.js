@@ -74,7 +74,9 @@ router.get('/:id', function (req, res) {
     html = html.replace('{HEADER}',header);
 
     var members = "";
-    church.members.sort(function (a,b) {
+    church.members.filter(function (member){
+      return member.type !== "Deceased" && !member.dateOfDeath;
+    }).sort(function (a,b) {
       var nameA = "";
       var nameB = "";
       if (a.lastName) {
