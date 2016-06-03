@@ -102,7 +102,7 @@ router.get('/:id', function (req, res) {
 
       var hasAddress = false;
       addresses.map(function (address) {
-        if (memberAddress.replace(/ /g,"").replace(/./g,"").replace(/,/g,"") == address.html.replace(/ /g,"").replace(/./g,"").replace(/,/g,"") && memberAddress != "<div>No Address Data Available</div>") {
+        if (memberAddress.replace(/\s/g,"").replace(/\./g,"").replace(/,/g,"") == address.html.replace(/\s/g,"").replace(/\./g,"").replace(/,/g,"") && memberAddress != "<div>No Address Data Available</div>") {
           hasAddress = true;
           address.members.push(member);
         }
@@ -114,8 +114,6 @@ router.get('/:id', function (req, res) {
         });
       }
     });
-
-    console.log(addresses);
 
     addresses.map(function (address, i) {
       var remainder = i % 3;
