@@ -10,6 +10,17 @@ var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
 var ChurchActions = require('../../actions/ChurchActions');
 
+function isExistingMember (members, member) {
+  var result = false;
+  members.map(function (churchMember) {
+    if (churchMember.firstName == member.firstName
+      && churchMember.lastName == member.lastName) {
+      result = true;
+    }
+  });
+  return result;
+}
+
 function resolveSubDocuments (member) {
   if (!member) { member = {} }
   if (!member.phone) { member.phone = {} }
@@ -180,9 +191,20 @@ var Member = React.createClass({
       church.members = members;
       ChurchActions.update(church);
     } else {
-      members.push(this.member);
-      church.members = members;
-      ChurchActions.update(church);
+      if (isExistingMember(church.members,this.member) === true) {
+        var message = "It appears that another member already has "
+          + "this name. Are you sure you would like to continue "
+          + "and create this record?";
+        if (confirm(message)) {
+          members.push(this.member);
+          church.members = members;
+          ChurchActions.update(church);
+        }
+      } else {
+        members.push(this.member);
+        church.members = members;
+        ChurchActions.update(church);
+      }
     }
     browserHistory.push("/church/" + this.props.church._id + "/member");
   },
@@ -197,13 +219,18 @@ var Member = React.createClass({
       return;
     }
 
-    for (var i = 0; i < this.props.church.members.length; i++) {
-      if (this.props.church.members[i]._id == this.state.member._id) {
-        var church = this.props.church;
-        church.members.splice(i,1);
-        ChurchActions.update(church);
-        browserHistory.push("/church/" + this.props.church._id + "/member");
-        return;
+    var message = "Are you sure you wish to delete this member? "
+      + "This is almost certainly a terrible idea, and you most "
+      + "likely clicked this by mistake.";
+    if (confirm(message)) {
+      for (var i = 0; i < this.props.church.members.length; i++) {
+        if (this.props.church.members[i]._id == this.state.member._id) {
+          var church = this.props.church;
+          church.members.splice(i,1);
+          ChurchActions.update(church);
+          browserHistory.push("/church/" + this.props.church._id + "/member");
+          return;
+        }
       }
     }
   },
