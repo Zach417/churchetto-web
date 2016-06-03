@@ -57,6 +57,8 @@ router.get('/:id', function (req, res) {
 
     var members = "";
     var openRow = false;
+
+    var addresses = [];
     church.members.sort(function (a,b) {
       var nameA = "";
       var nameB = "";
@@ -77,7 +79,7 @@ router.get('/:id', function (req, res) {
       if (nameA > nameB)
         return 1;
       return 0; //default return value (no sorting)
-    }).map(function (member,i) {
+    }).map(function (member) {
       if (!member.address) { member.address = {} }
       if (!member.address.line1) { member.address.line1 = "" }
       if (!member.address.line2) { member.address.line2 = "" }
@@ -85,20 +87,37 @@ router.get('/:id', function (req, res) {
       if (!member.address.state) { member.address.state = "" }
       if (!member.address.zip) { member.address.zip = "" }
 
-      var memberAddress = "";
-      if (member.address && member.address.line1) {
-        memberAddress =
-          "<div>"
-            + member.address.line1
-            + " " + member.address.line2
-            + "<br />" + member.address.city
-            + ", " + member.address.state
-            + " " + member.address.zip
-          + "</div>"
-      } else {
+      var memberAddress =
+        "<div>"
+          + member.address.line1
+          + " " + member.address.line2
+          + "<br />" + member.address.city
+          + ", " + member.address.state
+          + " " + member.address.zip
+        + "</div>";
+
+      if (!member.address || !member.address.line1) {
         memberAddress = "<div>No Address Data Available</div>";
       }
 
+      var hasAddress = false;
+      addresses.map(function (address) {
+        if (memberAddress.replace(/ /g,"").replace(/./g,"").replace(/,/g,"") == address.html.replace(/ /g,"").replace(/./g,"").replace(/,/g,"") && memberAddress != "<div>No Address Data Available</div>") {
+          hasAddress = true;
+          address.members.push(member);
+        }
+      });
+      if (hasAddress === false) {
+        addresses.push({
+          html: memberAddress,
+          members: [member],
+        });
+      }
+    });
+
+    console.log(addresses);
+
+    addresses.map(function (address, i) {
       var remainder = i % 3;
       if (remainder === 0) {
         openRow = true;
@@ -106,14 +125,38 @@ router.get('/:id', function (req, res) {
         + "<div class=\"row\">";
       }
 
+      var hasHusband = false;
+      var hasWife = false;
+      var hasChild = false;
+
+      address.members.map(function (member) {
+        if (member.familyRelationship === "Husband") {
+          hasHusband = true;
+        } else if (member.familyRelationship === "Wife") {
+          hasWife = true;
+        } else if (member.familyRelationship === "Child") {
+          hasChild = true;
+        }
+      });
+
+      var name = "";
+      if (address.members.length === 1) {
+        name = address.members[0].firstName + " " + address.members[0].lastName;
+      } else if (hasHusband === true && hasWife === true && hasChild === true) {
+        name = "The " + address.members[0].lastName + "s"
+      } else if (hasHusband === true && hasWife === true) {
+        name = "Mr & Mrs " + address.members[0].lastName;
+      } else {
+        name = "The " + address.members[0].lastName + "s"
+      }
+
       members = members
       + "<div class=\"col-xs-4\" style=\"padding:10px;\">"
         + "<div>"
           + "<h3 style=\"margin:0px;font-size:14px;\">"
-            + member.firstName
-            + " " + member.lastName
+            + name
           + "</h3>"
-          + memberAddress
+          + address.html
         + "</div>"
       + "</div>";
 
