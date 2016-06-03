@@ -28,7 +28,7 @@ module.exports = [{
   path: "mailing-labels",
   parameters: [],
 }, {
-  label: "Monthly Death Report",
+  label: "Death Report",
   path: "death-report",
   parameters: [{
     label: "Start Date (MM/DD/YYYY)",
