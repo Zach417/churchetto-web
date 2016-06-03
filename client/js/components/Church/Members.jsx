@@ -86,6 +86,11 @@ var Info = React.createClass({
                     to={"/report-viewer/birthday-report"}>
                     {"Birthdays (.pdf)"}
                   </Link>
+                  <Link
+                    style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
+                    to={"/report-viewer/death-report"}>
+                    {"Deaths (.pdf)"}
+                  </Link>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} onClick={this.handleClick_Export}>
                     {"Member Data (.csv)"}
                   </a>
