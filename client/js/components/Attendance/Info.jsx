@@ -20,30 +20,28 @@ var Info = React.createClass({
             <Label isRequired={true} label={"Date"} />
             <Input
               type={"text"}
+              attribute={"date"}
               value={this.props.attendance.date}
-              onChange={this.handleChange_Date} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Count"} />
             <Input
               type={"text"}
+              attribute={"count"}
               value={this.props.attendance.count}
-              onChange={this.handleChange_Count} />
+              onChange={this.handleChange_Attribute} />
           </div>
         </div>
       </div>
     )
   },
 
-  handleChange_Date: function (event) {
-    this.attendance.date = event.target.value;
-    this.props.onChange(this.attendance);
-  },
-
-  handleChange_Count: function (event) {
-    this.attendance.count = event.target.value;
-    this.props.onChange(this.attendance);
+  handleChange_Attribute: function (attribute, value) {
+    var attendance = this.props.attendance;
+    attendance[attribute] = value;
+    this.props.onChange(attendance);
   },
 });
 module.exports = Info;

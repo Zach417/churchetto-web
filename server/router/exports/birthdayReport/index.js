@@ -84,25 +84,15 @@ router.get('/:id', function (req, res) {
 
     var members = "";
     church.members.sort(function (a,b) {
-      var nameA = "";
-      var nameB = "";
-      if (a.lastName) {
-        nameA = a.lastName.toLowerCase();
-        if (a.firstName) {
-          nameA = nameA + a.firstName.toLowerCase();
-        }
-      }
-      if (b.lastName) {
-        nameB = b.lastName.toLowerCase();
-        if (b.firstName) {
-          nameB = nameB + b.firstName.toLowerCase();
-        }
-      }
-      if (nameA < nameB) //sort string ascending
+      var key1 = moment(moment(a.dateOfBirth).format("MM/DD") + "/" + moment().format("YYYY"),"MM/DD/YYYY").toDate();
+      var key2 = moment(moment(b.dateOfBirth).format("MM/DD") + "/" + moment().format("YYYY"),"MM/DD/YYYY").toDate();
+      if (key1 < key2) {
         return -1;
-      if (nameA > nameB)
+      } else if (key1 == key2) {
+        return 0;
+      } else {
         return 1;
-      return 0; //default return value (no sorting)
+      }
     }).map(function (member) {
       if (!member.dateOfBirth) { return; }
       if (month != "All" && moment(member.dateOfBirth).format("MMMM") !== month) {

@@ -14,6 +14,7 @@ var ChurchActions = require('../../actions/ChurchActions');
 
 function resolveSubDocuments (contribution) {
   if (!contribution) { contribution = {} }
+  if (!contribution._id) { contribution.isTaxDeductible = true; }
   return contribution;
 }
 

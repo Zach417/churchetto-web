@@ -78,25 +78,15 @@ router.get('/:id', function (req, res) {
     church.members.filter(function (member){
       return member.type !== "Deceased" && !member.dateOfDeath;
     }).sort(function (a,b) {
-      var nameA = "";
-      var nameB = "";
-      if (a.lastName) {
-        nameA = a.lastName.toLowerCase();
-        if (a.firstName) {
-          nameA = nameA + a.firstName.toLowerCase();
-        }
-      }
-      if (b.lastName) {
-        nameB = b.lastName.toLowerCase();
-        if (b.firstName) {
-          nameB = nameB + b.firstName.toLowerCase();
-        }
-      }
-      if (nameA < nameB) //sort string ascending
-        return -1;
-      if (nameA > nameB)
-        return 1;
-      return 0; //default return value (no sorting)
+      if (!a.firstName) { a.firstName = ""; }
+      if (!a.lastName) { a.lastName = ""; }
+      if (!b.firstName) { b.firstName = ""; }
+      if (!b.lastName) { b.lastName = ""; }
+      var nameA = a.lastName.replace(/ /g,'').toLowerCase() + a.firstName.replace(/ /g,'').toLowerCase();
+      var nameB = b.lastName.replace(/ /g,'').toLowerCase() + b.firstName.replace(/ /g,'').toLowerCase();
+      if (nameA < nameB) { return -1; }
+      if (nameA > nameB) { return 1; }
+      return 0;
     }).map(function (member) {
       if (!member.address) { member.address = {} }
       if (!member.address.line1) { member.address.line1 = "" }

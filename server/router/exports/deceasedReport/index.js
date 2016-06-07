@@ -97,15 +97,15 @@ router.get('/:id', function (req, res) {
 
     var members = "";
     church.members.sort(function (a,b) {
-      if (!a.firstName) { a.firstName = ""; }
-      if (!a.lastName) { a.lastName = ""; }
-      if (!b.firstName) { b.firstName = ""; }
-      if (!b.lastName) { b.lastName = ""; }
-      var nameA = a.lastName.toLowerCase() + a.firstName.toLowerCase();
-      var nameB = b.lastName.toLowerCase() + b.firstName.toLowerCase();
-      if (nameA < nameB) { return -1; }
-      if (nameA > nameB) { return 1; }
-      return 0;
+      var key1 = a.dateOfDeath;
+      var key2 = b.dateOfDeath;
+      if (key1 < key2) {
+        return -1;
+      } else if (key1 == key2) {
+        return 0;
+      } else {
+        return 1;
+      }
     }).map(function (member) {
       if (!member.dateOfDeath) { return; }
       if (!member.dateOfDeath || range.contains(moment(member.dateOfDeath)) === false) { return; }
