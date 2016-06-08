@@ -189,21 +189,21 @@ var Attendees = React.createClass({
     });
   },
 
-  handleChange_Member: function (event) {
+  handleChange_Member: function (value) {
     this.setState({
       modify: this.state.modify,
       index: this.state.index,
-      memberId: event.target.value,
+      memberId: value,
       checkedInDate: this.state.checkedInDate,
     });
   },
 
-  handleChangeCheckedIn: function (event) {
+  handleChangeCheckedIn: function (value) {
     this.setState({
       modify: this.state.modify,
       index: this.state.index,
       memberId: this.state.memberId,
-      checkedInDate: event.target.value,
+      checkedInDate: value,
     });
   },
 });

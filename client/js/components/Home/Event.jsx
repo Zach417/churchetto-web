@@ -8,6 +8,7 @@ var ChurchStore = require('../../stores/ChurchStore');
 var Events = React.createClass({
   getInitialState: function () {
     return {
+      churches: '',
       events: '',
     }
   },
@@ -16,7 +17,8 @@ var Events = React.createClass({
     ChurchStore.get(function (docs) {
       if (!docs) {
         return this.setState({
-          events: []
+          churches: [],
+          events: [],
         });
       }
       var result = [];
@@ -30,6 +32,7 @@ var Events = React.createClass({
         }
       }
       this.setState({
+        churches: docs,
         events: result,
       });
     }.bind(this));
@@ -68,8 +71,8 @@ var Events = React.createClass({
       var onClick = function () {
         browserHistory.push("/church/" + doc.churchId + "/event/" + doc._id);
       }
-      var attendees = 0;
-      var volunteers = 0;
+      var attendees = "0";
+      var volunteers = "";
       var starts = "";
       var ends = "";
       if (doc.starts) {
@@ -79,21 +82,37 @@ var Events = React.createClass({
         ends = moment(doc.ends).format("MMMM D h:mm a")
       }
       if (doc.attendees) {
-        attendees = doc.attendees.length;
+        attendees = doc.attendees.length.toString();
       }
       if (doc.volunteers) {
-        volunteers = doc.volunteers.length;
+        doc.volunteers.map(function (volunteer) {
+          this.state.churches.map(function (church) {
+            church.members.map(function (member) {
+              if (member._id == volunteer.memberId) {
+                volunteers = volunteers + ", "
+                  + member.firstName + " "
+                  + member.lastName;
+              }
+            }.bind(this));
+          }.bind(this));
+        }.bind(this));
+        if (volunteers === "") {
+          volunteers = "-";
+        } else {
+          volunteers = volunteers.slice(2);
+        }
       }
       return (
         <EntitySubSummary onClick={onClick} key={i}>
           <h3 style={{margin:"5px 0",color:"#c36b74"}}>{doc.name}</h3>
           <p>
             {starts + " - " + ends}<br/>
-            Attendees: {attendees} | Volunteers: {volunteers}
+            Attendees: {attendees}<br/>
+            Volunteers: {volunteers}
           </p>
         </EntitySubSummary>
       )
-    });
+    }.bind(this));
   },
 });
 

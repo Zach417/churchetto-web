@@ -240,23 +240,23 @@ var Volunteers = React.createClass({
     });
   },
 
-  handleChange_Member: function (event) {
+  handleChange_Member: function (value) {
     this.setState({
       modify: this.state.modify,
       other: this.state.other,
       index: this.state.index,
-      memberId: event.target.value,
+      memberId: value,
       role: this.state.role,
     });
   },
 
-  handleChange_Role: function (event) {
+  handleChange_Role: function (value) {
     this.setState({
       modify: this.state.modify,
       other: this.state.other,
       index: this.state.index,
       memberId: this.state.memberId,
-      role: event.target.value,
+      role: value,
     });
   },
 });

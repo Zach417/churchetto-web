@@ -32,10 +32,6 @@ var Member = React.createClass({
       this.attendance.date = moment(this.attendance.date).format("MM/DD/YYYY");
     }
 
-    if (!this.attendance._id && !this.attendance.date) {
-      this.attendance.date = moment().format("MM/DD/YYYY");
-    }
-
     this.setState({
       attendance: this.attendance
     });
@@ -53,10 +49,6 @@ var Member = React.createClass({
 
     if (nextProps.attendance.date && moment(nextProps.attendance.date).isValid()) {
       this.attendance.date = moment(nextProps.attendance.date).format("MM/DD/YYYY");
-    }
-
-    if (!nextProps.attendance._id && !nextProps.attendance.date) {
-      nextProps.attendance.date = moment().format("MM/DD/YYYY");
     }
 
     this.setState({
