@@ -25,7 +25,7 @@ var Create = React.createClass({
             <Link to={"/church/find"}>here</Link>.
           </p>
         </div>
-        <Church />
+        <Church children={this.props.children} />
       </div>
     )
   },
