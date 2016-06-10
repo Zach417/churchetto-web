@@ -7,10 +7,6 @@ var TextArea = require('../Form/Index.jsx').TextArea;
 var Select = require('../Form/Index.jsx').Select;
 
 var Info = React.createClass({
-  componentWillMount: function () {
-    this.group = this.props.group;
-  },
-
   render: function () {
     return (
       <div className="container-fluid" style={Style.sectionContainer}>
@@ -21,44 +17,38 @@ var Info = React.createClass({
             <Label isRequired={true} label={"Name"} />
             <Input
               type={"text"}
+              attribute={"name"}
               value={this.props.group.name}
-              onChange={this.handleChange_Name} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Description"} />
             <Input
               type={"text"}
+              attribute={"description"}
               value={this.props.group.description}
-              onChange={this.handleChange_Description} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Type"} />
             <Select
               type={"text"}
+              attribute={"type"}
               value={this.props.group.type}
               options={["Small Group","Youth Group","Other"]}
-              onChange={this.handleChange_Type} />
+              onChange={this.handleChange_Attribute} />
           </div>
         </div>
       </div>
     )
   },
 
-  handleChange_Name: function (group) {
-    this.group.name = group.target.value;
-    this.props.onChange(this.group);
-  },
-
-  handleChange_Description: function (group) {
-    this.group.description = group.target.value;
-    this.props.onChange(this.group);
-  },
-
-  handleChange_Type: function (group) {
-    this.group.type = group.target.value;
-    this.props.onChange(this.group);
+  handleChange_Attribute: function (attribute, value) {
+    var group = this.props.group;
+    group[attribute] = value;
+    this.props.onChange(group);
   },
 });
 module.exports = Info;

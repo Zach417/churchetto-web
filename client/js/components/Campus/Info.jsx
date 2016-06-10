@@ -20,30 +20,28 @@ var Info = React.createClass({
             <Label isRequired={true} label={"Name"} />
             <Input
               type={"text"}
+              attribute={"name"}
               value={this.props.campus.name}
-              onChange={this.handleChange_Name} />
+              onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Website"} />
             <Input
               type={"text"}
+              attribute={"website"}
               value={this.props.campus.website}
-              onChange={this.handleChange_Website} />
+              onChange={this.handleChange_Attribute} />
           </div>
         </div>
       </div>
     )
   },
 
-  handleChange_Name: function (event) {
-    this.campus.name = event.target.value;
-    this.props.onChange(this.campus);
-  },
-
-  handleChange_Website: function (event) {
-    this.campus.website = event.target.value;
-    this.props.onChange(this.campus);
+  handleChange_Attribute: function (attribute, value) {
+    var campus = this.props.campus;
+    campus[attribute] = value;
+    this.props.onChange(campus);
   },
 });
 module.exports = Info;

@@ -78,6 +78,7 @@ var Members = React.createClass({
           <Label isRequired={true} label={"Member"} />
           <Select
             type={"text"}
+            attribute={"memberId"}
             value={this.state.memberId}
             options={this.getMemberOptions()}
             onChange={this.handleChange_Member} />
@@ -213,11 +214,11 @@ var Members = React.createClass({
     });
   },
 
-  handleChange_Member: function (group) {
+  handleChange_Member: function (attribute, value) {
     this.setState({
       modify: this.state.modify,
       index: this.state.index,
-      memberId: group.target.value,
+      memberId: value,
     });
   },
 });
