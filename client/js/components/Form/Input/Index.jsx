@@ -20,7 +20,8 @@ var FormInput = React.createClass({
         onMouseLeave={this.handleMouseLeave}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onChange={this.handleChange}/>
+        onChange={this.handleChange}
+        onClick={this.props.onClick}/>
     )
   },
 

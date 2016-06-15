@@ -4,9 +4,11 @@ var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
 var TextArea = require('../Form/Index.jsx').TextArea;
 var Select = require('../Form/Index.jsx').Select;
+var Autocomplete = require('../Form/Index.jsx').Autocomplete;
 
 var Info = React.createClass({
   componentWillMount: function () {
+    this.church = this.props.church;
     this.contribution = this.props.contribution;
   },
 
@@ -45,8 +47,8 @@ var Info = React.createClass({
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Description"} />
-            <Input
-              type={"text"}
+            <Autocomplete
+              options={this.getDescriptionOptions()}
               attribute={"description"}
               value={this.props.contribution.description}
               onChange={this.handleChange_Attribute} />
@@ -81,6 +83,19 @@ var Info = React.createClass({
       var textB = b.label.toUpperCase();
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
+  },
+
+  getDescriptionOptions: function () {
+    var result = [];
+    if (!this.church || !this.church.contributions) {
+      return result;
+    }
+    this.church.contributions.map(function (contribution) {
+      if (contribution.description) {
+        result.push(contribution.description);
+      }
+    });
+    return result;
   },
 
   handleChange_Attribute: function (attribute, value) {
