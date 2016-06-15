@@ -22,7 +22,26 @@ var AutocompleteSelect = React.createClass({
   },
 
   getOptions: function () {
+    var options = {};
     return this.props.options.map(function (option, i) {
+
+      // don't repeat stuff
+      if (typeof option === "string") {
+        if (options[option] === true) {
+          return;
+        }
+      } else {
+        if (options[option.value] === true) {
+          return;
+        }
+      }
+
+      if (typeof option === "string") {
+        options[option] = true;
+      } else {
+        options[option.value] = true;
+      }
+
       var key = "option-" + option.label + "-" + i;
       var handleClick = function () {
         if (typeof option === "string") {
@@ -99,6 +118,9 @@ var Autocomplete = React.createClass({
   },
 
   getOptions: function () {
+    if (!this.props.value) {
+      return this.props.options;
+    }
     return this.props.options.filter(function (option) {
       if (option.value && option.label) {
         return S(option.value).contains(this.props.value) || S(option.label).contains(this.props.value);
@@ -132,9 +154,7 @@ var Autocomplete = React.createClass({
   },
 
   handleClick: function () {
-    if (this.props.value !== "") {
-      $("#dropdown-" + this.state.id).show();
-    }
+    $("#dropdown-" + this.state.id).show();
   },
 
   handleBlur: function () {
@@ -144,10 +164,6 @@ var Autocomplete = React.createClass({
       }
       return S(option).contains(this.props.value);
     }.bind(this));
-
-    if (this.props.value == "") {
-      return;
-    }
 
     // make it so that there has to be an exact match
     // in order to save the input
@@ -167,7 +183,7 @@ var Autocomplete = React.createClass({
       }
     }*/
 
-    $("#dropdown-" + this.state.id).delay(100).hide(0);
+    $("#dropdown-" + this.state.id).delay(400).hide(0);
   },
 
   handleOptionSelect: function (value) {
