@@ -11,6 +11,7 @@ var contributionSchema = new mongoose.Schema({
 
 var attendanceSchema = new mongoose.Schema({
   date: Date,
+  category: String,
   count: Number,
 });
 

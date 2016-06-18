@@ -53,7 +53,8 @@ var readFilterSchema = {
         "type": "object",
         "properties": {
           "_id": { "type":"string" },
-          "date": { "type":"string" },
+          "date": { "type":"date" },
+          "category": { "type":"string" },
           "count": { "type":"string" },
         },
       },
@@ -265,7 +266,8 @@ var writeFilterSchema = {
         "type": "object",
         "properties": {
           "_id": { "type":"string" },
-          "date": { "type":"string" },
+          "date": { "type":"date" },
+          "category": { "type":"string" },
           "count": { "type":"string" },
         },
       },

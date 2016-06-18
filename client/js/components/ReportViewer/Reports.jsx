@@ -28,6 +28,18 @@ module.exports = [{
   path: "mailing-labels",
   parameters: [],
 }, {
+  label: "Attendance Report",
+  path: "attendance-report",
+  parameters: [{
+    label: "Start Date (MM/DD/YYYY)",
+    name: "start",
+    type: "date",
+  }, {
+    label: "End Date (MM/DD/YYYY)",
+    name: "end",
+    type: "date",
+  }],
+}, {
   label: "Death Report",
   path: "death-report",
   parameters: [{

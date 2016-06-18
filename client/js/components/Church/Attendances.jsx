@@ -31,8 +31,13 @@ var columnMeta = [
     "locked": false,
     "visible": true,
   }, {
-    "columnName": "Count",
+    "columnName": "Category",
     "order": 2,
+    "locked": false,
+    "visible": true,
+  }, {
+    "columnName": "Count",
+    "order": 3,
     "locked": false,
     "visible": true,
   }
@@ -50,6 +55,11 @@ var Attendance = React.createClass({
               <div style={{position:"relative",display:"inline-block"}}>
                 <ButtonSecondary label={"Export"} onClick={this.handleClick_ExportDropdown} />
                 <div id="attendance-export-dropdown" style={{display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}>
+                  <Link
+                    style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
+                    to={"/report-viewer/attendance-report"}>
+                    {"Report (.pdf)"}
+                  </Link>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} onClick={this.handleClick_Export}>
                     {"Attendance Data (.csv)"}
                   </a>
@@ -65,7 +75,7 @@ var Attendance = React.createClass({
               results={this.getGriddleData()}
               columnMetadata={columnMeta}
               showFilter={true}
-              columns={["Date","Count"]}
+              columns={["Date","Category","Count"]}
               resultsPerPage={20}
               onRowClick={this.handleClick_Row} />
           </div>
@@ -81,11 +91,16 @@ var Attendance = React.createClass({
       if (this.props.church.attendance[i].date) {
         date = moment(this.props.church.attendance[i].date).format("MM/DD/YYYY");
       }
+      var count = "";
+      if (this.props.church.attendance[i].count) {
+        count = Number(this.props.church.attendance[i].count).toLocaleString();
+      }
       result.push({
         "attendanceId": this.props.church.attendance[i]._id,
         "churchId": this.props.church._id,
         "Date": date,
-        "Count": this.props.church.attendance[i].count,
+        "Category": this.props.church.attendance[i].category,
+        "Count": count,
       });
     }
     return result;

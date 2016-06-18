@@ -65,7 +65,10 @@ var Member = React.createClass({
           </h1>
         </div>
         <div style={{padding:"0 20px 20px 20px"}}>
-          <Info attendance={this.state.attendance} onChange={this.handleChange_Child} />
+          <Info
+            attendance={this.state.attendance}
+            church={this.props.church}
+            onChange={this.handleChange_Child} />
         </div>
         <div style={{padding:"0 20px 20px 20px"}}>
           <ButtonPrimary label={"Save"} onClick={this.handleClick_Submit} />
