@@ -8,37 +8,41 @@ var ButtonSecondary = require('../Button/Index.jsx').Secondary;
 var ButtonDanger = require('../Button/Index.jsx').Danger;
 var ChurchActions = require('../../actions/ChurchActions');
 
-function resolveSubDocuments (event) {
+function prepare (event) {
   if (!event) { event = {} }
   if (!event.attendees) { event.attendees = [] }
   if (!event.volunteers) { event.volunteers = [] }
   return event;
 }
 
+function prepareDates (event) {
+  if (event.starts) {
+    event.starts = moment(event.starts).format('MM/DD/YYYY h:mm a');
+  }
+  if (event.ends) {
+    event.ends = moment(event.ends).format('MM/DD/YYYY h:mm a');
+  }
+  if (event.locationStarts) {
+    event.locationStarts = moment(event.locationStarts).format('MM/DD/YYYY h:mm a');
+  }
+  if (event.locationEnds) {
+    event.locationEnds = moment(event.locationEnds).format('MM/DD/YYYY h:mm a');
+  }
+  return event;
+}
+
 var Event = React.createClass({
   getInitialState: function () {
-    this.event = resolveSubDocuments({});
     return {
-      event: this.event
+      event: prepare({})
     }
   },
 
   componentWillMount: function () {
-    this.event = resolveSubDocuments(this.props.event);
-    if (this.event.starts) {
-      this.event.starts = moment(this.event.starts).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.ends) {
-      this.event.ends = moment(this.event.ends).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.locationStarts) {
-      this.event.locationStarts = moment(this.event.locationStarts).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.locationEnds) {
-      this.event.locationEnds = moment(this.event.locationEnds).format('MM/DD/YYYY h:mm a');
-    }
+    var event = prepare(this.props.event);
+    event = prepareDates(event);
     this.setState({
-      event: this.event
+      event: event
     });
   },
 
@@ -47,24 +51,10 @@ var Event = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    if (!nextProps.event) {
-      return;
-    }
-    this.event = resolveSubDocuments(nextProps.event);
-    if (this.event.starts) {
-      this.event.starts = moment(this.event.starts).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.ends) {
-      this.event.ends = moment(this.event.ends).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.locationStarts) {
-      this.event.locationStarts = moment(this.event.locationStarts).format('MM/DD/YYYY h:mm a');
-    }
-    if (this.event.locationEnds) {
-      this.event.locationEnds = moment(this.event.locationEnds).format('MM/DD/YYYY h:mm a');
-    }
+    var event = prepare(nextProps.event);
+    event = prepareDates(event);
     this.setState({
-      event: this.event
+      event: event
     });
   },
 
@@ -109,28 +99,28 @@ var Event = React.createClass({
   },
 
   handleChange_Child: function (event) {
-    this.event = resolveSubDocuments(event);
     this.setState({
-      event: this.event
+      event: prepare(event),
     });
   },
 
   handleClick_Submit: function () {
     var church = this.props.church;
+    var event = this.state.event;
     var events = [];
     if (this.props.church.events) {
       events = this.props.church.events;
     }
-    if (this.event._id) {
+    if (event._id) {
       for (var i = 0; i < events.length; i++) {
-        if (events[i] == this.event._id) {
-          events[i] = this.event;
+        if (events[i] == event._id) {
+          events[i] = event;
         }
       }
       church.events = events;
       ChurchActions.update(church);
     } else {
-      events.push(this.event);
+      events.push(event);
       church.events = events;
       ChurchActions.update(church);
     }

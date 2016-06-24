@@ -15,7 +15,7 @@ var Info = React.createClass({
           <h3 style={{margin:"0"}}>The Basics</h3>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={true} label={"Name"} />
+            <Label isRequired={true} label={"Event Name"} />
             <Input
               type={"text"}
               attribute={"name"}
@@ -24,11 +24,11 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label label={"Description"} />
+            <Label label={"Contact Name"} />
             <Input
               type={"text"}
-              attribute={"description"}
-              value={this.props.event.description}
+              attribute={"contact"}
+              value={this.props.event.contact}
               onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-md-6 col-xs-12"
@@ -51,20 +51,20 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label label={"Contact Name"} />
-            <Input
-              type={"text"}
-              attribute={"contact"}
-              value={this.props.event.contact}
-              onChange={this.handleChange_Attribute} />
-          </div>
-          <div className="col-md-6 col-xs-12"
-            style={Style.detailColumn}>
             <Label label={"Group"} />
             <Select
               attribute={"group"}
               value={this.props.event.group}
               options={this.getGroupOptions()}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label label={"Event Description"} />
+            <Input
+              type={"text"}
+              attribute={"description"}
+              value={this.props.event.description}
               onChange={this.handleChange_Attribute} />
           </div>
           <div className="col-xs-12"
@@ -118,7 +118,7 @@ var Info = React.createClass({
           </div>
           <div className="col-xs-12" style={{marginTop:"10px"}} />
         </div>
-        <div className="row-fluid" style={{display:"inline-block"}}>
+        <div className="row-fluid" style={{display:"inline-block",width:"100%"}}>
           <Volunteers
             event={this.props.event}
             church={this.props.church}

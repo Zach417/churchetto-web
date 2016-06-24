@@ -73,6 +73,13 @@ var Events = React.createClass({
       var onClick = function () {
         browserHistory.push("/church/" + doc.churchId + "/event/" + doc._id);
       }
+      var getContact = function () {
+        if (doc.contact) {
+          return (
+            <span>Contact: {doc.contact}<br/></span>
+          )
+        }
+      }
       var attendees = "0";
       var volunteers = "";
       var starts = "";
@@ -109,6 +116,7 @@ var Events = React.createClass({
           <h3 style={{margin:"5px 0",color:"#c36b74"}}>{doc.name}</h3>
           <p>
             {starts + " - " + ends}<br/>
+            {getContact()}
             Attendees: {attendees}<br/>
             Volunteers: {volunteers}
           </p>

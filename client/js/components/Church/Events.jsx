@@ -30,13 +30,18 @@ var columnMeta = [
     "visible": true,
     "customComponent": LinkComponent
   }, {
-    "columnName": "Start Time",
+    "columnName": "Contact",
     "order": 2,
     "locked": false,
     "visible": true,
   }, {
-    "columnName": "End Time",
+    "columnName": "Start Time",
     "order": 3,
+    "locked": false,
+    "visible": true,
+  }, {
+    "columnName": "End Time",
+    "order": 4,
     "locked": false,
     "visible": true,
   }
@@ -75,7 +80,7 @@ var Events = React.createClass({
               results={this.getGriddleData()}
               columnMetadata={columnMeta}
               showFilter={true}
-              columns={["Name","Start Time","End Time"]}
+              columns={["Name","Contact","Start Time","End Time"]}
               resultsPerPage={20}
               onRowClick={this.handleClick_Row} />
           </div>
@@ -115,6 +120,7 @@ var Events = React.createClass({
         "eventId": events[i]._id,
         "churchId": this.props.church._id,
         "Name": events[i].name,
+        "Contact": events[i].contact,
         "Start Time": starts,
         "End Time": ends,
       });

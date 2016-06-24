@@ -104,13 +104,14 @@ userSchema.methods.isValidToken = function(token) {
   this.deleteExpiredTokens();
   var tokens = this.get("tokens");
 
-  for (var i = 0; i < tokens.length; i++) {
+  var result = false;
+  for (var i = 0; !result && i < tokens.length; i++) {
     if (bcrypt.compareSync(token, tokens[i].value)) {
-      return true;
+      result = true;
     }
   }
 
-  return false;
+  return result;
 }
 
 userSchema.statics.getUserFromEmail = function(email, callback) {
