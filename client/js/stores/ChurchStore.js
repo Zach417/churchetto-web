@@ -44,6 +44,12 @@ function setDatesToUtc (church) {
 			if (church.events[i].ends) {
 				church.events[i].ends = moment(church.events[i].ends).utc();
 			}
+				if (church.events[i].locationStarts) {
+					church.events[i].locationStarts = moment(church.events[i].locationStarts).utc();
+				}
+				if (church.events[i].locationEnds) {
+					church.events[i].locationEnds = moment(church.events[i].locationEnds).utc();
+				}
 	    if (church.events[i].attendees) {
 	      for (var j = 0; j < church.events[i].attendees.length; j++) {
 	        if (church.events[i].attendees[j].checkedInDate) {

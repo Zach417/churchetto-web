@@ -65,7 +65,9 @@ var Events = React.createClass({
   },
 
   getEventComponents: function () {
-    return this.state.events.sort(function(a,b){
+    return this.state.events.filter(function (e) {
+      return e.status === "Pending";
+    }).sort(function(a,b){
       return new Date(b.date) - new Date(a.date);
     }).map(function (doc, i) {
       var onClick = function () {

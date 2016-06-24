@@ -31,6 +31,12 @@ var Event = React.createClass({
     if (this.event.ends) {
       this.event.ends = moment(this.event.ends).format('MM/DD/YYYY h:mm a');
     }
+    if (this.event.locationStarts) {
+      this.event.locationStarts = moment(this.event.locationStarts).format('MM/DD/YYYY h:mm a');
+    }
+    if (this.event.locationEnds) {
+      this.event.locationEnds = moment(this.event.locationEnds).format('MM/DD/YYYY h:mm a');
+    }
     this.setState({
       event: this.event
     });

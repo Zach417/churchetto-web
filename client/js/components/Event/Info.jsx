@@ -1,5 +1,7 @@
 var React = require('react');
+var moment = require('moment');
 var Style = require('./Style.jsx');
+var Volunteers = require('./Volunteers.jsx');
 var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
 var TextArea = require('../Form/Index.jsx').TextArea;
@@ -22,7 +24,7 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"Description"} />
+            <Label label={"Description"} />
             <Input
               type={"text"}
               attribute={"description"}
@@ -31,7 +33,7 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"Start Time"} />
+            <Label label={"Event Start Time" + this.getStartsWeekday()} />
             <Input
               type={"text"}
               attribute={"starts"}
@@ -40,7 +42,7 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"End Time"} />
+            <Label label={"Event End Time" + this.getEndsWeekday()} />
             <Input
               type={"text"}
               attribute={"ends"}
@@ -49,16 +51,25 @@ var Info = React.createClass({
           </div>
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"Group"} />
+            <Label label={"Contact Name"} />
+            <Input
+              type={"text"}
+              attribute={"contact"}
+              value={this.props.event.contact}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label label={"Group"} />
             <Select
               attribute={"group"}
               value={this.props.event.group}
               options={this.getGroupOptions()}
               onChange={this.handleChange_Attribute} />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          <div className="col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"Status"} />
+            <Label label={"Status"} />
             <Select
               attribute={"status"}
               value={this.props.event.status}
@@ -67,16 +78,68 @@ var Info = React.createClass({
           </div>
           <div className="col-xs-12"
             style={Style.detailColumn}>
-            <Label isRequired={false} label={"Notes"} />
+            <Label label={"Notes"} />
             <TextArea
               type={"text"}
               attribute={"notes"}
               value={this.props.event.notes}
               onChange={this.handleChange_Attribute} />
           </div>
+          <div className="col-xs-12" style={{marginTop:"10px"}} />
+        </div>
+        <div className="row-fluid">
+          <h3 style={{margin:"0"}}>Location and Rentals</h3>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label label={"Rental Start Time"} />
+            <Input
+              type={"text"}
+              attribute={"locationStarts"}
+              value={this.props.event.locationStarts}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-md-6 col-xs-12"
+            style={Style.detailColumn}>
+            <Label label={"Rental End Time"} />
+            <Input
+              type={"text"}
+              attribute={"locationEnds"}
+              value={this.props.event.locationEnds}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-xs-12"
+            style={Style.detailColumn}>
+            <Label label={"Rental Rooms"} />
+            <TextArea
+              type={"text"}
+              attribute={"locationNotes"}
+              value={this.props.event.locationNotes}
+              onChange={this.handleChange_Attribute} />
+          </div>
+          <div className="col-xs-12" style={{marginTop:"10px"}} />
+        </div>
+        <div className="row-fluid" style={{display:"inline-block"}}>
+          <Volunteers
+            event={this.props.event}
+            church={this.props.church}
+            onChange={this.props.onChange} />
         </div>
       </div>
     )
+  },
+
+  getStartsWeekday: function () {
+    if (this.props.event.starts && moment(this.props.event.starts).isValid()) {
+      return " (" + moment(this.props.event.starts).format('dddd') + ")";
+    }
+    return "";
+  },
+
+  getEndsWeekday: function () {
+    if (this.props.event.ends && moment(this.props.event.ends).isValid()) {
+      return " (" + moment(this.props.event.ends).format('dddd') + ")";
+    }
+    return "";
   },
 
   getGroupOptions: function () {

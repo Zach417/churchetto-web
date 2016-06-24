@@ -27,9 +27,13 @@ var groupSchema = new mongoose.Schema({
 var eventSchema = new mongoose.Schema({
   name: String,
   description: String,
+  contact: String,
   starts: Date,
   ends: Date,
   notes: String,
+  locationStarts: Date,
+  locationEnds: Date,
+  locationNotes: String,
   isAllDay: Boolean,
   status: String,
   group: mongoose.Schema.ObjectId,
