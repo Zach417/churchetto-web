@@ -26,7 +26,7 @@ var LatestUpdates = React.createClass({
     return (
       <div style={Style.entitySummary}>
         <h1 style={{margin:"5px 0",textAlign:"left"}}>
-          {"Churcheto Updates - " + moment(this.state.date).format("M/D/YYYY")}
+          {"Churchetto Updates - " + moment(this.state.date).format("M/D/YYYY")}
         </h1>
         <p>
           {this.state.description}

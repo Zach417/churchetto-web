@@ -8408,7 +8408,7 @@ var LatestUpdates = React.createClass({displayName: "LatestUpdates",
     return {
       date: new Date(2019, 1, 8),
       description: "Hope you all are having a great week! Here are the latest changes to Churchetto. I'm aiming to starting doing regular updates to the site every 1 to 2 weeks. Don't forget to email me with any questions or requests! -Zach (zach@churchetto.com)",
-      changes: ["Added a Date Picker component for most date entry fields", "Added Tip Jar", "Made it more difficult to delete your church", "Added SSL Certificate -- all data to/from the server is encrypted", "Added Reports component to dashboard", "Added navigation buttons at top of screen for easier navigation"]
+      changes: ["Added a Date Picker component for most date entry fields", "Added Tip Jar so that users can contribute to the project", "Made it more difficult to delete your church", "Added SSL Certificate -- all data to/from the server is encrypted", "Added Reports component to dashboard", "Added navigation buttons at top of screen for easier navigation"]
     }
   },
 
@@ -8422,7 +8422,7 @@ var LatestUpdates = React.createClass({displayName: "LatestUpdates",
     return (
       React.createElement("div", {style: Style.entitySummary}, 
         React.createElement("h1", {style: {margin:"5px 0",textAlign:"left"}}, 
-          "Churcheto Updates - " + moment(this.state.date).format("M/D/YYYY")
+          "Churchetto Updates - " + moment(this.state.date).format("M/D/YYYY")
         ), 
         React.createElement("p", null, 
           this.state.description
