@@ -116,13 +116,13 @@ var PasswordReset = React.createClass({
     }
   },
 
-  handleChange_FirstPassword: function(event) {
-    this._state.firstPassword = event.target.value;
+  handleChange_FirstPassword: function(value) {
+    this._state.firstPassword = value;
     this.setState(this._state);
   },
 
-  handleChange_SecondPassword: function(event) {
-    this._state.secondPassword = event.target.value;
+  handleChange_SecondPassword: function(value) {
+    this._state.secondPassword = value;
     this.setState(this._state);
   },
 

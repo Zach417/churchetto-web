@@ -12,6 +12,7 @@
     "s": "scripts/start.sh",
     "sb": "scripts/build.sh && scripts/start.sh",
     "sbf": "scripts/buildfast.sh && scripts/start.sh",
+    "sbfa": "scripts/buildfastanon.sh && scripts/start.sh",
     "sbfw": "browserify -t reactify client/js/app.jsx > client/build/bundle.js && node index.js",
     "b": "scripts/build.sh",
     "bf": "scripts/buildfast.sh"

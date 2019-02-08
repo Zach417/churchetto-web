@@ -110,28 +110,28 @@ var RegisterRequest = React.createClass({
     }
   },
 
-  handleChange_Email: function(event) {
-    this._state.email = event.target.value;
+  handleChange_Email: function(value) {
+    this._state.email = value;
     this.setState(this._state);
   },
 
-  handleChange_FirstName: function(event) {
-    this._state.firstName = event.target.value;
+  handleChange_FirstName: function(value) {
+    this._state.firstName = value;
     this.setState(this._state);
   },
 
-  handleChange_LastName: function(event) {
-    this._state.lastName = event.target.value;
+  handleChange_LastName: function(value) {
+    this._state.lastName = value;
     this.setState(this._state);
   },
 
-  handleChange_FirstPassword: function(event) {
-    this._state.firstPassword = event.target.value;
+  handleChange_FirstPassword: function(value) {
+    this._state.firstPassword = value;
     this.setState(this._state);
   },
 
-  handleChange_SecondPassword: function(event) {
-    this._state.secondPassword = event.target.value;
+  handleChange_SecondPassword: function(value) {
+    this._state.secondPassword = value;
     this.setState(this._state);
   },
 

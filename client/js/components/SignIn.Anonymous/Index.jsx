@@ -107,14 +107,16 @@ var SignIn = React.createClass({
     }
   },
 
-  handleChange_Email: function (event) {
-    this._state.email = event.target.value;
-    this.setState(this._state);
+  handleChange_Email: function (value) {
+    var state = this.state;
+    state.email = value;
+    this.setState(state);
   },
 
-  handleChange_Password: function (event) {
-    this._state.password = event.target.value;
-    this.setState(this._state);
+  handleChange_Password: function (value) {
+    var state = this.state;
+    state.password = value;
+    this.setState(state);
   },
 
   handleClick_Submit: function() {
