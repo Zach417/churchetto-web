@@ -44,7 +44,7 @@ var columnMeta = [
   }
 ];
 
-var Contribution = React.createClass({
+var Giving = React.createClass({
   render: function () {
     if (!this.props.church) { return (<div/>) }
     return (
@@ -169,4 +169,4 @@ var Contribution = React.createClass({
   },
 });
 
-module.exports = Contribution;
+module.exports = Giving;

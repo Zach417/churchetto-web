@@ -1,5 +1,6 @@
 var React = require('react');
 var Style = require('./Style.jsx');
+var Form = require('../Form/Index.jsx');
 var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
 var TextArea = require('../Form/Index.jsx').TextArea;
@@ -29,8 +30,7 @@ var Info = React.createClass({
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={true} label={"Date"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"date"}
               value={this.props.contribution.date}
               onChange={this.handleChange_Attribute} />

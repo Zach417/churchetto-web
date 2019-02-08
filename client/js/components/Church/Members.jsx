@@ -59,7 +59,7 @@ var columnMeta = [
   }
 ];
 
-var Info = React.createClass({
+var Members = React.createClass({
   render: function () {
     if (!this.props.church) { return (<div/>) }
     return (
@@ -195,4 +195,4 @@ var Info = React.createClass({
   },
 });
 
-module.exports = Info;
+module.exports = Members;

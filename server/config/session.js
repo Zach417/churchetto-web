@@ -17,6 +17,6 @@ module.exports = function (app) {
 			//secure: true, // only for https sites
 			maxAge: 365 * 24 * 60 * 60 * 1000, // one year
 		},
-	    store: sessionStore,
+	  store: sessionStore,
 	}));
 }

@@ -43,7 +43,7 @@ var Component = React.createClass({
             id="member-image"
             onClick={this.handleClick_Upload}
             style={{
-              backgroundImage: "url('https://pixabay.com/static/uploads/photo/2014/04/02/10/25/man-303792_960_720.png')",
+              backgroundImage: "url('/img/person-icon')",
               backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundColor: "#f4f4f4",

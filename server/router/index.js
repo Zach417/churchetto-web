@@ -13,6 +13,7 @@ router.use(require('./auth'));
 router.use('/img/s3', require('./img/s3'));
 router.use('/exports', require('./exports'));
 
+router.use('/tip', require('./tip'));
 router.use('/stores', require('./stores'));
 router.use('/', require('./views'));
 

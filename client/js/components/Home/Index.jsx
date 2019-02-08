@@ -11,6 +11,9 @@ var AttendanceChart = require('./AttendanceChart.jsx');
 var ContributionChart = require('./ContributionChart.jsx');
 var Group = require('./Group.jsx');
 var Member = require('./Member.jsx');
+var Reports = require('./Reports.jsx');
+var TipJar = require('../TipJar/Index.jsx');
+var LatestUpdates = require('../LatestUpdates/Index.jsx');
 
 var HomePage = React.createClass({
   componentDidMount: function() {
@@ -30,14 +33,20 @@ var HomePage = React.createClass({
             <Church />
             <div style={{marginTop:"20px"}} />
             <Member />
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <div style={{marginTop:"20px"}} className="hidden-lg hidden-sm" />
-            <Event />
             <div style={{marginTop:"20px"}} />
             <Group />
             <div style={{marginTop:"20px"}} />
+            <LatestUpdates />
+          </div>
+          <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div style={{marginTop:"20px"}} className="hidden-lg hidden-sm" />
+            <Reports />
+            <div style={{marginTop:"20px"}} />
+            <Event />
+            <div style={{marginTop:"20px"}} />
             <Campuses />
+            <div style={{marginTop:"20px"}} />
+            <TipJar />
           <div />
           </div>
         </div>

@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var Style = require('./Style.jsx');
 var Campus = require('./Index.jsx');
 var ModalWindow = require('../ModalWindow/Index.jsx');
@@ -31,6 +32,11 @@ var Page = React.createClass({
     return (
       <div style={Style.pageContainer}
         className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
+        <div style={Style.componentContainer}>
+          <Link to={"/church/" + this.state.church._id + "/campus"}>
+            {"< Back to church campuses"}
+          </Link>
+        </div>
         <Campus
           church={this.state.church}
           campus={this.state.campus}

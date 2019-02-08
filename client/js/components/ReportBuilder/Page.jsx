@@ -3,6 +3,8 @@ var Style = require('./Style.jsx');
 var Report = require('./Index.jsx');
 var ReportStore = require('../../stores/ReportStore');
 
+var TestData = require('./TestData.jsx');
+
 function resolveSubDocs (report) {
   if (!report.size) { report.size = { x: '0in', y: '0in' }; }
   if (!report.style) { report.style = {}; }
@@ -51,7 +53,7 @@ var Page = React.createClass({
       <div style={Style.page}
         className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <Report
-          report={this.state.report}
+          report={TestData}
           children={this.props.children}
           onChange={this.handleChange_Child} />
       </div>

@@ -47,7 +47,6 @@ module.exports = {
     position: "relative",
     border: "1px solid #ccc",
     borderRadius: "3px",
-    overflow: "hidden",
     margin: "20px 0",
   },
   backContainer: {

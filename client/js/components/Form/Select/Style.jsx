@@ -6,7 +6,7 @@ module.exports = {
     padding: "0 6px 0 8px",
     border: "1px solid #ccc",
     cursor: "pointer",
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#fdfdfd",
   },
   selectFocused: {
     width: "100%",

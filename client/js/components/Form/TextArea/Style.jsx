@@ -7,7 +7,7 @@ module.exports = {
     padding: "0 6px 0 8px",
     cursor: "pointer",
     border: "1px solid #ccc",
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#fdfdfd",
   },
   textareaFocused: {
     width: "100%",

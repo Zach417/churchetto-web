@@ -2,6 +2,7 @@ var React = require('react');
 var moment = require('moment');
 var Style = require('./Style.jsx');
 var MemberImage = require('./Image.jsx');
+var Form = require('../Form/Index.jsx');
 var Input = require('../Form/Index.jsx').Input;
 var Label = require('../Form/Index.jsx').Label;
 var TextArea = require('../Form/Index.jsx').TextArea;
@@ -82,8 +83,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Member Date"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"dateOfMembership"}
               value={this.props.member.dateOfMembership}
               onChange={this.handleChange_Attribute} />
@@ -101,8 +101,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Anniversary Date"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"dateOfAnniversary"}
               value={this.props.member.dateOfAnniversary}
               onChange={this.handleChange_Attribute} />
@@ -110,8 +109,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Date of Birth"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"dateOfBirth"}
               value={this.props.member.dateOfBirth}
               onChange={this.handleChange_Attribute} />
@@ -119,8 +117,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Date of Death"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"dateOfDeath"}
               value={this.props.member.dateOfDeath}
               onChange={this.handleChange_Attribute} />
@@ -196,8 +193,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Baptized On"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"baptizedOn"}
               value={this.props.member.baptizedOn}
               onChange={this.handleChange_Attribute} />
@@ -205,8 +201,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Faith Confirmed On"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"dateOfFaithConfirmation"}
               value={this.props.member.dateOfFaithConfirmation}
               onChange={this.handleChange_Attribute} />
@@ -214,8 +209,7 @@ var Info = React.createClass({
           <div className="col-md-6 col-xs-12"
             style={Style.detailColumn}>
             <Label isRequired={false} label={"Faith Reaffirmed On"} />
-            <Input
-              type={"text"}
+            <Form.DatePicker
               attribute={"dateOfFaithReaffirmation"}
               value={this.props.member.dateOfFaithReaffirmation}
               onChange={this.handleChange_Attribute} />
@@ -236,6 +230,12 @@ var Info = React.createClass({
   handleChange_Attribute: function (attribute, value) {
     var member = this.props.member;
     member[attribute] = value;
+    this.props.onChange(member);
+  },
+
+  handleChange_DateOfMembership: function (date) {
+    var member = this.props.member;
+    member["dateOfMembership"] = date;
     this.props.onChange(member);
   },
 

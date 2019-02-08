@@ -39,3 +39,4 @@ Thumbs.db
 # Project files #
 ######################
 config.json
+sslcert/*
