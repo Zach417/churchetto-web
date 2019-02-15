@@ -11731,7 +11731,6 @@ var Component = React.createClass({displayName: "Component",
 
     if (len == 0) {
       mywindow.print();
-      window.focus();
     } else {
       [].forEach.call(imgs, function(img) {
           img.addEventListener('load', incrementCounter, false);
@@ -11741,7 +11740,6 @@ var Component = React.createClass({displayName: "Component",
         counter++;
         if (counter === len) {
         	mywindow.print();
-          window.focus();
         }
       }
     }
@@ -12028,6 +12026,7 @@ var Component = React.createClass({displayName: "Component",
       value = obj[attributes[0]];
     }
     for (var i = 1; i < attributes.length; i++) {
+      if (!value) return "";
       if (attributes[i] == "parent") {
         value = obj.parent;
       } else {
@@ -12368,7 +12367,7 @@ module.exports = [{
       groupBy: 'memberId',
       filter: 'param::start<date&&param::end>date&&param::isTaxDeductible==isTaxDeductible',
       repeater: `
-        <div>
+        <div style="page-break-after: always">
           <h1>[parent.name]</h1>
           <h2>Statement of Contributions</h2>
           <p>
@@ -12418,7 +12417,6 @@ module.exports = [{
             Report generated via Churchetto.com - Church Management Tools
           </p>
         </div>
-        <div style="page-break-after: always"></div>
       `,
     }],
     reportFooter: `

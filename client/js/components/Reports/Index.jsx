@@ -761,6 +761,7 @@ var Component = React.createClass({
       value = obj[attributes[0]];
     }
     for (var i = 1; i < attributes.length; i++) {
+      if (!value) return "";
       if (attributes[i] == "parent") {
         value = obj.parent;
       } else {

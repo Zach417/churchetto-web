@@ -245,7 +245,7 @@ module.exports = [{
       groupBy: 'memberId',
       filter: 'param::start<date&&param::end>date&&param::isTaxDeductible==isTaxDeductible',
       repeater: `
-        <div>
+        <div style="page-break-after: always">
           <h1>[parent.name]</h1>
           <h2>Statement of Contributions</h2>
           <p>
@@ -295,7 +295,6 @@ module.exports = [{
             Report generated via Churchetto.com - Church Management Tools
           </p>
         </div>
-        <div style="page-break-after: always"></div>
       `,
     }],
     reportFooter: `
