@@ -3,6 +3,12 @@
     * {-webkit-print-color-adjust:exact;}
 }
 
+@media print {
+  .hidden-print {
+    display: none !important;
+  }
+}
+
 ﻿html, body {
     background-color: #e1e3e4;
     padding: 0;

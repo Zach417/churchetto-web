@@ -7,6 +7,7 @@ var Route = require('react-router').Route;
 var browserHistory = require('react-router').browserHistory;
 var IndexRoute = require('react-router').IndexRoute;
 
+var Reports = require('./components/Reports/Page.jsx');
 var ReportBuilder = require('./components/ReportBuilder/Page.jsx');
 var ReportViewer = require('./components/ReportViewer/Page.jsx');
 var Church = require('./components/Church/Page.jsx');
@@ -85,8 +86,9 @@ var Routes = (
     <Route path="sign-out" component={SignOut}/>
 		<Route path="report-viewer/:id" component={ReportViewer} />
 		<Route path="report-viewer" component={ReportViewer} />
-		<Route path="report/:id" component={ReportBuilder} />
-		<Route path="report" component={ReportBuilder} />
+		<Route path="report-builder/:id" component={ReportBuilder} />
+		<Route path="report/:id" component={Reports} />
+		<Route path="report" component={Reports} />
     <Route path="church">
       <IndexRoute component={Churches}/>
 			<Route path="info" component={ChurchInfo} />

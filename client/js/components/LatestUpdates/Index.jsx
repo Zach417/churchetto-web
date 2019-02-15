@@ -9,11 +9,14 @@ var Button = require('../Button/Index.jsx');
 
 var LatestUpdates = React.createClass({
   getInitialState: function () {
-    return {
-      date: new Date(2019, 1, 8),
-      description: "Hope you all are having a great week! Here are the latest changes to Churchetto. I'm aiming to starting doing regular updates to the site every 1 to 2 weeks. Don't forget to email me with any questions or requests! -Zach (zach@churchetto.com)",
-      changes: ["Added a Date Picker component for most date entry fields", "Added Tip Jar so that users can contribute to the project", "Made it more difficult to delete your church", "Added SSL Certificate -- all data to/from the server is encrypted", "Added Reports component to dashboard", "Added navigation buttons at top of screen for easier navigation"]
-    }
+    var state = {changes: []};
+    state.description = "Hope you all are having a great week! Here are the latest changes to Churchetto. Don't forget to email me with any questions or requests! -Zach (zach@churchetto.com)";
+    state.changes.push("2/8/19 - Added a Date Picker component for most date entry fields");
+    state.changes.push("2/8/19 - Added Tip Jar so that users can contribute to the project");
+    state.changes.push("2/8/19 - Added SSL Certificate -- all data to/from the server is encrypted");
+    state.changes.push("2/8/19 - Added Reports component to dashboard");
+    state.changes.push("2/8/19 - Added navigation buttons at top of screen for easier navigation");
+    return state;
   },
 
   componentDidMount: function () {
@@ -26,7 +29,7 @@ var LatestUpdates = React.createClass({
     return (
       <div style={Style.entitySummary}>
         <h1 style={{margin:"5px 0",textAlign:"left"}}>
-          {"Churchetto Updates - " + moment(this.state.date).format("M/D/YYYY")}
+          {"Churchetto Updates"}
         </h1>
         <p>
           {this.state.description}
