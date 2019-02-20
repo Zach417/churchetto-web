@@ -1616,8 +1616,8 @@ var Attendance = React.createClass({displayName: "Attendance",
                 React.createElement("div", {id: "attendance-export-dropdown", style: {display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}, 
                   React.createElement(Link, {
                     style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
-                    to: "/report-viewer/attendance-report"}, 
-                    "Report (.pdf)"
+                    to: "/report/attendance-report"}, 
+                    "Attendance Report (.pdf)"
                   ), 
                   React.createElement("a", {style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, onClick: this.handleClick_Export}, 
                     "Attendance Data (.csv)"
@@ -1928,7 +1928,12 @@ var Giving = React.createClass({displayName: "Giving",
                 React.createElement("div", {id: "contribution-export-dropdown", style: {display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}, 
                   React.createElement(Link, {
                     style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
-                    to: "/report-viewer/tax-statement"}, 
+                    to: "/report/member-contributions"}, 
+                    "Member Contributions (.pdf)"
+                  ), 
+                  React.createElement(Link, {
+                    style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
+                    to: "/report/tax-statement"}, 
                     "Tax Statement (.pdf)"
                   ), 
                   React.createElement("a", {style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, onClick: this.handleClick_Export}, 
@@ -2768,23 +2773,28 @@ var Members = React.createClass({displayName: "Members",
                 React.createElement("div", {id: "member-export-dropdown", style: {display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}, 
                   React.createElement(Link, {
                     style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
-                    to: "/report-viewer/member-directory"}, 
-                    "Picture Directory (.pdf)"
+                    to: "/report/attendance-report"}, 
+                    "Attendance Report (.pdf)"
                   ), 
                   React.createElement(Link, {
                     style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
-                    to: "/report-viewer/mailing-labels"}, 
-                    "Mailing Labels (.pdf)"
+                    to: "/report/birthday-report"}, 
+                    "Birthday Report (.pdf)"
                   ), 
                   React.createElement(Link, {
                     style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
-                    to: "/report-viewer/birthday-report"}, 
-                    "Birthdays (.pdf)"
+                    to: "/report/member-contributions"}, 
+                    "Member Contributions (.pdf)"
                   ), 
                   React.createElement(Link, {
                     style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
-                    to: "/report-viewer/death-report"}, 
-                    "Deaths (.pdf)"
+                    to: "/report/member-directory"}, 
+                    "Member Directory (.pdf)"
+                  ), 
+                  React.createElement(Link, {
+                    style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, 
+                    to: "/report/tax-statement"}, 
+                    "Tax Statement (.pdf)"
                   ), 
                   React.createElement("a", {style: {cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}, onClick: this.handleClick_Export}, 
                     "Member Data (.csv)"
@@ -8320,7 +8330,7 @@ var Reports = React.createClass({displayName: "Reports",
   getReportComponents: function () {
     return this.state.reports.map(function (report, i) {
       var onClick = function () {
-        browserHistory.push("/report-viewer/" + report.path);
+        browserHistory.push("/report/" + report.path);
       }
       return (
         React.createElement(EntitySubSummary, {onClick: onClick, key: i}, 
@@ -8409,6 +8419,7 @@ var LatestUpdates = React.createClass({displayName: "LatestUpdates",
   getInitialState: function () {
     var state = {changes: []};
     state.description = "Hope you all are having a great week! Here are the latest changes to Churchetto. Don't forget to email me with any questions or requests! -Zach (zach@churchetto.com)";
+    state.changes.push("2/19/19 - Revamped the reports section of the site and squashed some bugs!");
     state.changes.push("2/8/19 - Added a Date Picker component for most date entry fields");
     state.changes.push("2/8/19 - Added Tip Jar so that users can contribute to the project");
     state.changes.push("2/8/19 - Added SSL Certificate -- all data to/from the server is encrypted");

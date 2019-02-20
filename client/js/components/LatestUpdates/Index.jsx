@@ -11,6 +11,7 @@ var LatestUpdates = React.createClass({
   getInitialState: function () {
     var state = {changes: []};
     state.description = "Hope you all are having a great week! Here are the latest changes to Churchetto. Don't forget to email me with any questions or requests! -Zach (zach@churchetto.com)";
+    state.changes.push("2/19/19 - Revamped the reports section of the site and squashed some bugs!");
     state.changes.push("2/8/19 - Added a Date Picker component for most date entry fields");
     state.changes.push("2/8/19 - Added Tip Jar so that users can contribute to the project");
     state.changes.push("2/8/19 - Added SSL Certificate -- all data to/from the server is encrypted");

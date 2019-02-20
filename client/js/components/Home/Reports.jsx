@@ -41,7 +41,7 @@ var Reports = React.createClass({
   getReportComponents: function () {
     return this.state.reports.map(function (report, i) {
       var onClick = function () {
-        browserHistory.push("/report-viewer/" + report.path);
+        browserHistory.push("/report/" + report.path);
       }
       return (
         <EntitySubSummary onClick={onClick} key={i}>

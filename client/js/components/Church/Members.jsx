@@ -73,23 +73,28 @@ var Members = React.createClass({
                 <div id="member-export-dropdown" style={{display:"none",position:"absolute",minWidth:"160px",backgroundColor:"#f4f4f4",boxShadow:"0px 8px 16px 0px rgba(0,0,0,0.2)",zIndex:"1"}}>
                   <Link
                     style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
-                    to={"/report-viewer/member-directory"}>
-                    {"Picture Directory (.pdf)"}
+                    to={"/report/attendance-report"}>
+                    {"Attendance Report (.pdf)"}
                   </Link>
                   <Link
                     style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
-                    to={"/report-viewer/mailing-labels"}>
-                    {"Mailing Labels (.pdf)"}
+                    to={"/report/birthday-report"}>
+                    {"Birthday Report (.pdf)"}
                   </Link>
                   <Link
                     style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
-                    to={"/report-viewer/birthday-report"}>
-                    {"Birthdays (.pdf)"}
+                    to={"/report/member-contributions"}>
+                    {"Member Contributions (.pdf)"}
                   </Link>
                   <Link
                     style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
-                    to={"/report-viewer/death-report"}>
-                    {"Deaths (.pdf)"}
+                    to={"/report/member-directory"}>
+                    {"Member Directory (.pdf)"}
+                  </Link>
+                  <Link
+                    style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}}
+                    to={"/report/tax-statement"}>
+                    {"Tax Statement (.pdf)"}
                   </Link>
                   <a style={{cursor:"pointer",padding:"12px 16px",textDecoration:"none",display:"block"}} onClick={this.handleClick_Export}>
                     {"Member Data (.csv)"}
