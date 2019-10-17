@@ -6891,6 +6891,18 @@ var Header = React.createClass({displayName: "Header",
 							React.createElement(Menu, null), 
 							React.createElement(MenuNavButton, null)
 						)
+					), 
+					React.createElement("div", {id: "shutdown-message", className: "col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered", 
+						style: {padding:"10px",backgroundColor:"red",color:"white",fontFamily:"'Rokkitt', serif"}}, 
+						React.createElement("h2", null, "Churchetto is shutting down on October 31, 2019"), 
+						React.createElement("p", null, 
+							"It was a great run, and thanks for being a part of it! Unforunately, the cost of running this application is too great, and the Tip Jar feature has not resulted in any funds raised for maintence. I will be downloading the database before shuttind down, so email me if you need a copy of your data."
+						), 
+						React.createElement("p", null, "All the best,"), 
+						React.createElement("p", null, "Zach"), 
+						React.createElement("p", {onClick: this.handleClick_CloseMessage, style: {cursor:"pointer"}}, 
+							React.createElement("i", null, "Close this message")
+						)
 					)
 				), 
 				React.createElement("div", {style: Style.navigationMobile}, 
@@ -6910,6 +6922,10 @@ var Header = React.createClass({displayName: "Header",
 			)
 		);
 	},
+
+	handleClick_CloseMessage: function () {
+		document.getElementById("shutdown-message").style.display = "none";
+	}
 });
 
 module.exports = Header;
