@@ -35,7 +35,7 @@
     "connect-multiparty": "^2.0.0",
     "cookie-parser": "^1.4.1",
     "envify": "^3.4.1",
-    "express": "^4.13.4",
+    "express": "^4.17.3",
     "express-session": "^1.13.0",
     "flux": "^2.1.1",
     "griddle-react": "^0.4.1",
